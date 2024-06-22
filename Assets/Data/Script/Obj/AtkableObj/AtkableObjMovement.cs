@@ -18,6 +18,9 @@ public abstract class AtkableObjMovement : HuyMonoBehaviour
     [Header("Stat")]
     [SerializeField] protected Vector4 moveDir;
     public Vector4 MoveDir => moveDir;
+
+    [SerializeField] protected float moveSpeed;
+    public float MoveSpeed => moveSpeed;
     #endregion
 
 
@@ -56,7 +59,23 @@ public abstract class AtkableObjMovement : HuyMonoBehaviour
         float down = this.moveDir.w;
         Vector2 moveDir = new Vector2(right - left, up - down);
 
-        this.rb.velocity = moveDir * this.atkableObjStat.MoveSpeed;
+        this.rb.velocity = moveDir * moveSpeed;
+    }
+    #endregion
+
+
+
+    #region Other
+    //===========================================Other============================================
+    public virtual void DefaultStat()
+    {
+        if (this.atkableObjStat == null)
+        {
+            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
+            return;
+        }
+
+        this.moveSpeed = this.atkableObjStat.MoveSpeed;
     }
     #endregion
 }

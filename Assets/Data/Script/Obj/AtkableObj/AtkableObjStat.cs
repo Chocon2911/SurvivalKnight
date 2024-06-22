@@ -25,5 +25,8 @@ public abstract class AtkableObjStat : BaseObj
 
     [SerializeField] protected int charactecterLevel;
     public int CharacterLevel => charactecterLevel;
+
+    [SerializeField] protected AtkObjType atkObjType;
+    public AtkObjType AtkObjType => atkObjType;
     #endregion
 }

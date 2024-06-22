@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,8 +17,11 @@ public class PlayerObjManager : HuyMonoBehaviour
     public Rigidbody2D Rb => rb;
 
     [Header("Script")]
-    [SerializeField] protected PlayerMovementManager movement;
-    public PlayerMovementManager Movement => movement;
+    [SerializeField] protected PlayerObjMovement movement;
+    public PlayerObjMovement Movement => movement;
+
+    [SerializeField] protected PlayerObjSkill skill;
+    public PlayerObjSkill Skill => skill;
 
     [SerializeField] protected PlayerObjStat stat;
     public PlayerObjStat Stat => stat;
@@ -26,6 +30,13 @@ public class PlayerObjManager : HuyMonoBehaviour
 
 
     #region Unity
+    protected virtual void OnEnable()
+    {
+        this.stat.DefaultStat();
+        this.movement.DefaultStat();
+        this.skill.Dash.DefaultStat();
+    }
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -35,6 +46,7 @@ public class PlayerObjManager : HuyMonoBehaviour
 
         //Script
         this.LoadMovement();
+        this.LoadSkill();
         this.LoadStat();
     }
     #endregion
@@ -64,8 +76,15 @@ public class PlayerObjManager : HuyMonoBehaviour
     protected virtual void LoadMovement()
     {
         if (this.movement != null) return;
-        this.movement = transform.GetComponentInChildren<PlayerMovementManager>();
+        this.movement = transform.GetComponentInChildren<PlayerObjMovement>();
         Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
+    }
+
+    protected virtual void LoadSkill()
+    {
+        if (this.skill != null) return;
+        this.skill = transform.GetComponentInChildren<PlayerObjSkill>();
+        Debug.LogWarning(transform.name + ": Load Skill", transform.gameObject);
     }
 
     protected virtual void LoadStat()

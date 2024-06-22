@@ -32,11 +32,6 @@ public class PlayerObjStat : AtkableObjStat
 
 
     #region Unity
-    protected virtual void OnEnable()
-    {
-        this.DefaultStat();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -70,9 +65,11 @@ public class PlayerObjStat : AtkableObjStat
     }
     #endregion
 
+
+
     #region Other
     //===========================================Other============================================
-    protected virtual void DefaultStat()
+    public virtual void DefaultStat()
     {
         if (this.playerSO == null)
         {

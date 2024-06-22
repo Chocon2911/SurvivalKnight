@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : AtkableObjMovement
+public class PlayerObjMovement : AtkableObjMovement
 {
     #region Variable
-    [SerializeField] protected PlayerMovementManager movement;
-    public PlayerMovementManager Movement => movement;
+    [Header("Player Move")]
+    [Header("Script")]
+    [SerializeField] protected PlayerObjManager manager;
+    public PlayerObjManager Manager => manager;
     #endregion
 
 
@@ -14,7 +16,7 @@ public class PlayerMove : AtkableObjMovement
     #region Unity
     protected override void LoadComponent()
     {
-        this.LoadMovement();
+        this.LoadManager();
         base.LoadComponent();
     }
     #endregion
@@ -24,24 +26,24 @@ public class PlayerMove : AtkableObjMovement
     #region Load Component
     //=======================================Load Component=======================================
     //Script
-    protected virtual void LoadMovement()
+    protected virtual void LoadManager()
     {
-        if (this.movement != null) return;
-        this.movement = transform.parent.GetComponent<PlayerMovementManager>();
-        Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
+        if (this.manager != null) return;
+        this.manager = transform.parent.GetComponent<PlayerObjManager>();
+        Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
     }
 
     protected override void LoadRigidbody()
     {
         if (this.rb != null) return;
-        this.rb = this.movement.Manager.Rb;
+        this.rb = this.manager.Rb;
         Debug.LogWarning(transform.name + ": Load Rigidbody", transform.gameObject);
     }
 
     protected override void LoadAtkableObjStat()
     {
         if (this.atkableObjStat != null) return;
-        this.atkableObjStat = this.movement.Manager.Stat;
+        this.atkableObjStat = this.manager.Stat;
         Debug.LogWarning(transform.name + ": Load AtkableObjSta", transform.gameObject);
     }
     #endregion
@@ -52,7 +54,7 @@ public class PlayerMove : AtkableObjMovement
     //====================================Atkable Obj Movment=====================================
     protected override void Move()
     {
-        if (this.movement.Dash.IsDash) return;
+        if (this.manager.Skill.Dash.IsDoing) return;
         this.moveDir = InputManager.Instance.MoveDir;
         base.Move();
     }
