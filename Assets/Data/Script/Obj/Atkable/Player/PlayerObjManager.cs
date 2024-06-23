@@ -5,16 +5,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerObjManager : HuyMonoBehaviour
 {
     #region Variable
     [Header("Player Obj Manager")]
     [Header("Other")]
-    [SerializeField] protected Transform model;
-    public Transform Model => model;
+    [SerializeField] protected SpriteRenderer model;
+    public SpriteRenderer Model => model;
 
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
+
+    [SerializeField] protected CapsuleCollider2D body;
+    public CapsuleCollider2D Body => body;
 
     [Header("Script")]
     [SerializeField] protected PlayerObjMovement movement;
@@ -43,6 +47,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         //Other
         this.LoadModel();
         this.LoadRigidbody();
+        this.LoadBody();
 
         //Script
         this.LoadMovement();
@@ -59,7 +64,7 @@ public class PlayerObjManager : HuyMonoBehaviour
     protected virtual void LoadModel()
     {
         if (this.model != null) return;
-        this.model = transform.Find("Model");
+        this.model = transform.GetComponentInChildren<SpriteRenderer>();
         Debug.LogWarning(transform.name + ": Load Model", transform.gameObject);
     }
 
@@ -70,6 +75,15 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.rb.gravityScale = 0;
         this.rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         Debug.LogWarning(transform.name + ": Load Rigidbody", transform.gameObject);
+    }
+
+    protected virtual void LoadBody()
+    {
+        if (this.body != null) return;
+        this.body = transform.GetComponent<CapsuleCollider2D>();
+        this.body.isTrigger = false;
+        this.body.size = new Vector2(1, 1);
+        Debug.LogWarning(transform.name + ": Load Body", transform.gameObject);
     }
 
     //Script

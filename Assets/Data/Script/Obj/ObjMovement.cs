@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public abstract class AtkableObjMovement : HuyMonoBehaviour
+public abstract class ObjMovement : HuyMonoBehaviour
 {
     #region Variable
     [Header("Attackable Obj Movement")]
@@ -57,7 +57,7 @@ public abstract class AtkableObjMovement : HuyMonoBehaviour
         float left = this.moveDir.z;
         float up = this.moveDir.y;
         float down = this.moveDir.w;
-        Vector2 moveDir = new Vector2(right - left, up - down);
+        Vector2 moveDir = new Vector2(right - left, up - down).normalized;
 
         this.rb.velocity = moveDir * moveSpeed;
     }

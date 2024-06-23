@@ -51,7 +51,7 @@ public class PlayerObjStat : AtkableObjStat
     protected virtual void LoadPlayerSO()
     {
         if (this.playerSO != null) return;
-        string filePath = "Obj/AtkableObj/Player/Player_1";
+        string filePath = "Obj/AtkableObj/Player/" + transform.name;
         this.playerSO = Resources.Load<PlayerSO>(filePath);
         Debug.LogWarning(transform.name + ": Load PlayerSO", transform.gameObject);
     }
@@ -78,7 +78,7 @@ public class PlayerObjStat : AtkableObjStat
         }
 
         //Obj
-        this.objType = this.playerSO.ObjType;
+        this.objType = ObjType.AtkableObj;
         this.objName = this.playerSO.ObjName;
 
         //Atkable Obj

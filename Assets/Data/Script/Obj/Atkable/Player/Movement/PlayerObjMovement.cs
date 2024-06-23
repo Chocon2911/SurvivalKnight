@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObjMovement : AtkableObjMovement
+public class PlayerObjMovement : ObjMovement
 {
     #region Variable
     [Header("Player Move")]

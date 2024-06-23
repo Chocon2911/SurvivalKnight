@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class ObjSO : ScriptableObject
 {
-    public ObjType ObjType;
     public string ObjName;
 }

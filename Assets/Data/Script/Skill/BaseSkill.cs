@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AtkableObjSkill : HuyMonoBehaviour
+public class BaseSkill : HuyMonoBehaviour
 {
     #region Variable
     [Header("Attackable Obj Skill")]

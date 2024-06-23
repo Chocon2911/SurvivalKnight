@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObjDash : AtkableObjSkill
+public class PlayerObjDash : BaseSkill
 {
     #region Variable
     [Header("Player Dash")]

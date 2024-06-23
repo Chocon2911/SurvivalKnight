@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6315359c05df77146a118337ca322e8d, type: 3}
   m_Name: Enemy_1
   m_EditorClassIdentifier: 
-  ObjType: 1
   ObjName: Enemy_1
   MaxHealth: 5
   MoveSpeed: 2
@@ -20,3 +19,4 @@ MonoBehaviour:
   AttackSpeed: 1
   Amor: 0
   CharacterLevel: 1
+  DetectRange: 6
