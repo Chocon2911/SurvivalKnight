@@ -6,10 +6,7 @@ public abstract class BaseObj : HuyMonoBehaviour
 {
     #region Varibale
     [Header("Base Obj")]
-    [SerializeField] protected ObjType objType;
-    public ObjType ObjType => objType;
-
-    [SerializeField] protected string objName;
-    public string ObjName => objName;
+    public ObjType ObjType;
+    public string ObjName;
     #endregion
 }

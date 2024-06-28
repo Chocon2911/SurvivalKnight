@@ -37,8 +37,6 @@ public class PlayerObjManager : HuyMonoBehaviour
     protected virtual void OnEnable()
     {
         this.stat.DefaultStat();
-        this.movement.DefaultStat();
-        this.skill.Dash.DefaultStat();
     }
 
     protected override void LoadComponent()
@@ -74,6 +72,9 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.rb = transform.GetComponent<Rigidbody2D>();
         this.rb.gravityScale = 0;
         this.rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        this.rb.isKinematic = false;
+        this.rb.mass = 1;
+        this.rb.freezeRotation = true;
         Debug.LogWarning(transform.name + ": Load Rigidbody", transform.gameObject);
     }
 

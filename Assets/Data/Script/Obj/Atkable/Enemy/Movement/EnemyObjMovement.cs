@@ -10,7 +10,7 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
     [SerializeField] protected CircleCollider2D detectEnemy;
     public CircleCollider2D DetectEnemy => detectEnemy;
 
-    [SerializeField] protected Coroutine UnfollowPlayerCoroutine;
+    [SerializeField] protected Coroutine unFollowPlayerCoroutine;
 
     [Header("Script")]
     [SerializeField] protected EnemyObjManager mananger;
@@ -37,19 +37,17 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
         this.CheckIfPlayerExit(collision);
     }
 
+    protected virtual void OnDisable()
+    {
+        this.StopAllCoroutines();
+    }
+
     //========================================Obj Movement========================================
     protected override void LoadRigidbody()
     {
         if (this.rb != null) return;
         this.rb = this.mananger.Rb;
         Debug.LogWarning(transform.name + ": Load Rigidbody", transform.gameObject);
-    }
-
-    protected override void LoadAtkableObjStat()
-    {
-        if (this.atkableObjStat != null) return;
-        this.atkableObjStat = this.mananger.Stat;
-        Debug.LogWarning(transform.name + ": Load AtkableOBjStat", transform.gameObject);
     }
 
     //=======================================Load Component=======================================
@@ -71,10 +69,15 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
     }
 
     //===========================================Other============================================
-    public override void DefaultStat()
+    public virtual void DefaultStat()
     {
-        base.DefaultStat();
+        if (this.mananger.Stat == null)
+        {
+            Debug.LogError(transform.name + ": No Stat", transform.gameObject);
+            return;
+        }
 
+        this.moveSpeed = this.mananger.Stat.MoveSpeed;
         this.detectEnemy.radius = this.mananger.Stat.DetectRange;
         //Debug.Log(transform.name + ": Load DefaultStat", transform.gameObject);
     }
@@ -90,10 +93,12 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
             return;
         }
 
-        if (atkObjStat.AtkObjType != AtkObjType.Player)
+        if (atkObjStat.AtkObjType == AtkObjType.Player)
         {
             this.SetTarget(collision.transform);
-            StopCoroutine(this.UnFollowPlayer());
+            if (this.unFollowPlayerCoroutine == null) return;
+
+            StopCoroutine(this.unFollowPlayerCoroutine);
         }
     }
 
@@ -101,16 +106,19 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
     {
         AtkableObjStat atkObjStat = collision.transform.GetComponent<AtkableObjStat>();
 
+        if (!transform.parent.gameObject.activeSelf) return;
+
         if (atkObjStat == null)
         {
             //Debug.Log(transform.name + ": No Atkable Obj Stat", transform.gameObject);
             return;
         }
 
-        if (atkObjStat.AtkObjType != AtkObjType.Player)
+        if (atkObjStat.AtkObjType == AtkObjType.Player)
         {
-            if (this.UnfollowPlayerCoroutine != null) StopCoroutine(this.UnfollowPlayerCoroutine);
-            this.UnfollowPlayerCoroutine = StartCoroutine(this.UnFollowPlayer());
+            if (this.unFollowPlayerCoroutine != null) StopCoroutine(this.unFollowPlayerCoroutine);
+            if (!transform.parent.gameObject.activeSelf) return;
+            this.unFollowPlayerCoroutine = StartCoroutine(this.UnFollowPlayer());
         }
     }
 

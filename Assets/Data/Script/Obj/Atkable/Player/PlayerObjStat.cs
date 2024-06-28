@@ -16,17 +16,17 @@ public class PlayerObjStat : AtkableObjStat
     public PlayerObjManager Manager => manager;
 
     [Header("Stat")]
-    [SerializeField] protected float satiety;
-    public float Satiety => satiety;
-
-    [SerializeField] protected float dashSpeed;
-    public float DashSpeed => dashSpeed;
-
-    [SerializeField] protected float dashCooldown;
-    public float DashCooldown => dashCooldown;
-
-    [SerializeField] protected float dashTime;
-    public float DashTime => dashTime;
+    public float Satiety;
+    //Dash
+    public float DashSpeed;
+    public float DashCooldown;
+    public float DashChargeTime;
+    public float DashTime;
+    //Shoot
+    public float BulletSpeed;
+    public float ShootCooldown;
+    public float ShootChargeTime;
+    public float ShootTime;
     #endregion
 
 
@@ -78,23 +78,35 @@ public class PlayerObjStat : AtkableObjStat
         }
 
         //Obj
-        this.objType = ObjType.AtkableObj;
-        this.objName = this.playerSO.ObjName;
+        this.ObjType = ObjType.AtkableObj;
+        this.ObjName = this.playerSO.ObjName;
 
         //Atkable Obj
-        this.maxHealth = this.playerSO.MaxHealth;
-        this.health = this.maxHealth;
-        this.moveSpeed = this.playerSO.MoveSpeed;
-        this.atkDamage = this.playerSO.AttackDamage;
-        this.atkSpeed = this.playerSO.AttackSpeed;
-        this.amor = this.playerSO.Amor;
-        this.charactecterLevel = this.playerSO.CharacterLevel;
+        this.MaxHealth = this.playerSO.MaxHealth;
+        this.Health = this.MaxHealth;
+        this.MoveSpeed = this.playerSO.MoveSpeed;
+        this.AtkDamage = this.playerSO.AttackDamage;
+        this.AtkSpeed = this.playerSO.AttackSpeed;
+        this.Amor = this.playerSO.Amor;
+        this.CharacterLevel = this.playerSO.CharacterLevel;
+        this.AtkObjType = AtkObjType.Player;
 
         //Player
-        this.satiety = this.playerSO.Satiety;
-        this.dashSpeed = this.playerSO.DashSpeed;
-        this.dashCooldown = this.playerSO.DashCooldown;
-        this.dashTime = this.playerSO.DashTime;
+        this.Satiety = this.playerSO.Satiety;
+        //Dash
+        this.DashSpeed = this.playerSO.DashSpeed;
+        this.DashCooldown = this.playerSO.DashCooldown;
+        this.DashChargeTime = this.playerSO.DashChargeTime;
+        this.DashTime = this.playerSO.DashTime;
+        //Shoot
+        this.BulletSpeed = this.playerSO.BulletSpeed;
+        this.ShootCooldown = this.PlayerSO.ShootCooldown;
+        this.ShootChargeTime = this.PlayerSO.ShootChargeTime;
+        this.ShootTime = this.playerSO.ShootTime;
+
+        //Load Stat
+        this.manager.Movement.DefaultStat();
+        this.manager.Skill.Dash.DefaultStat();
     }
     #endregion
 }

@@ -15,6 +15,9 @@ public class InputManager : HuyMonoBehaviour
 
     [SerializeField] protected bool dash;
     public bool Dash => dash;
+
+    [SerializeField] protected bool shoot;
+    public bool Shoot => shoot;
     #endregion
 
 
@@ -40,6 +43,7 @@ public class InputManager : HuyMonoBehaviour
     protected virtual void Update()
     {
         this.GetDash();
+        this.GetShoot();
     }
     #endregion
 
@@ -64,8 +68,14 @@ public class InputManager : HuyMonoBehaviour
 
     protected virtual void GetDash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space)) this.dash = true;
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)) this.dash = true;
         else this.dash = false;
+    }
+
+    protected virtual void GetShoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0)) this.shoot = true;
+        else this.shoot = false;
     }
     #endregion
 }

@@ -16,6 +16,9 @@ public class PlayerObjDash : BaseSkill
 
     [SerializeField] protected float moveSpeed;
     public float MoveSpeed => moveSpeed;
+
+    [SerializeField] protected Vector4 moveDir;
+    public Vector4 MoveDir => moveDir;
     #endregion
 
 
@@ -23,6 +26,7 @@ public class PlayerObjDash : BaseSkill
     #region Unity
     protected virtual void Update()
     {
+        this.GetMoveDir();
         this.Dash();
     }
 
@@ -47,33 +51,45 @@ public class PlayerObjDash : BaseSkill
 
 
 
+    #region Get
+    //============================================Get=============================================
+    protected virtual void GetMoveDir()
+    {
+        this.moveDir = InputManager.Instance.MoveDir;
+    }
+    #endregion
+
+
+
     #region Dash
     //============================================Dash============================================
     protected virtual void Dash()
     {
-        if (!this.isReady) return;
-        if (!InputManager.Instance.Dash) return;
+        if (this.isReady && InputManager.Instance.Dash)
+        {
+            this.UseSkill();
+        }
 
-        Vector4 moveDir = InputManager.Instance.MoveDir;
-        if (moveDir == Vector4.zero) return;
+        if (this.isCharging)
+        {
+            this.ChargeDash();
+        }
 
-        this.DoDash(moveDir);
+        if (this.isDoing)
+        {
+            this.DoDash();
+        }
     }
 
-    protected virtual void DoDash(Vector4 moveDir)
+    protected virtual void ChargeDash()
     {
-        this.UseSkill();
-        StartCoroutine(Dashing(moveDir));
+        //Add some Dash Charging anim here
     }
 
-    protected virtual IEnumerator Dashing(Vector4 moveDir)
+    protected virtual void DoDash()
     {
-        Vector2 dashDir = new Vector2(moveDir.x - moveDir.z, moveDir.y - moveDir.w);
-        
+        Vector2 dashDir = new Vector2(this.moveDir.x - moveDir.z, moveDir.y - moveDir.w);
         this.skill.Manager.Rb.velocity = dashDir * this.dashSpeed * this.moveSpeed;
-        yield return new WaitForSeconds(this.doingTime);
-
-        this.FinishUsingSkill();
     }
     #endregion
 
@@ -81,8 +97,10 @@ public class PlayerObjDash : BaseSkill
 
     #region Other
     //===========================================Other============================================
-    public virtual void DefaultStat()
+    public override void DefaultStat()
     {
+        base.DefaultStat();
+
         if (this.skill.Manager.Stat == null)
         {
             Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
@@ -92,8 +110,8 @@ public class PlayerObjDash : BaseSkill
         this.dashSpeed = this.skill.Manager.Stat.DashSpeed;
         this.moveSpeed = this.skill.Manager.Stat.MoveSpeed;
         this.cooldownDelay = this.skill.Manager.Stat.DashCooldown;
-        this.cooldownTimer = this.cooldownDelay;
-        this.doingTime = this.skill.Manager.Stat.DashTime;
+        this.chargeDelay = this.skill.Manager.Stat.DashChargeTime;
+        this.doingLength = this.skill.Manager.Stat.DashTime;
 
         //Debug.Log(transform.name + ": Load DefaultStat", transform.gameObject);
     }

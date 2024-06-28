@@ -39,13 +39,6 @@ public class PlayerObjMovement : ObjMovement
         this.rb = this.manager.Rb;
         Debug.LogWarning(transform.name + ": Load Rigidbody", transform.gameObject);
     }
-
-    protected override void LoadAtkableObjStat()
-    {
-        if (this.atkableObjStat != null) return;
-        this.atkableObjStat = this.manager.Stat;
-        Debug.LogWarning(transform.name + ": Load AtkableObjSta", transform.gameObject);
-    }
     #endregion
 
 
@@ -57,6 +50,21 @@ public class PlayerObjMovement : ObjMovement
         if (this.manager.Skill.Dash.IsDoing) return;
         this.moveDir = InputManager.Instance.MoveDir;
         base.Move();
+    }
+    #endregion
+
+
+    #region Other
+    //===========================================Other============================================
+    public virtual void DefaultStat()
+    {
+        if (this.manager.Stat == null)
+        {
+            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
+            return;
+        }
+
+        this.moveSpeed = this.manager.Stat.MoveSpeed;
     }
     #endregion
 }

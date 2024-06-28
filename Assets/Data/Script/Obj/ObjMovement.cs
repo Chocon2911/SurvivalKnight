@@ -11,10 +11,6 @@ public abstract class ObjMovement : HuyMonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
-    [Header("Script")]
-    [SerializeField] protected AtkableObjStat atkableObjStat;
-    public AtkableObjStat AtkableObjStat => atkableObjStat;
-
     [Header("Stat")]
     [SerializeField] protected Vector4 moveDir;
     public Vector4 MoveDir => moveDir;
@@ -30,7 +26,6 @@ public abstract class ObjMovement : HuyMonoBehaviour
     {
         base.LoadComponent();
         this.LoadRigidbody();
-        this.LoadAtkableObjStat();
     }
 
     protected virtual void Update()
@@ -44,7 +39,6 @@ public abstract class ObjMovement : HuyMonoBehaviour
     #region Load Component
     //=======================================Load Component=======================================
     protected abstract void LoadRigidbody();
-    protected abstract void LoadAtkableObjStat();
     #endregion
 
 
@@ -60,22 +54,6 @@ public abstract class ObjMovement : HuyMonoBehaviour
         Vector2 moveDir = new Vector2(right - left, up - down).normalized;
 
         this.rb.velocity = moveDir * moveSpeed;
-    }
-    #endregion
-
-
-
-    #region Other
-    //===========================================Other============================================
-    public virtual void DefaultStat()
-    {
-        if (this.atkableObjStat == null)
-        {
-            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
-            return;
-        }
-
-        this.moveSpeed = this.atkableObjStat.MoveSpeed;
     }
     #endregion
 }

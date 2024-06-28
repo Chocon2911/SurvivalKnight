@@ -14,8 +14,7 @@ public class EnemyObjStat : AtkableObjStat
     public EnemyObjManager Manager => manager;
 
     [Header("Stat")]
-    [SerializeField] protected float detectRange;
-    public float DetectRange => detectRange;
+    public float DetectRange;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -54,20 +53,23 @@ public class EnemyObjStat : AtkableObjStat
         }
 
         //Base Obj
-        this.objName = this.so.name;
-        this.objType = ObjType.AtkableObj;
+        this.ObjName = this.so.name;
+        this.ObjType = ObjType.AtkableObj;
 
         //Atk Obj
-        this.maxHealth = this.so.MaxHealth;
-        this.health = this.maxHealth;
-        this.moveSpeed = this.so.MoveSpeed;
-        this.atkDamage = this.so.AttackDamage;
-        this.atkSpeed = this.so.AttackSpeed;
-        this.amor = this.so.Amor;
-        this.charactecterLevel = this.so.CharacterLevel;
-        this.atkObjType = AtkObjType.Enemy;
+        this.MaxHealth = this.so.MaxHealth;
+        this.Health = this.MaxHealth;
+        this.MoveSpeed = this.so.MoveSpeed;
+        this.AtkDamage = this.so.AttackDamage;
+        this.AtkSpeed = this.so.AttackSpeed;
+        this.Amor = this.so.Amor;
+        this.CharacterLevel = this.so.CharacterLevel;
+        this.AtkObjType = AtkObjType.Enemy;
 
         //Enemy
-        this.detectRange = this.so.DetectRange;
+        this.DetectRange = this.so.DetectRange;
+
+        //Load Stat
+        this.manager.Movement.DefaultStat();
     }
 }

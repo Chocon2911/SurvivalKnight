@@ -6,7 +6,14 @@ using UnityEngine;
 public class PlayerSO : AtkableObjSO
 {
     public float Satiety;
+    //Dash
     public float DashSpeed;
     public float DashCooldown;
+    public float DashChargeTime;
     public float DashTime;
+    //Shoot
+    public float BulletSpeed;
+    public float ShootCooldown;
+    public float ShootChargeTime;
+    public float ShootTime;
 }

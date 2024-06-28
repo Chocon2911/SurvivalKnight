@@ -8,4 +8,5 @@ public enum ObjType
     AtkableObj = 1,
     Item = 2,
     Equipment = 3,
+    Bullet = 4,
 }
