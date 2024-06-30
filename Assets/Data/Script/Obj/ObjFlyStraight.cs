@@ -48,7 +48,9 @@ public class ObjFlyStraight : HuyMonoBehaviour
     //============================================Fly=============================================
     public virtual void Fly()
     {
-        this.rb.velocity = this.GetDir(this.affectedObj.rotation.z) * this.flySpeed;
+        float zRot = this.affectedObj.rotation.eulerAngles.z * Mathf.Deg2Rad;
+        //Debug.Log(zRot);
+        this.rb.velocity = this.GetDir(zRot) * this.flySpeed;
     }
 
     protected virtual void StopFly()
@@ -57,11 +59,12 @@ public class ObjFlyStraight : HuyMonoBehaviour
     }
 
     //============================================Get=============================================
-    protected virtual Vector2 GetDir(float angle)
+    protected virtual Vector2 GetDir(float zRot)
     {
-        float xDir = Mathf.Cos(angle);
-        float yDir = Mathf.Sin(angle);
-        Vector2 dir = new Vector2(xDir, yDir).normalized;
+        float xDir = Mathf.Cos(zRot);
+        float yDir = Mathf.Sin(zRot);
+        Vector2 dir = new Vector2(xDir, yDir);
+        //Debug.Log("Dir: " + dir, transform.gameObject);
 
         return dir;
     }

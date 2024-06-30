@@ -11,7 +11,7 @@ public abstract class ShootSkill : BaseSkill
 
     [Header("Stat")]
     [SerializeField] protected string bulletName;
-    public string BulletName;
+    public string BulletName => bulletName;
 
     [SerializeField] protected float appearRad;
     public float AppearRad => appearRad;
@@ -35,24 +35,23 @@ public abstract class ShootSkill : BaseSkill
     protected abstract void LoadMainObj();
 
     //===========================================Shoot============================================
-    protected virtual IEnumerator DoShoot()
+    protected virtual void DoShoot()
     {
-        Transform newBullet = this.GetNewBullet();
-        if (newBullet == null) yield break;
+        this.isDoing = false;
+        this.GetNewBullet();
+        //Debug.Log("Do Shoot", transform.gameObject);
+    }
 
-        this.UseSkill();
-        yield return new WaitForSeconds(this.chargeDelay);
-
-        newBullet.gameObject.SetActive(true);
+    protected virtual void ChargeShoot()
+    {
+        this.isCharging = false;
+        this.isDoing = true;
+        //Debug.Log("Charge", transform.gameObject);
     }
 
     //============================================Get=============================================
-    protected virtual Transform GetNewBullet()
+    protected virtual void GetNewBullet()
     {
-        if (!this.isReady) return null;
-
-        this.UseSkill();
-
         Vector3 dir = this.GetDir();
         Vector3 spawnPos = this.GetSpawnPos(dir);
         Quaternion spawnRot = this.GetSpawnRot(dir);
@@ -62,26 +61,29 @@ public abstract class ShootSkill : BaseSkill
         if (newBullet == null)
         {
             Debug.LogError(transform.name + ": New Bullet is null", transform.gameObject);
+            return;
         }
 
-        return newBullet;
+        newBullet.gameObject.SetActive(true);
     }
 
     protected virtual Vector3 GetSpawnPos(Vector3 dir)
     {
-        return this.mainObj.transform.position + dir * this.appearRad;
+        return this.mainObj.transform.position + dir.normalized * this.appearRad;
     }
 
     protected virtual Vector3 GetDir()
     {
-        return this.targetPos - this.mainObj.transform.position;
+        return (this.targetPos - this.mainObj.transform.position);
     }
 
     protected virtual Quaternion GetSpawnRot(Vector3 dir)
     {
-        float zRot = Mathf.Tan(dir.y / dir.x);
+        float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        //Debug.Log("ZRot: " + zRot, transform.gameObject);
+        Quaternion spawnRot = Quaternion.Euler(0, 0, zRot);
 
-        return new Quaternion(0, 0, zRot, 0);
+        return spawnRot;
     }
 
     //============================================Get=============================================

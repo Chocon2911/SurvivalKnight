@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5d0ce6a38920a4599599cac4dcc9c8, type: 3}
   m_Name: Player_1
   m_EditorClassIdentifier: 
-  ObjType: 1
   ObjName: Player_1
   MaxHealth: 10
   MoveSpeed: 5
@@ -23,4 +22,11 @@ MonoBehaviour:
   Satiety: 0
   DashSpeed: 3
   DashCooldown: 0.5
+  DashChargeTime: 0
   DashTime: 0.15
+  BulletName: Bullet_1
+  BulletSpeed: 0
+  ShootCooldown: 0.1
+  ShootChargeTime: 0
+  ShootTime: 0
+  BulletAppearRad: 1

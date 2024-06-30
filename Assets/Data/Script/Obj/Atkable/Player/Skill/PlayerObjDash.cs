@@ -83,7 +83,8 @@ public class PlayerObjDash : BaseSkill
 
     protected virtual void ChargeDash()
     {
-        //Add some Dash Charging anim here
+        this.isCharging = false;
+        this.isDoing = true;
     }
 
     protected virtual void DoDash()

@@ -485,10 +485,12 @@ MonoBehaviour:
   DashCooldown: 0
   DashChargeTime: 0
   DashTime: 0
+  BulletName: 
   BulletSpeed: 0
   ShootCooldown: 0
   ShootChargeTime: 0
   ShootTime: 0
+  BulletAppearRad: 0
 --- !u!70 &425942214
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1262,7 +1264,7 @@ Transform:
   m_GameObject: {fileID: 1258252730}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.71, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1305,6 +1307,7 @@ MonoBehaviour:
   ObjName: 
   FlySpeed: 0
   ExistTime: 0
+  Damage: 0
   manager: {fileID: 1258252732}
   so: {fileID: 11400000, guid: 118602b70d6902041a125b388aa4934b, type: 2}
 --- !u!70 &1258252734
@@ -1635,14 +1638,12 @@ MonoBehaviour:
   isReady: 0
   isCharging: 0
   isDoing: 0
-  mainObj: {fileID: 0}
+  mainObj: {fileID: 425942210}
   bulletName: 
-  BulletName: 
   appearRad: 0
   targetPos: {x: 0, y: 0, z: 0}
   skill: {fileID: 644185631}
   bulletSpeed: 0
-  isShoot: 0
 --- !u!1 &1570302286
 GameObject:
   m_ObjectHideFlags: 0

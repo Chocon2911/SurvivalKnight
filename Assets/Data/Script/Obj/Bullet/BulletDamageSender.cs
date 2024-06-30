@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletObjFly : ObjFlyStraight
+public class BulletDamageSender : DamageSender
 {
-    [Header("Bullet Obj Fly")]
+    [Header("Bullet Damage Sender")]
     [Header("Script")]
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
@@ -15,25 +15,6 @@ public class BulletObjFly : ObjFlyStraight
         base.LoadComponent();
         this.LoadManager();
     }
-
-    protected override void OnEnable() { }
-
-    //======================================Obj Fly Straight======================================
-    protected override void LoadRb()
-    {
-        if (this.rb != null) return;
-        this.rb = transform.parent.GetComponent<Rigidbody2D>();
-        this.rb.isKinematic = true;
-        Debug.LogWarning(transform.name + ": Load Rb", transform.gameObject);
-    }
-
-    protected override void LoadAffectedObj()
-    {
-        if (this.affectedObj != null) return;
-        this.affectedObj = transform.parent;
-        Debug.LogWarning(transform.name + ": Load AfftectedObj", transform.gameObject);
-    }
-
     //=======================================Load Component=======================================
     protected virtual void LoadManager()
     {
@@ -42,8 +23,8 @@ public class BulletObjFly : ObjFlyStraight
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
     }
 
-    //===========================================Other============================================
-    public virtual void DefaultStat()
+    //=======================================Damage Sender========================================
+    public override void DefaultStat()
     {
         if (this.manager.Stat == null)
         {
@@ -51,6 +32,6 @@ public class BulletObjFly : ObjFlyStraight
             return;
         }
 
-        this.flySpeed = this.manager.Stat.FlySpeed;
+        this.atkDamage = this.manager.Stat.Damage;
     }
 }

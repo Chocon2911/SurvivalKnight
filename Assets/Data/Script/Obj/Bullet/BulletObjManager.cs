@@ -55,6 +55,7 @@ public class BulletObjManager : HuyMonoBehaviour
     {
         if (this.rb != null) return;
         this.rb = transform.GetComponent<Rigidbody2D>();
+        this.rb.freezeRotation = true;
         Debug.LogWarning(transform.name + ": Load Rb", transform.gameObject);
     }
 

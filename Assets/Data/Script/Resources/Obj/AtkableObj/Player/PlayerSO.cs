@@ -12,8 +12,10 @@ public class PlayerSO : AtkableObjSO
     public float DashChargeTime;
     public float DashTime;
     //Shoot
+    public string BulletName;
     public float BulletSpeed;
     public float ShootCooldown;
     public float ShootChargeTime;
     public float ShootTime;
+    public float BulletAppearRad;
 }

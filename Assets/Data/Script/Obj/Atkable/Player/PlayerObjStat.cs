@@ -23,10 +23,12 @@ public class PlayerObjStat : AtkableObjStat
     public float DashChargeTime;
     public float DashTime;
     //Shoot
+    public string BulletName;
     public float BulletSpeed;
     public float ShootCooldown;
     public float ShootChargeTime;
     public float ShootTime;
+    public float BulletAppearRad;
     #endregion
 
 
@@ -99,14 +101,17 @@ public class PlayerObjStat : AtkableObjStat
         this.DashChargeTime = this.playerSO.DashChargeTime;
         this.DashTime = this.playerSO.DashTime;
         //Shoot
+        this.BulletName = this.PlayerSO.BulletName;
         this.BulletSpeed = this.playerSO.BulletSpeed;
         this.ShootCooldown = this.PlayerSO.ShootCooldown;
         this.ShootChargeTime = this.PlayerSO.ShootChargeTime;
         this.ShootTime = this.playerSO.ShootTime;
+        this.BulletAppearRad = this.playerSO.BulletAppearRad;
 
         //Load Stat
         this.manager.Movement.DefaultStat();
         this.manager.Skill.Dash.DefaultStat();
+        this.manager.Skill.Shoot.DefaultStat();
     }
     #endregion
 }

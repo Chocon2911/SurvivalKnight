@@ -69,6 +69,7 @@ public class BaseSkill : HuyMonoBehaviour
     //==========================================Checker===========================================
     protected virtual void CheckIfSkillIsReady()
     {
+        if (this.cooldownDelay == 0) return;
         if (this.isDoing || this.isCharging) return;
         if (this.cooldownTimer >= this.cooldownDelay)
         {
@@ -81,6 +82,7 @@ public class BaseSkill : HuyMonoBehaviour
 
     protected virtual void CheckIfCharging()
     {
+        if (this.chargeDelay == 0) return;
         if (!this.isCharging) return;
         if (this.chargeTimer >= this.chargeDelay)
         {
@@ -95,6 +97,7 @@ public class BaseSkill : HuyMonoBehaviour
 
     protected virtual void CheckIfDoing()
     {
+        if (this.doingLength == 0) return;
         if (!this.isDoing) return;
         if (this.doingTimer >= this.doingLength)
         {

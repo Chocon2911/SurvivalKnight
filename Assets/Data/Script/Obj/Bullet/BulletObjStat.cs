@@ -8,6 +8,7 @@ public class BulletObjStat : BaseObj
     [Header("Stat")]
     public float FlySpeed;
     public float ExistTime;
+    public float Damage;
 
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
@@ -61,6 +62,7 @@ public class BulletObjStat : BaseObj
         //BulletObjStat
         this.FlySpeed = this.so.FlySpeed;
         this.ExistTime = this.so.ExistTime;
+        this.Damage = this.so.Damage;
 
         //Load Stat
         this.manager.Fly.DefaultStat();

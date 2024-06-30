@@ -7,4 +7,5 @@ public class BulletSO : ObjSO
 {
     public float FlySpeed;
     public float ExistTime;
+    public float Damage;
 }

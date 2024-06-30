@@ -65,7 +65,7 @@ public abstract class Spawner : HuyMonoBehaviour
             this.holders.Add(obj);
             obj.gameObject.SetActive(false);
         }
-        Debug.LogWarning(transform.name + ": Load Holders", transform.gameObject);
+        //Debug.LogWarning(transform.name + ": Load Holders", transform.gameObject);
     }
 
     //===========================================Spawn============================================
@@ -80,8 +80,8 @@ public abstract class Spawner : HuyMonoBehaviour
     {
         Transform newObj = this.GetObjFromHolder(spawnObj);
 
-        newObj.SetLocalPositionAndRotation(spawnPos, spawnRot);
         newObj.SetParent(this.holderObj);
+        newObj.SetPositionAndRotation(spawnPos, spawnRot);
         return newObj;
     }
 
@@ -112,6 +112,7 @@ public abstract class Spawner : HuyMonoBehaviour
             if (obj.name == spawnObj.name + "(Clone)")
             {
                 //Debug.Log(transform.name + ": From Holder", transform.gameObject);
+                this.holders.Remove(obj);
                 return obj;
             }
         }

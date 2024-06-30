@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjName: Bullet_1
   FlySpeed: 5
-  ExistTime: 10
+  ExistTime: 5

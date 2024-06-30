@@ -33,7 +33,6 @@ public class GameManager : HuyMonoBehaviour
     //============================================Get=============================================
     protected virtual void GetMousePos()
     {
-        this.mousePos = Input.mousePosition;
+        this.mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10));
     }
-
 }

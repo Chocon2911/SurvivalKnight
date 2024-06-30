@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class PlayerObjShoot : ShootSkill
@@ -12,9 +13,6 @@ public class PlayerObjShoot : ShootSkill
     [Header("Stat")]
     [SerializeField] protected float bulletSpeed;
     public float BulletSpeed => bulletSpeed;
-
-    [SerializeField] protected bool isShoot;
-    public bool IsShoot => isShoot;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -48,10 +46,11 @@ public class PlayerObjShoot : ShootSkill
             return;
         }
 
+        this.bulletName = this.skill.Manager.Stat.BulletName;
         this.cooldownDelay = this.skill.Manager.Stat.ShootCooldown;
         this.cooldownTimer = 0;
         this.chargeDelay = this.skill.Manager.Stat.ShootTime;
-        this.isShoot = false;
+        this.appearRad = this.skill.Manager.Stat.BulletAppearRad;
     }
 
     protected override void LoadMainObj()
@@ -66,18 +65,22 @@ public class PlayerObjShoot : ShootSkill
         this.targetPos = GameManager.Instance.MousePos;
     }
 
-    //==========================================Checker===========================================
-    protected virtual void CheckIfShoot()
-    {
-        this.isShoot = InputManager.Instance.Shoot;
-    }
-
     //===========================================Shoot============================================
     protected virtual void Shoot()
     {
-        if (!this.isShoot) return;
+        if (this.isReady && InputManager.Instance.Shoot)
+        {
+            this.UseSkill();
+        }
 
-        StartCoroutine(this.DoShoot());
-        //Add any charge Anim here;
+        if (this.isCharging)
+        {
+            this.ChargeShoot();
+        }
+
+        if (this.isDoing)
+        {
+            this.DoShoot();
+        }
     }
 }
