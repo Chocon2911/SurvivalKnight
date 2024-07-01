@@ -28,6 +28,9 @@ public class BulletObjManager : HuyMonoBehaviour
     [SerializeField] protected BulletDespawnByTime despawnByTime;
     public BulletDespawnByTime DespawnByTime => despawnByTime;
 
+    [SerializeField] protected BulletDamageSender damageSender;
+    public BulletDamageSender DamageSender => damageSender;
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -41,6 +44,7 @@ public class BulletObjManager : HuyMonoBehaviour
         this.LoadFly();
         this.LoadStat();
         this.LoadDespawnByTime();
+        this.LoadDamageSender();
     }
 
     protected virtual void OnEnable()
@@ -63,6 +67,7 @@ public class BulletObjManager : HuyMonoBehaviour
     {
         if (this.body != null) return;
         this.body = transform.GetComponent<CapsuleCollider2D>();
+        this.body.isTrigger = true;
         Debug.LogWarning(transform.name + ": Load Body", transform.gameObject);
     }
 
@@ -93,5 +98,12 @@ public class BulletObjManager : HuyMonoBehaviour
         if (this.despawnByTime != null) return;
         this.despawnByTime = transform.GetComponentInChildren<BulletDespawnByTime>();
         Debug.LogWarning(transform.name + ": Load DespawnByTime", transform.gameObject);
+    }
+
+    protected virtual void LoadDamageSender()
+    {
+        if (this.damageSender != null) return;
+        this.damageSender = transform.GetComponentInChildren<BulletDamageSender>();
+        Debug.LogWarning(transform.name + ": Load DamageSender", transform.gameObject);
     }
 }

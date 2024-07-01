@@ -29,6 +29,9 @@ public class PlayerObjManager : HuyMonoBehaviour
 
     [SerializeField] protected PlayerObjStat stat;
     public PlayerObjStat Stat => stat;
+
+    [SerializeField] protected PlayerDamageReceiver damageReceiver;
+    public PlayerDamageReceiver DamageReceiver => damageReceiver;
     #endregion
 
 
@@ -51,6 +54,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.LoadMovement();
         this.LoadSkill();
         this.LoadStat();
+        this.LoadDamageReceiver();
     }
     #endregion
 
@@ -107,6 +111,13 @@ public class PlayerObjManager : HuyMonoBehaviour
         if (this.stat != null) return;
         this.stat = transform.GetComponent<PlayerObjStat>();
         Debug.LogWarning(transform.name + ": Load Stat", transform.gameObject);
+    }
+
+    protected virtual void LoadDamageReceiver()
+    {
+        if (this.damageReceiver != null) return;
+        this.damageReceiver = transform.GetComponentInChildren<PlayerDamageReceiver>();
+        Debug.LogWarning(transform.name + ": Load DamageReceiver", transform.gameObject);
     }
     #endregion
 }

@@ -9,11 +9,25 @@ public abstract class DamageReceiver : Damage
     [SerializeField] protected bool isDead;
     public bool IsDead => isDead;
 
+    [SerializeField] protected AtkObjType atkObjType;
+    public AtkObjType AtkObjType => atkObjType;
+
     //==========================================Receive===========================================
     public virtual void Receive(float atkDamageReceive)
     {
         this.atkDamage -= atkDamageReceive;
         if (this.atkDamage <= 0) this.isDead = true;
+
+        this.CheckIfDead();
+    }
+
+    protected abstract void DespawnObj();
+
+    //==========================================Checker===========================================
+    protected virtual void CheckIfDead()
+    {
+        if (!this.isDead) return;
+        this.DespawnObj();
     }
 
     //===========================================Other============================================

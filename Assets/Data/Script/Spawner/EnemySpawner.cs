@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
-    private EnemySpawner instance;
-    public EnemySpawner Instance => instance;
+    private static EnemySpawner instance;
+    public static EnemySpawner Instance => instance;
 
     //===========================================Unity============================================
     protected override void Awake()
@@ -22,34 +22,34 @@ public class EnemySpawner : Spawner
 
     protected virtual void Start()
     {
-        //this.TestSpawn();
+        this.TestSpawn();
     }
 
     //===========================================Tester===========================================
-    //protected virtual void TestSpawn()
-    //{
-    //    StartCoroutine(SpawnObjByTime(5));
-    //}
+    protected virtual void TestSpawn()
+    {
+        StartCoroutine(SpawnObjByTime(5));
+    }
 
-    //protected virtual IEnumerator SpawnObjByTime(float spawnDelay)
-    //{
-    //    yield return new WaitForSeconds(spawnDelay);
-        
-    //    string spawnName = this.prefabs[0].name;
-    //    Vector3 spawnPos = Vector3.zero;
-    //    Quaternion spawnRot = Quaternion.identity;
+    protected virtual IEnumerator SpawnObjByTime(float spawnDelay)
+    {
+        yield return new WaitForSeconds(spawnDelay);
 
-    //    Transform newEnemyObj = this.SpawnByName(spawnName, spawnPos, spawnRot);
-    //    if (newEnemyObj == null)
-    //    {
-    //        Debug.LogError(transform.name + ": new enemy obj is null", transform.gameObject);
-    //    }
+        string spawnName = this.prefabs[0].name;
+        Vector3 spawnPos = Vector3.zero;
+        Quaternion spawnRot = Quaternion.identity;
 
-    //    else
-    //    {
-    //        newEnemyObj.gameObject.SetActive(true);
-    //    }
+        Transform newEnemyObj = this.SpawnByName(spawnName, spawnPos, spawnRot);
+        if (newEnemyObj == null)
+        {
+            Debug.LogError(transform.name + ": new enemy obj is null", transform.gameObject);
+        }
 
-    //    StartCoroutine(SpawnObjByTime(spawnDelay));
-    //}
+        else
+        {
+            newEnemyObj.gameObject.SetActive(true);
+        }
+
+        StartCoroutine(SpawnObjByTime(spawnDelay));
+    }
 }

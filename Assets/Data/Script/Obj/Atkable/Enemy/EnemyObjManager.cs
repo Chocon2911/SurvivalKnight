@@ -24,6 +24,9 @@ public class EnemyObjManager : HuyMonoBehaviour
     [SerializeField] protected EnemyObjMovement movement;
     public EnemyObjMovement Movement => movement;
 
+    [SerializeField] protected EnemyDamageReceiver damageReceiver;
+    public EnemyDamageReceiver DamageReceiver => damageReceiver;
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -36,6 +39,7 @@ public class EnemyObjManager : HuyMonoBehaviour
         //Script
         this.LoadStat();
         this.LoadMovement();
+        this.LoadDamageReceiver();
     }
 
     protected virtual void OnEnable()
@@ -86,5 +90,12 @@ public class EnemyObjManager : HuyMonoBehaviour
         if (this.movement != null) return;
         this.movement = transform.GetComponentInChildren<EnemyObjMovement>();
         Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
+    }
+
+    protected virtual void LoadDamageReceiver()
+    {
+        if (this.damageReceiver != null) return;
+        this.damageReceiver = transform.GetComponentInChildren<EnemyDamageReceiver>();
+        Debug.LogWarning(transform.name + ": Load DamageReceiver", transform.gameObject);
     }
 }

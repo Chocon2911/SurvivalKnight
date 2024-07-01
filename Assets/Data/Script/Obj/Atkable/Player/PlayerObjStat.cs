@@ -112,6 +112,7 @@ public class PlayerObjStat : AtkableObjStat
         this.manager.Movement.DefaultStat();
         this.manager.Skill.Dash.DefaultStat();
         this.manager.Skill.Shoot.DefaultStat();
+        this.manager.DamageReceiver.DefaultStat();
     }
     #endregion
 }

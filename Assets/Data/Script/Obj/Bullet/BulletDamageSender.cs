@@ -9,6 +9,10 @@ public class BulletDamageSender : DamageSender
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
 
+    [Header("Stat")]
+    [SerializeField] protected AtkObjType atkObjType;
+    public AtkObjType AtkObjType => atkObjType;
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -33,5 +37,17 @@ public class BulletDamageSender : DamageSender
         }
 
         this.atkDamage = this.manager.Stat.Damage;
+        this.atkObjType = this.manager.Stat.AtkObjType;
+    }
+
+    //==========================================Collide===========================================
+    public virtual void CollideWith(Transform target)
+    {
+        DamageReceiver receiver = target.transform.GetComponentInChildren<DamageReceiver>();
+        if (receiver == null) return;
+        if (receiver.AtkObjType != this.atkObjType) return;
+
+        this.Send(receiver);
+        BulletSpawner.Instance.Despawn(transform.parent);
     }
 }

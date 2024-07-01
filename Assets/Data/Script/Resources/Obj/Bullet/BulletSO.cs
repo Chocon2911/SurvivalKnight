@@ -6,6 +6,9 @@ using UnityEngine;
 public class BulletSO : ObjSO
 {
     public float FlySpeed;
+    //Despawn
     public float ExistTime;
+    //Damage Sender
     public float Damage;
+    public AtkObjType atkObjType;
 }

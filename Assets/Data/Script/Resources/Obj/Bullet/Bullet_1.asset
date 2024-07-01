@@ -15,3 +15,5 @@ MonoBehaviour:
   ObjName: Bullet_1
   FlySpeed: 5
   ExistTime: 5
+  Damage: 1
+  atkObjType: 2

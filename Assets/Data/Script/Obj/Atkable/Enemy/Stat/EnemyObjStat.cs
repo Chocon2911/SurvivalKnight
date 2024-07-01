@@ -14,7 +14,9 @@ public class EnemyObjStat : AtkableObjStat
     public EnemyObjManager Manager => manager;
 
     [Header("Stat")]
+    //Movement
     public float DetectRange;
+
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -71,5 +73,6 @@ public class EnemyObjStat : AtkableObjStat
 
         //Load Stat
         this.manager.Movement.DefaultStat();
+        this.manager.DamageReceiver.DefaultStat();
     }
 }
