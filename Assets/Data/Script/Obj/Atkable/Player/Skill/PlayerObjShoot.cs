@@ -21,9 +21,8 @@ public class PlayerObjShoot : ShootSkill
         base.LoadComponent();
     }
 
-    protected override void Update()
+    protected virtual void Update()
     {
-        base.Update();
         this.Shoot();
     }
 
@@ -60,9 +59,10 @@ public class PlayerObjShoot : ShootSkill
         Debug.LogWarning(transform.name + ": Load MainObj", transform.gameObject);
     }
 
-    protected override void GetTargetPos()
+    protected override void DoShoot()
     {
-        this.targetPos = GameManager.Instance.MousePos;
+        base.DoShoot();
+        this.GetNewBullet(GameManager.Instance.MousePos);
     }
 
     //===========================================Shoot============================================

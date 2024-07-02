@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Damage : HuyMonoBehaviour
+public abstract class DamageSR : HuyMonoBehaviour
 {
     [Header("Damage")]
     [Header("Stat")]

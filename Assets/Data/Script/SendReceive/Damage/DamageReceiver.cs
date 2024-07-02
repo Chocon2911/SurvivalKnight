@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class DamageReceiver : Damage
+public abstract class DamageReceiver : DamageSR
 {
     [Header("DamageReceiver")]
     [Header("Stat")]

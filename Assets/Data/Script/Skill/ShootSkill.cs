@@ -16,15 +16,7 @@ public abstract class ShootSkill : BaseSkill
     [SerializeField] protected float appearRad;
     public float AppearRad => appearRad;
 
-    [SerializeField] protected Vector3 targetPos;
-    public Vector3 TargetPos => targetPos;
-
     //===========================================Unity============================================
-    protected virtual void Update()
-    {
-        this.GetTargetPos();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -38,7 +30,6 @@ public abstract class ShootSkill : BaseSkill
     protected virtual void DoShoot()
     {
         this.isDoing = false;
-        this.GetNewBullet();
         //Debug.Log("Do Shoot", transform.gameObject);
     }
 
@@ -50,9 +41,9 @@ public abstract class ShootSkill : BaseSkill
     }
 
     //============================================Get=============================================
-    protected virtual void GetNewBullet()
+    protected virtual void GetNewBullet(Vector3 targetPos)
     {
-        Vector3 dir = this.GetDir();
+        Vector3 dir = this.GetDir(targetPos);
         Vector3 spawnPos = this.GetSpawnPos(dir);
         Quaternion spawnRot = this.GetSpawnRot(dir);
 
@@ -72,9 +63,9 @@ public abstract class ShootSkill : BaseSkill
         return this.mainObj.transform.position + dir.normalized * this.appearRad;
     }
 
-    protected virtual Vector3 GetDir()
+    protected virtual Vector3 GetDir(Vector3 targetPos)
     {
-        return (this.targetPos - this.mainObj.transform.position);
+        return (targetPos - this.mainObj.transform.position);
     }
 
     protected virtual Quaternion GetSpawnRot(Vector3 dir)
@@ -85,7 +76,4 @@ public abstract class ShootSkill : BaseSkill
 
         return spawnRot;
     }
-
-    //============================================Get=============================================
-    protected abstract void GetTargetPos();
 }

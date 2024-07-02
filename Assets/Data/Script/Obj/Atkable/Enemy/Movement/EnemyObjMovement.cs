@@ -118,6 +118,7 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
         {
             if (this.unFollowPlayerCoroutine != null) StopCoroutine(this.unFollowPlayerCoroutine);
             if (!transform.parent.gameObject.activeSelf) return;
+            if (!Application.isPlaying) return;
             this.unFollowPlayerCoroutine = StartCoroutine(this.UnFollowPlayer());
         }
     }
