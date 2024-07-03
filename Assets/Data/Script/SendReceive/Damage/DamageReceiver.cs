@@ -16,9 +16,7 @@ public abstract class DamageReceiver : DamageSR
     public virtual void Receive(float atkDamageReceive)
     {
         this.atkDamage -= atkDamageReceive;
-        if (this.atkDamage <= 0) this.isDead = true;
-
-        this.CheckIfDead();
+        if (this.atkDamage <= 0) this.CheckIfDead();
     }
 
     protected abstract void DespawnObj();
@@ -26,7 +24,8 @@ public abstract class DamageReceiver : DamageSR
     //==========================================Checker===========================================
     protected virtual void CheckIfDead()
     {
-        if (!this.isDead) return;
+        if (this.isDead) return;
+        this.isDead = true;
         this.DespawnObj();
     }
 

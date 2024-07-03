@@ -12,12 +12,17 @@ public class PlayerObjSkill : PlayerObjAbstract
     [SerializeField] protected PlayerObjShoot shoot;
     public PlayerObjShoot Shoot => shoot;
 
+    [SerializeField] protected PlayerShotgun shotgun;
+    public PlayerShotgun Shotgun => shotgun;
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        //Script
         this.LoadDash();
         this.LoadShoot();
+        this.LoadShotgun();
     }
 
     //=======================================Load Component=======================================
@@ -34,4 +39,11 @@ public class PlayerObjSkill : PlayerObjAbstract
         this.shoot = transform.GetComponentInChildren<PlayerObjShoot>();
         Debug.LogWarning(transform.name + ": Load Shoot", transform.gameObject);
     }
+
+    protected virtual void LoadShotgun()
+    {
+        if (this.shotgun != null) return;
+        this.shotgun = transform.GetComponentInChildren<PlayerShotgun>();
+        Debug.LogWarning(transform.name + ": Load Shotgun", transform.gameObject);
+    }    
 }

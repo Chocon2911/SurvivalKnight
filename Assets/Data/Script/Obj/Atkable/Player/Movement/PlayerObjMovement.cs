@@ -14,6 +14,11 @@ public class PlayerObjMovement : ObjMovement
 
 
     #region Unity
+    protected override void Update()
+    {
+        
+    }
+
     protected override void LoadComponent()
     {
         this.LoadManager();
@@ -45,7 +50,7 @@ public class PlayerObjMovement : ObjMovement
 
     #region Atkable Obj Movemnt
     //====================================Atkable Obj Movment=====================================
-    protected override void Move()
+    public override void Move()
     {
         if (this.manager.Skill.Dash.IsDoing) return;
         this.moveDir = InputManager.Instance.MoveDir;

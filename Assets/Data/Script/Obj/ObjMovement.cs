@@ -45,7 +45,7 @@ public abstract class ObjMovement : HuyMonoBehaviour
 
     #region Movement
     //==========================================Movement==========================================
-    protected virtual void Move()
+    public virtual void Move()
     {
         float right = this.moveDir.x;
         float left = this.moveDir.z;

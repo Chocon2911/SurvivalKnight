@@ -77,6 +77,7 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
             return;
         }
 
+        this.target = null;
         this.moveSpeed = this.mananger.Stat.MoveSpeed;
         this.detectEnemy.radius = this.mananger.Stat.DetectRange;
         //Debug.Log(transform.name + ": Load DefaultStat", transform.gameObject);

@@ -7,6 +7,11 @@ public class EnemySpawner : Spawner
     private static EnemySpawner instance;
     public static EnemySpawner Instance => instance;
 
+    [Header("EnemySpawner")]
+    [Header("Stat")]
+    [SerializeField] protected int maxAmount;
+    public int MaxAmount => maxAmount;
+
     //===========================================Unity============================================
     protected override void Awake()
     {
@@ -23,6 +28,13 @@ public class EnemySpawner : Spawner
     protected virtual void Start()
     {
         this.TestSpawn();
+    }
+
+    //==========================================Spawner===========================================
+    public override Transform SpawnByObj(Transform spawnObj, Vector3 spawnPos, Quaternion spawnRot)
+    {
+        if (this.maxAmount <= (this.holderObj.childCount - this.holders.Count)) return null;
+        return base.SpawnByObj(spawnObj, spawnPos, spawnRot);
     }
 
     //===========================================Tester===========================================

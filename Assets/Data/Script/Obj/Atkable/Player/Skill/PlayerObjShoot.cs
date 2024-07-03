@@ -21,11 +21,6 @@ public class PlayerObjShoot : ShootSkill
         base.LoadComponent();
     }
 
-    protected virtual void Update()
-    {
-        this.Shoot();
-    }
-
     //=======================================Load Component=======================================
     protected virtual void LoadSkill()
     {
@@ -62,11 +57,16 @@ public class PlayerObjShoot : ShootSkill
     protected override void DoShoot()
     {
         base.DoShoot();
-        this.GetNewBullet(GameManager.Instance.MousePos);
+
+        Vector3 dir = this.GetDir(GameManager.Instance.MousePos);
+        Vector3 spawnPos = this.GetSpawnPos(dir);
+        Quaternion spawnRot = this.GetSpawnRot(dir);
+
+        this.GetNewBullet(spawnPos, spawnRot);
     }
 
     //===========================================Shoot============================================
-    protected virtual void Shoot()
+    public virtual void Shoot()
     {
         if (this.isReady && InputManager.Instance.Shoot)
         {

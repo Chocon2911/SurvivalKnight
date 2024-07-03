@@ -13,6 +13,9 @@ public class InputManager : HuyMonoBehaviour
     [SerializeField] protected Vector4 moveDir;
     public Vector4 MoveDir => moveDir;
 
+    [SerializeField] protected int numberPressed;
+    public int NumberPressed => numberPressed;
+
     [SerializeField] protected bool dash;
     public bool Dash => dash;
 
@@ -35,13 +38,10 @@ public class InputManager : HuyMonoBehaviour
         base.Awake();
     }
 
-    protected virtual void FixedUpdate()
-    {
-        this.GetMoveDir();
-    }
-
     protected virtual void Update()
     {
+        this.GetMoveDir();
+        this.GetNumberPressed();
         this.GetDash();
         this.GetShoot();
     }
@@ -64,6 +64,21 @@ public class InputManager : HuyMonoBehaviour
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) this.moveDir.w = 1;
         else this.moveDir.w = 0;
+    }
+
+    protected virtual void GetNumberPressed()
+    {
+        if (Input.GetKey(KeyCode.Alpha0)) this.numberPressed = 0;
+        else if (Input.GetKey(KeyCode.Alpha1)) this.numberPressed = 1;
+        else if (Input.GetKey(KeyCode.Alpha2)) this.numberPressed = 2;
+        else if (Input.GetKey(KeyCode.Alpha3)) this.numberPressed = 3;
+        else if (Input.GetKey(KeyCode.Alpha4)) this.numberPressed = 4;
+        else if (Input.GetKey(KeyCode.Alpha5)) this.numberPressed = 5;
+        else if (Input.GetKey(KeyCode.Alpha6)) this.numberPressed = 6;
+        else if (Input.GetKey(KeyCode.Alpha7)) this.numberPressed = 7;
+        else if (Input.GetKey(KeyCode.Alpha8)) this.numberPressed = 8;
+        else if (Input.GetKey(KeyCode.Alpha9)) this.numberPressed = 9;
+        else this.numberPressed = 10;
     }
 
     protected virtual void GetDash()

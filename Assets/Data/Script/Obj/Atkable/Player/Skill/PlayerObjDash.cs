@@ -24,12 +24,6 @@ public class PlayerObjDash : BaseSkill
 
 
     #region Unity
-    protected virtual void Update()
-    {
-        this.GetMoveDir();
-        this.Dash();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -63,8 +57,10 @@ public class PlayerObjDash : BaseSkill
 
     #region Dash
     //============================================Dash============================================
-    protected virtual void Dash()
+    public virtual void Dash()
     {
+        this.GetMoveDir();
+
         if (this.isReady && InputManager.Instance.Dash)
         {
             this.UseSkill();

@@ -41,12 +41,8 @@ public abstract class ShootSkill : BaseSkill
     }
 
     //============================================Get=============================================
-    protected virtual void GetNewBullet(Vector3 targetPos)
+    protected virtual void GetNewBullet(Vector3 spawnPos, Quaternion spawnRot)
     {
-        Vector3 dir = this.GetDir(targetPos);
-        Vector3 spawnPos = this.GetSpawnPos(dir);
-        Quaternion spawnRot = this.GetSpawnRot(dir);
-
         Transform newBullet = BulletSpawner.Instance.SpawnByName(this.bulletName, spawnPos, spawnRot);
 
         if (newBullet == null)

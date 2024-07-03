@@ -32,16 +32,14 @@ public class PlayerObjManager : HuyMonoBehaviour
 
     [SerializeField] protected PlayerDamageReceiver damageReceiver;
     public PlayerDamageReceiver DamageReceiver => damageReceiver;
+
+    [SerializeField] protected PlayerObjCtrl ctrl;
+    public PlayerObjCtrl Ctrl => ctrl;
     #endregion
 
 
 
     #region Unity
-    protected virtual void OnEnable()
-    {
-        this.stat.DefaultStat();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -55,6 +53,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.LoadSkill();
         this.LoadStat();
         this.LoadDamageReceiver();
+        this.LoadCtrl();
     }
     #endregion
 
@@ -118,6 +117,13 @@ public class PlayerObjManager : HuyMonoBehaviour
         if (this.damageReceiver != null) return;
         this.damageReceiver = transform.GetComponentInChildren<PlayerDamageReceiver>();
         Debug.LogWarning(transform.name + ": Load DamageReceiver", transform.gameObject);
+    }
+
+    protected virtual void LoadCtrl()
+    {
+        if (this.ctrl != null) return;
+        this.ctrl = transform.GetComponent<PlayerObjCtrl>();
+        Debug.LogWarning(transform.name + ": Load Ctrl", transform.gameObject);
     }
     #endregion
 }
