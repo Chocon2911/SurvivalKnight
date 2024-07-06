@@ -16,4 +16,4 @@ MonoBehaviour:
   FlySpeed: 5
   ExistTime: 5
   Damage: 1
-  atkObjType: 2
+  CanDamageType: 2

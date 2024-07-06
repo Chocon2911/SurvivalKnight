@@ -11,10 +11,11 @@ public class BulletObjStat : BaseObj
 
     //DespawnByTime
     public float ExistTime;
+    public float ExistTimer;
 
     //DamageSender
     public float Damage;
-    public AtkObjType AtkObjType;
+    public AtkObjType CanDamageType;
 
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
@@ -66,16 +67,12 @@ public class BulletObjStat : BaseObj
         this.ObjName = this.so.ObjName;
 
         //BulletObjStat
+        //Fly
         this.FlySpeed = this.so.FlySpeed;
         this.ExistTime = this.so.ExistTime;
-        this.Damage = this.so.Damage;
-
+        this.ExistTimer = 0;
         //DamageSender
-        this.AtkObjType = this.so.atkObjType;
-
-        //Load Stat
-        this.manager.Fly.DefaultStat();
-        this.manager.DespawnByTime.DefaultStat();
-        this.manager.DamageSender.DefaultStat();
+        this.Damage = this.so.Damage;
+        this.CanDamageType = this.so.CanDamageType;
     }
 }

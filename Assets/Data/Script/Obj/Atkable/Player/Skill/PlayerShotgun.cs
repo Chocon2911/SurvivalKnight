@@ -9,9 +9,60 @@ public class PlayerShotgun : ShootSkill
     [SerializeField] protected PlayerObjSkill skill;
     public PlayerObjSkill Skill => skill;
 
-    [Header("Stat")]
-    [SerializeField] protected int pelletAmount;
-    public int PelletAmount => pelletAmount;
+    //Get Set
+    public override string BulletName 
+    { 
+        get => this.skill.Manager.Stat.ShotgunBulletName; 
+        set => this.skill.Manager.Stat.ShotgunBulletName = value; 
+    }
+
+    public override float CooldownDelay
+    {
+        get => this.skill.Manager.Stat.ShotgunCooldown;
+        set => this.skill.Manager.Stat.ShotgunCooldown = value;
+    }
+
+    public override float CooldownTimer
+    {
+        get => this.skill.Manager.Stat.ShotgunCooldownTimer;
+        set => this.skill.Manager.Stat.ShotgunCooldownTimer = value;
+    }
+
+    public override float ChargeDelay
+    {
+        get => this.skill.Manager.Stat.ShotgunChargeTime;
+        set => this.skill.Manager.Stat.ShotgunChargeTime = value;
+    }
+
+    public override float ChargeTimer
+    {
+        get => this.skill.Manager.Stat.ShotgunChargeTimer;
+        set => this.skill.Manager.Stat.ShootChargeTimer = value;
+    }
+
+    public override float DoingLength
+    {
+        get => this.skill.Manager.Stat.ShotgunTime;
+        set => this.skill.Manager.Stat.ShotgunTime = value;
+    }
+
+    public override float DoingTimer
+    {
+        get => this.skill.Manager.Stat.ShootTimer;
+        set => this.skill.Manager.Stat.ShootTimer = value;
+    }
+
+    public float BulletSpeed
+    {
+        get => this.skill.Manager.Stat.ShotgunBulletSpeed;
+        set => this.skill.Manager.Stat.ShotgunBulletSpeed = value;
+    }
+
+    public int PelletAmount
+    {
+        get => this.skill.Manager.Stat.ShotgunPelletAmount;
+        set => this.skill.Manager.Stat.ShotgunPelletAmount = value;
+    }
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -43,20 +94,20 @@ public class PlayerShotgun : ShootSkill
         Quaternion spawnRot = this.GetSpawnRot(dir);
 
         float spawnAngle = spawnRot.eulerAngles.z + 30/2;
-        float angle = 30 / (this.pelletAmount - 1);
+        float angle = 30 / (this.PelletAmount - 1);
 
-        for (int i = 0; i < this.pelletAmount; i++)
+        for (int i = 0; i < this.PelletAmount; i++)
         {
             spawnRot.eulerAngles = new Vector3(0, 0, spawnAngle);
             this.GetNewBullet(spawnPos, spawnRot);
             spawnAngle -= angle;
-            Debug.Log(transform.name + ": New Bullet", transform.gameObject);
         }
     }
 
     //===========================================Shoot============================================
     public virtual void Shoot()
     {
+        if (!transform.gameObject.activeSelf) return;
         if (this.isReady && InputManager.Instance.Shoot)
         {
             this.UseSkill();

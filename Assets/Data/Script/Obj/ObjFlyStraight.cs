@@ -12,9 +12,8 @@ public class ObjFlyStraight : HuyMonoBehaviour
     [SerializeField] protected Transform affectedObj;
     public Transform AffectedObj => affectedObj;
 
-    [Header("Stat")]
-    [SerializeField] protected float flySpeed;
-    public float FlySpeed => flySpeed;
+    //Get Set
+    public virtual float FlySpeed { get; set; }
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -50,7 +49,7 @@ public class ObjFlyStraight : HuyMonoBehaviour
     {
         float zRot = this.affectedObj.rotation.eulerAngles.z * Mathf.Deg2Rad;
         //Debug.Log(zRot);
-        this.rb.velocity = this.GetDir(zRot) * this.flySpeed;
+        this.rb.velocity = this.GetDir(zRot) * this.FlySpeed;
     }
 
     protected virtual void StopFly()

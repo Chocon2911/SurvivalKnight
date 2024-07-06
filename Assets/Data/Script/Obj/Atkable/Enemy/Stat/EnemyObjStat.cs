@@ -17,7 +17,6 @@ public class EnemyObjStat : AtkableObjStat
     //Movement
     public float DetectRange;
 
-
     //===========================================Unity============================================
     protected override void LoadComponent()
     {

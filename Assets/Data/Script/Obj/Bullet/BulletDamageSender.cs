@@ -9,9 +9,17 @@ public class BulletDamageSender : DamageSender
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
 
-    [Header("Stat")]
-    [SerializeField] protected AtkObjType atkObjType;
-    public AtkObjType AtkObjType => atkObjType;
+    //Get Set
+    public override float AtkDamage 
+    { 
+        get => this.manager.Stat.Damage; 
+        set => this.manager.Stat.Damage = value; 
+    }
+    public AtkObjType CanDamageType
+    {
+        get => this.manager.Stat.CanDamageType;
+        set => this.manager.Stat.CanDamageType = value;
+    }
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -27,25 +35,12 @@ public class BulletDamageSender : DamageSender
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
     }
 
-    //=======================================Damage Sender========================================
-    public override void DefaultStat()
-    {
-        if (this.manager.Stat == null)
-        {
-            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
-            return;
-        }
-
-        this.atkDamage = this.manager.Stat.Damage;
-        this.atkObjType = this.manager.Stat.AtkObjType;
-    }
-
     //==========================================Collide===========================================
     public virtual void CollideWith(Transform target)
     {
         DamageReceiver receiver = target.transform.GetComponentInChildren<DamageReceiver>();
         if (receiver == null) return;
-        if (receiver.AtkObjType != this.atkObjType) return;
+        if (receiver.AtkObjType != this.CanDamageType) return;
 
         this.Send(receiver);
         BulletSpawner.Instance.Despawn(transform.parent);

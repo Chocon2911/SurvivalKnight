@@ -10,5 +10,5 @@ public class BulletSO : ObjSO
     public float ExistTime;
     //Damage Sender
     public float Damage;
-    public AtkObjType atkObjType;
+    public AtkObjType CanDamageType;
 }

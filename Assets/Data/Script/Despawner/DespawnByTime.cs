@@ -5,13 +5,8 @@ using UnityEngine;
 
 public abstract class DespawnByTime : Despawner
 {
-    [Header("Despawn By Time")]
-    [Header("Stat")]
-    [SerializeField] protected float despawnDelay;
-    public float DespawnDelay => despawnDelay;
-
-    [SerializeField] protected float despawnTimer;
-    public float DespawnTimer => despawnTimer;
+    public virtual float DespawnDelay { get; set; }
+    public virtual float DespawnTimer { get; set; }
 
     //===========================================Unity============================================
     protected virtual void FixedUpdate()
@@ -22,20 +17,20 @@ public abstract class DespawnByTime : Despawner
     //==========================================Despawn===========================================
     protected virtual void Despawn()
     {
-        if (this.despawnTimer < this.despawnDelay)
+        if (this.DespawnTimer < this.DespawnDelay)
         {
-            this.despawnTimer += Time.fixedDeltaTime;
+            this.DespawnTimer += Time.fixedDeltaTime;
             return;
         }
 
-        this.despawnTimer = 0;
+        this.DespawnTimer = 0;
         this.DespawnObj();
     }
 
     //===========================================Other============================================
     public virtual void DefaultStat()
     {
-        this.despawnTimer = 0;
+        this.DespawnTimer = 0;
     }
 }
 

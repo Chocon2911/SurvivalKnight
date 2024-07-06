@@ -10,9 +10,54 @@ public class PlayerObjShoot : ShootSkill
     [SerializeField] protected PlayerObjSkill skill;
     public PlayerObjSkill Skill => skill;
 
-    [Header("Stat")]
-    [SerializeField] protected float bulletSpeed;
-    public float BulletSpeed => bulletSpeed;
+    //Get Set
+    public override string BulletName 
+    { 
+        get => this.skill.Manager.Stat.BulletName; 
+        set => this.skill.Manager.Stat.BulletName = value; 
+    }
+
+    public override float CooldownDelay 
+    { 
+        get => this.skill.Manager.Stat.ShootCooldown; 
+        set => this.skill.Manager.Stat.ShootCooldown = value; 
+    }
+
+    public override float CooldownTimer 
+    { 
+        get => this.skill.Manager.Stat.ShootCooldownTimer; 
+        set => this.skill.Manager.Stat.ShootCooldownTimer = value; 
+    }
+
+    public override float ChargeDelay 
+    { 
+        get => this.skill.Manager.Stat.ShootChargeTime; 
+        set => this.skill.Manager.Stat.ShootChargeTime = value; 
+    }
+
+    public override float ChargeTimer 
+    {
+        get => this.skill.Manager.Stat.ShootChargeTimer;
+        set => this.skill.Manager.Stat.ShootChargeTimer = value;
+    }
+
+    public override float DoingLength 
+    { 
+        get => this.skill.Manager.Stat.ShootTime; 
+        set => this.skill.Manager.Stat.ShootTime = value; 
+    }
+
+    public override float DoingTimer 
+    { 
+        get => this.skill.Manager.Stat.ShootTimer; 
+        set => this.skill.Manager.Stat.ShootTimer = value; 
+    }
+
+    public float BulletSpeed
+    {
+        get => this.skill.Manager.Stat.BulletSpeed;
+        set => this.skill.Manager.Stat.BulletSpeed = value;
+    }
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -27,24 +72,6 @@ public class PlayerObjShoot : ShootSkill
         if (this.skill != null) return;
         this.skill = transform.parent.GetComponent<PlayerObjSkill>();
         Debug.LogWarning(transform.name + ": Load Skill", transform.gameObject);
-    }
-
-    //========================================Shoot Skill=========================================
-    public override void DefaultStat()
-    {
-        base.DefaultStat();
-
-        if (this.skill.Manager.Stat == null)
-        {
-            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
-            return;
-        }
-
-        this.bulletName = this.skill.Manager.Stat.BulletName;
-        this.cooldownDelay = this.skill.Manager.Stat.ShootCooldown;
-        this.cooldownTimer = 0;
-        this.chargeDelay = this.skill.Manager.Stat.ShootTime;
-        this.appearRad = this.skill.Manager.Stat.BulletAppearRad;
     }
 
     protected override void LoadMainObj()
@@ -68,6 +95,8 @@ public class PlayerObjShoot : ShootSkill
     //===========================================Shoot============================================
     public virtual void Shoot()
     {
+        if (!transform.gameObject.activeSelf) return;
+
         if (this.isReady && InputManager.Instance.Shoot)
         {
             this.UseSkill();

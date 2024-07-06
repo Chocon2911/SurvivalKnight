@@ -7,6 +7,6 @@ public abstract class DamageSender : DamageSR
     //============================================Send============================================
     protected virtual void Send(DamageReceiver receiver)
     {
-        receiver.Receive(this.atkDamage);
+        receiver.Receive(this.AtkDamage);
     }
 }

@@ -18,17 +18,37 @@ public class PlayerObjStat : AtkableObjStat
     [Header("Stat")]
     public float Satiety;
     //Dash
+    [Header("Dash")]
     public float DashSpeed;
     public float DashCooldown;
+    public float DashCooldownTimer;
     public float DashChargeTime;
+    public float DashChargeTimer;
     public float DashTime;
+    public float DashTimer;
     //Shoot
+    [Header("Shoot")]
     public string BulletName;
     public float BulletSpeed;
     public float ShootCooldown;
+    public float ShootCooldownTimer;
     public float ShootChargeTime;
+    public float ShootChargeTimer;
     public float ShootTime;
+    public float ShootTimer;
     public float BulletAppearRad;
+    //Shotgun
+    [Header("Shotgun")]
+    public string ShotgunBulletName;
+    public float ShotgunBulletSpeed;
+    public float ShotgunCooldown;
+    public float ShotgunCooldownTimer;
+    public float ShotgunChargeTime;
+    public float ShotgunChargeTimer;
+    public float ShotgunTime;
+    public float ShotgunTimer;
+    public int ShotgunPelletAmount;
+    //DamageReceiver
     #endregion
 
 
@@ -101,17 +121,29 @@ public class PlayerObjStat : AtkableObjStat
         this.DashChargeTime = this.playerSO.DashChargeTime;
         this.DashTime = this.playerSO.DashTime;
         //Shoot
-        this.BulletName = this.PlayerSO.BulletName;
+        this.BulletName = this.playerSO.BulletName;
         this.BulletSpeed = this.playerSO.BulletSpeed;
         this.ShootCooldown = this.PlayerSO.ShootCooldown;
         this.ShootChargeTime = this.PlayerSO.ShootChargeTime;
         this.ShootTime = this.playerSO.ShootTime;
         this.BulletAppearRad = this.playerSO.BulletAppearRad;
+        //Shotgun
+        this.ShotgunBulletName = this.playerSO.ShotgunBulletName;
+        this.ShotgunBulletSpeed = this.playerSO.ShotgunBulletSpeed;
+        this.ShotgunCooldown = this.playerSO.ShotgunCooldown;
+        this.ShotgunCooldownTimer = this.ShotgunCooldown;
+        this.ShotgunChargeTime = this.playerSO.ShotgunChargeTime;
+        this.ShotgunChargeTimer = this.ShotgunChargeTime;
+        this.ShotgunTime = this.playerSO.ShotgunTime;
+        this.ShotgunPelletAmount = this.playerSO.ShotgunPelletAmount;
+        this.ShotgunTimer = this.ShotgunTime;
+        //Damage Receiver
+
 
         //Load Stat
-        this.manager.Movement.DefaultStat();
         this.manager.Skill.Dash.DefaultStat();
         this.manager.Skill.Shoot.DefaultStat();
+        this.manager.Skill.Shotgun.DefaultStat();
         this.manager.DamageReceiver.DefaultStat();
     }
     #endregion

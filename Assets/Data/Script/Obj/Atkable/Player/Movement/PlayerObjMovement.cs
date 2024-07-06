@@ -9,6 +9,13 @@ public class PlayerObjMovement : ObjMovement
     [Header("Script")]
     [SerializeField] protected PlayerObjManager manager;
     public PlayerObjManager Manager => manager;
+
+    //Get Set
+    public override float MoveSpeed 
+    { 
+        get => this.manager.Stat.MoveSpeed; 
+        set => this.manager.Stat.MoveSpeed = value; 
+    }
     #endregion
 
 
@@ -55,21 +62,6 @@ public class PlayerObjMovement : ObjMovement
         if (this.manager.Skill.Dash.IsDoing) return;
         this.moveDir = InputManager.Instance.MoveDir;
         base.Move();
-    }
-    #endregion
-
-
-    #region Other
-    //===========================================Other============================================
-    public virtual void DefaultStat()
-    {
-        if (this.manager.Stat == null)
-        {
-            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
-            return;
-        }
-
-        this.moveSpeed = this.manager.Stat.MoveSpeed;
     }
     #endregion
 }

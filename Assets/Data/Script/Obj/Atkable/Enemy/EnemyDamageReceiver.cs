@@ -39,7 +39,7 @@ public class EnemyDamageReceiver : DamageReceiver
             return;
         }
 
-        this.atkDamage = this.manager.Stat.Health;
-        this.atkObjType = this.manager.Stat.AtkObjType;
+        this.AtkDamage = this.manager.Stat.Health;
+        this.AtkObjType = this.manager.Stat.AtkObjType;
     }
 }

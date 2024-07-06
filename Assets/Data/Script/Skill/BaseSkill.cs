@@ -2,36 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSkill : HuyMonoBehaviour
+public abstract class BaseSkill : HuyMonoBehaviour
 {
     #region Variable
+    public virtual float CooldownDelay { get; set; }
+    public virtual float CooldownTimer { get; set; }
+    public virtual float ChargeDelay { get; set; }
+    public virtual float ChargeTimer { get; set; }
+    public virtual float DoingLength { get; set; }
+    public virtual float DoingTimer { get; set; }
+
     [Header("Attackable Obj Skill")]
     [Header("Stat")]
-    [SerializeField] protected float cooldownDelay;
-    public float CooldownLimit => cooldownDelay;
-
-    [SerializeField] protected float cooldownTimer;
-    public float CooldownDelay => cooldownDelay;
-
-    [SerializeField] protected float chargeDelay;
-    public float ChargeDelay => chargeDelay;
-
-    [SerializeField] protected float chargeTimer;
-    public float ChargeTimer => chargeTimer;
-
-    [SerializeField] protected float doingLength;
-    public float DoingLength => doingLength;
-
-    [SerializeField] protected float doingTimer;
-    public float DoingTimer => doingTimer;
-
     [SerializeField] protected bool isReady;
-    public bool IsSkillReady => isReady;
-
     [SerializeField] protected bool isCharging;
-    public bool IsCharging => isCharging;
-
     [SerializeField] protected bool isDoing;
+
+    public bool IsReady => isReady;
+    public bool IsCharging => isCharging;
     public bool IsDoing => isDoing;
     #endregion
 
@@ -57,7 +45,7 @@ public class BaseSkill : HuyMonoBehaviour
     //===========================================Skill============================================
     protected virtual void UseSkill()
     {
-        this.cooldownTimer = 0;
+        this.CooldownTimer = 0;
         this.isReady = false;
         this.isCharging = true;
     }
@@ -69,44 +57,44 @@ public class BaseSkill : HuyMonoBehaviour
     //==========================================Checker===========================================
     protected virtual void CheckIfSkillIsReady()
     {
-        if (this.cooldownDelay == 0) return;
+        if (this.CooldownDelay == 0) return;
         if (this.isDoing || this.isCharging) return;
-        if (this.cooldownTimer >= this.cooldownDelay)
+        if (this.CooldownTimer >= this.CooldownDelay)
         {
             this.isReady = true;
             return;
         }
 
-        this.cooldownTimer += Time.fixedDeltaTime;
+        this.CooldownTimer += Time.fixedDeltaTime;
     }
 
     protected virtual void CheckIfCharging()
     {
-        if (this.chargeDelay == 0) return;
+        if (this.ChargeDelay == 0) return;
         if (!this.isCharging) return;
-        if (this.chargeTimer >= this.chargeDelay)
+        if (this.ChargeTimer >= this.ChargeDelay)
         {
             this.isCharging = false;
             this.isDoing = true;
-            this.chargeTimer = 0;
+            this.ChargeTimer = 0;
             return;
         }
 
-        this.chargeTimer += Time.fixedDeltaTime;
+        this.ChargeTimer += Time.fixedDeltaTime;
     }
 
     protected virtual void CheckIfDoing()
     {
-        if (this.doingLength == 0) return;
+        if (this.DoingLength == 0) return;
         if (!this.isDoing) return;
-        if (this.doingTimer >= this.doingLength)
+        if (this.DoingTimer >= this.DoingLength)
         {
             this.isDoing = false;
-            this.doingTimer = 0;
+            this.DoingTimer = 0;
             return;
         }
 
-        this.doingTimer += Time.fixedDeltaTime;
+        this.DoingTimer += Time.fixedDeltaTime;
     }
     #endregion
 
@@ -117,10 +105,8 @@ public class BaseSkill : HuyMonoBehaviour
     public virtual void DefaultStat()
     {
         this.isDoing = false;
+        this.isCharging = false;
         this.isReady = false;
-        this.cooldownTimer = 0;
-        this.chargeTimer = 0;
-        this.doingTimer = 0;
     }
     #endregion
 }

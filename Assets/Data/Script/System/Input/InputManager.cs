@@ -35,7 +35,7 @@ public class InputManager : HuyMonoBehaviour
         }
 
         instance = this;
-        base.Awake();
+        this.DefaultStat();
     }
 
     protected virtual void Update()
@@ -91,6 +91,14 @@ public class InputManager : HuyMonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0)) this.shoot = true;
         else this.shoot = false;
+    }
+    #endregion
+
+    #region Other
+    //===========================================Other============================================
+    protected virtual void DefaultStat()
+    {
+        this.numberPressed = 1;
     }
     #endregion
 }

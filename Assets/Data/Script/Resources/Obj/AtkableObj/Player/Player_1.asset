@@ -30,3 +30,10 @@ MonoBehaviour:
   ShootChargeTime: 0
   ShootTime: 0
   BulletAppearRad: 1
+  ShotgunBulletName: Bullet_1
+  ShotgunBulletSpeed: 0
+  ShotgunCooldown: 0.5
+  ShotgunChargeTime: 0
+  ShotgunTime: 0
+  ShotgunPelletAmount: 4
+  ShotgunBulletAppearRad: 1

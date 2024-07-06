@@ -9,14 +9,14 @@ public abstract class DamageReceiver : DamageSR
     [SerializeField] protected bool isDead;
     public bool IsDead => isDead;
 
-    [SerializeField] protected AtkObjType atkObjType;
-    public AtkObjType AtkObjType => atkObjType;
+    //Get Set
+    public virtual AtkObjType AtkObjType { get; set; }
 
     //==========================================Receive===========================================
     public virtual void Receive(float atkDamageReceive)
     {
-        this.atkDamage -= atkDamageReceive;
-        if (this.atkDamage <= 0) this.CheckIfDead();
+        this.AtkDamage -= atkDamageReceive;
+        if (this.AtkDamage <= 0) this.CheckIfDead();
     }
 
     protected abstract void DespawnObj();
@@ -30,7 +30,7 @@ public abstract class DamageReceiver : DamageSR
     }
 
     //===========================================Other============================================
-    public override void DefaultStat()
+    public virtual void DefaultStat()
     {
         this.isDead = false;
     }

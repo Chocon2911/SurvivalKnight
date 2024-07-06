@@ -9,6 +9,19 @@ public class BulletDespawnByTime : DespawnByTime
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
 
+    //Get Set
+    public override float DespawnDelay 
+    { 
+        get => this.manager.Stat.ExistTime; 
+        set => this.manager.Stat.ExistTime = value; 
+    }
+
+    public override float DespawnTimer 
+    {
+        get => this.manager.Stat.ExistTimer; 
+        set => this.manager.Stat.ExistTimer = value; 
+    }
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -28,19 +41,5 @@ public class BulletDespawnByTime : DespawnByTime
     public override void DespawnObj()
     {
         BulletSpawner.Instance.Despawn(transform.parent);
-    }
-
-    //===========================================Other============================================
-    public override void DefaultStat()
-    {
-        base.DefaultStat();
-        
-        if (this.manager.Stat == null)
-        {
-            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
-            return;
-        }
-
-        this.despawnDelay = this.manager.Stat.ExistTime;
     }
 }

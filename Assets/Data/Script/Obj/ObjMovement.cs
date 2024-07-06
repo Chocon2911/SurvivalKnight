@@ -15,8 +15,8 @@ public abstract class ObjMovement : HuyMonoBehaviour
     [SerializeField] protected Vector4 moveDir;
     public Vector4 MoveDir => moveDir;
 
-    [SerializeField] protected float moveSpeed;
-    public float MoveSpeed => moveSpeed;
+    //Get Set
+    public virtual float MoveSpeed { get; set; }
     #endregion
 
 
@@ -53,7 +53,7 @@ public abstract class ObjMovement : HuyMonoBehaviour
         float down = this.moveDir.w;
         Vector2 moveDir = new Vector2(right - left, up - down).normalized;
 
-        this.rb.velocity = moveDir * moveSpeed;
+        this.rb.velocity = moveDir * MoveSpeed;
     }
     #endregion
 }

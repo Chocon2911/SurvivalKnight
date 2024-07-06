@@ -9,6 +9,13 @@ public class BulletObjFly : ObjFlyStraight
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
 
+    //Get Set
+    public override float FlySpeed
+    {
+        get => this.manager.Stat.FlySpeed;
+        set => this.manager.Stat.FlySpeed = value;
+    }
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -40,17 +47,5 @@ public class BulletObjFly : ObjFlyStraight
         if (this.manager != null) return;
         this.manager = transform.parent.GetComponent<BulletObjManager>();
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
-    }
-
-    //===========================================Other============================================
-    public virtual void DefaultStat()
-    {
-        if (this.manager.Stat == null)
-        {
-            Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
-            return;
-        }
-
-        this.flySpeed = this.manager.Stat.FlySpeed;
     }
 }

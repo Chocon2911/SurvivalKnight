@@ -9,12 +9,9 @@ public abstract class ShootSkill : BaseSkill
     [SerializeField] protected Transform mainObj;
     public Transform MainObj => mainObj;
 
-    [Header("Stat")]
-    [SerializeField] protected string bulletName;
-    public string BulletName => bulletName;
-
-    [SerializeField] protected float appearRad;
-    public float AppearRad => appearRad;
+    //==========================================Get Set===========================================
+    public virtual string BulletName {  get; set; }
+    public virtual float AppearRad { get; set; }
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -43,7 +40,7 @@ public abstract class ShootSkill : BaseSkill
     //============================================Get=============================================
     protected virtual void GetNewBullet(Vector3 spawnPos, Quaternion spawnRot)
     {
-        Transform newBullet = BulletSpawner.Instance.SpawnByName(this.bulletName, spawnPos, spawnRot);
+        Transform newBullet = BulletSpawner.Instance.SpawnByName(this.BulletName, spawnPos, spawnRot);
 
         if (newBullet == null)
         {
@@ -56,7 +53,7 @@ public abstract class ShootSkill : BaseSkill
 
     protected virtual Vector3 GetSpawnPos(Vector3 dir)
     {
-        return this.mainObj.transform.position + dir.normalized * this.appearRad;
+        return this.mainObj.transform.position + dir.normalized * this.AppearRad;
     }
 
     protected virtual Vector3 GetDir(Vector3 targetPos)

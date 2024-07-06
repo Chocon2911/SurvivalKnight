@@ -16,6 +16,13 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
     [SerializeField] protected EnemyObjManager mananger;
     public EnemyObjManager Mananger => mananger;
 
+    //Get Set
+    public override float MoveSpeed 
+    { 
+        get => this.mananger.Stat.MoveSpeed; 
+        set => this.mananger.Stat.MoveSpeed = value; 
+    }
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -78,7 +85,7 @@ public class EnemyObjMovement : ObjFollowTargetByVelocity
         }
 
         this.target = null;
-        this.moveSpeed = this.mananger.Stat.MoveSpeed;
+        this.MoveSpeed = this.mananger.Stat.MoveSpeed;
         this.detectEnemy.radius = this.mananger.Stat.DetectRange;
         //Debug.Log(transform.name + ": Load DefaultStat", transform.gameObject);
     }

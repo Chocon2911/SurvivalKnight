@@ -9,6 +9,18 @@ public class PlayerDamageReceiver : DamageReceiver
     [SerializeField] protected PlayerObjManager manager;
     public PlayerObjManager Manager => manager;
 
+    //Get Set
+    public override float AtkDamage 
+    { 
+        get => this.manager.Stat.AtkDamage; 
+        set => this.manager.Stat.AtkDamage = value;
+    }
+    public override AtkObjType AtkObjType 
+    { 
+        get => this.manager.Stat.AtkObjType; 
+        set => this.manager.Stat.AtkObjType = value;
+    }
+
     //=======================================Load Component=======================================
     protected override void LoadComponent()
     {
@@ -39,8 +51,5 @@ public class PlayerDamageReceiver : DamageReceiver
             Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
             return;
         }
-
-        this.atkDamage = this.manager.Stat.Health;
-        this.atkObjType = this.manager.Stat.AtkObjType;
     }
 }
