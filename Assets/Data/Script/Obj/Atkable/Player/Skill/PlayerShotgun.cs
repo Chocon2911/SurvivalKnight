@@ -85,15 +85,24 @@ public class PlayerShotgun : ShootSkill
         this.mainObj = this.skill.Manager.transform;
     }
 
-    protected override void DoShoot()
+    //===========================================Shoot============================================
+    public override void ActivateSkill()
     {
-        base.DoShoot();
+        if (!transform.gameObject.activeSelf) return;
+        if (!InputManager.Instance.Shoot) return;
+
+        base.ActivateSkill();
+    }
+
+    protected override void DoSkill()
+    {
+        base.DoSkill();
 
         Vector3 dir = this.GetDir(GameManager.Instance.MousePos);
         Vector3 spawnPos = this.GetSpawnPos(dir);
         Quaternion spawnRot = this.GetSpawnRot(dir);
 
-        float spawnAngle = spawnRot.eulerAngles.z + 30/2;
+        float spawnAngle = spawnRot.eulerAngles.z + 30 / 2;
         float angle = 30 / (this.PelletAmount - 1);
 
         for (int i = 0; i < this.PelletAmount; i++)
@@ -101,26 +110,6 @@ public class PlayerShotgun : ShootSkill
             spawnRot.eulerAngles = new Vector3(0, 0, spawnAngle);
             this.GetNewBullet(spawnPos, spawnRot);
             spawnAngle -= angle;
-        }
-    }
-
-    //===========================================Shoot============================================
-    public virtual void Shoot()
-    {
-        if (!transform.gameObject.activeSelf) return;
-        if (this.isReady && InputManager.Instance.Shoot)
-        {
-            this.UseSkill();
-        }
-
-        if (this.isCharging)
-        {
-            this.ChargeShoot();
-        }
-
-        if (this.isDoing)
-        {
-            this.DoShoot();
         }
     }
 }

@@ -43,12 +43,33 @@ public abstract class BaseSkill : HuyMonoBehaviour
 
     #region Skill
     //===========================================Skill============================================
+    public virtual void ActivateSkill()
+    {
+        if (this.isReady)
+        {
+            this.UseSkill();
+        }
+
+        if (this.isCharging)
+        {
+            this.ChargeSkill();
+        }
+
+        if (this.isDoing)
+        {
+            this.DoSkill();
+        }
+    }
+    
     protected virtual void UseSkill()
     {
         this.CooldownTimer = 0;
         this.isReady = false;
         this.isCharging = true;
     }
+
+    protected abstract void ChargeSkill();
+    protected abstract void DoSkill();
     #endregion
 
 

@@ -24,13 +24,13 @@ public abstract class ShootSkill : BaseSkill
     protected abstract void LoadMainObj();
 
     //===========================================Shoot============================================
-    protected virtual void DoShoot()
+    protected override void DoSkill()
     {
         this.isDoing = false;
         //Debug.Log("Do Shoot", transform.gameObject);
     }
 
-    protected virtual void ChargeShoot()
+    protected override void ChargeSkill()
     {
         this.isCharging = false;
         this.isDoing = true;

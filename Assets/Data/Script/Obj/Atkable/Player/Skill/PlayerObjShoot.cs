@@ -81,35 +81,23 @@ public class PlayerObjShoot : ShootSkill
         Debug.LogWarning(transform.name + ": Load MainObj", transform.gameObject);
     }
 
-    protected override void DoShoot()
+    //===========================================Shoot============================================
+    public override void ActivateSkill()
     {
-        base.DoShoot();
+        if (!transform.gameObject.activeSelf) return;
+        if (!InputManager.Instance.Shoot) return;
+
+        base.ActivateSkill();
+    }
+
+    protected override void DoSkill()
+    {
+        base.DoSkill();
 
         Vector3 dir = this.GetDir(GameManager.Instance.MousePos);
         Vector3 spawnPos = this.GetSpawnPos(dir);
         Quaternion spawnRot = this.GetSpawnRot(dir);
 
         this.GetNewBullet(spawnPos, spawnRot);
-    }
-
-    //===========================================Shoot============================================
-    public virtual void Shoot()
-    {
-        if (!transform.gameObject.activeSelf) return;
-
-        if (this.isReady && InputManager.Instance.Shoot)
-        {
-            this.UseSkill();
-        }
-
-        if (this.isCharging)
-        {
-            this.ChargeShoot();
-        }
-
-        if (this.isDoing)
-        {
-            this.DoShoot();
-        }
     }
 }

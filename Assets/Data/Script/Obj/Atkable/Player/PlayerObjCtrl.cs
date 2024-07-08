@@ -40,9 +40,7 @@ public class PlayerObjCtrl : AtkableObjCtrl
     {
         if (this.manager.Skill.Dash.IsDoing || this.manager.Skill.Dash.IsCharging) return;
         this.manager.Movement.Move();
-        this.manager.Skill.Shoot.Shoot();
-        this.manager.Skill.Shotgun.Shoot();
-        this.manager.Skill.Dash.Dash();
+        this.manager.Skill.Dash.ActivateSkill();
     }
 
     protected virtual void ChooseSKillCtrl()

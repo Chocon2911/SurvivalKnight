@@ -66,31 +66,21 @@ public class PlayerObjDash : BaseSkill
 
     #region Dash
     //============================================Dash============================================
-    public virtual void Dash()
+    public override void ActivateSkill()
     {
-        if (this.isReady && InputManager.Instance.Dash)
-        {
-            this.UseSkill();
-        }
+        if (!transform.gameObject.activeSelf) return;
+        if (!InputManager.Instance.Dash) return;
 
-        if (this.isCharging)
-        {
-            this.ChargeDash();
-        }
-
-        if (this.isDoing)
-        {
-            this.DoDash();
-        }
+        base.ActivateSkill();
     }
 
-    protected virtual void ChargeDash()
+    protected override void ChargeSkill()
     {
         this.isCharging = false;
         this.isDoing = true;
     }
 
-    protected virtual void DoDash()
+    protected override void DoSkill()
     {
         Vector4 moveDir = InputManager.Instance.MoveDir;
         float dashSpeed = this.skill.Manager.Stat.DashSpeed;

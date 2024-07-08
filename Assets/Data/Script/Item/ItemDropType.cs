@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType
+public enum ItemDropType
 {
     Zero = 0,
     Weapon = 1,
-    Equipment = 2,
-    Material = 3,
+    Material = 2,
+    Exp = 3,
 }
