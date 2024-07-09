@@ -80,10 +80,10 @@ public class PlayerShotgun : ShootSkill
     }
 
     //========================================Shoot Skill=========================================
-    protected override void LoadMainObj()
-    {
-        this.mainObj = this.skill.Manager.transform;
-    }
+    //protected override void LoadMainObj()
+    //{
+    //    this.mainObj = this.skill.Manager.transform;
+    //}
 
     //===========================================Shoot============================================
     public override void ActivateSkill()

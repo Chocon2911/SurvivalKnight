@@ -67,12 +67,6 @@ public class GunShoot : ShootSkill
         this.LoadManager();
     }
 
-    //========================================Shoot Skill=========================================
-    protected override void LoadMainObj()
-    {
-
-    }
-
     //=======================================Load Component=======================================
     protected virtual void LoadManager()
     {

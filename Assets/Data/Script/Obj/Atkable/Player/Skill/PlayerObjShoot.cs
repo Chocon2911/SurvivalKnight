@@ -74,12 +74,12 @@ public class PlayerObjShoot : ShootSkill
         Debug.LogWarning(transform.name + ": Load Skill", transform.gameObject);
     }
 
-    protected override void LoadMainObj()
-    {
-        if (this.mainObj != null) return;
-        this.mainObj = this.skill.Manager.transform;
-        Debug.LogWarning(transform.name + ": Load MainObj", transform.gameObject);
-    }
+    //protected override void LoadMainObj()
+    //{
+    //    if (this.mainObj != null) return;
+    //    this.mainObj = this.skill.Manager.transform;
+    //    Debug.LogWarning(transform.name + ": Load MainObj", transform.gameObject);
+    //}
 
     //===========================================Shoot============================================
     public override void ActivateSkill()

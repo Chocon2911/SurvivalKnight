@@ -13,15 +13,11 @@ public abstract class ShootSkill : WeaponSkill
     public virtual string BulletName {  get; set; }
     public virtual float AppearRad { get; set; }
 
-    //===========================================Unity============================================
-    protected override void LoadComponent()
+    //============================================Set=============================================
+    public virtual void SetMainObj(Transform mainObj)
     {
-        base.LoadComponent();
-        this.LoadMainObj();
+        this.mainObj = mainObj;
     }
-
-    //=======================================Load Component=======================================
-    protected abstract void LoadMainObj();
 
     //===========================================Shoot============================================
     protected override void DoSkill()

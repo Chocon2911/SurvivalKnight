@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGun : PlayerWeaponObjManager
+public class PlayerGunManager : PlayerWeaponObjManager
 {
     [Header("Player Obj Gun")]
     [Header("Script")]
@@ -21,6 +21,7 @@ public class PlayerGun : PlayerWeaponObjManager
     {
         if (this.shoot != null) return;
         this.shoot = transform.GetComponentInChildren<GunShoot>();
+        this.shoot.SetMainObj(this.weaponsManager.Manager.transform);
         Debug.LogWarning(transform.name + ": Load Shoot", transform.gameObject);
     }
 }

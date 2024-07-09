@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeaponObjManager : WeaponManager
+public abstract class PlayerWeaponObjManager : WeaponManager
 {
     [Header("Player Weapon Obj Manager")]
     [Header("Script")]
