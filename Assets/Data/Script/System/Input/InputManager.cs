@@ -10,8 +10,8 @@ public class InputManager : HuyMonoBehaviour
     public static InputManager Instance => instance;
 
     [Header("Stat")]
-    [SerializeField] protected Vector4 moveDir;
-    public Vector4 MoveDir => moveDir;
+    [SerializeField] protected Vector2 moveDir;
+    public Vector2 MoveDir => moveDir;
 
     [SerializeField] protected int numberPressed;
     public int NumberPressed => numberPressed;
@@ -53,17 +53,12 @@ public class InputManager : HuyMonoBehaviour
     //============================================Get=============================================
     protected virtual void GetMoveDir()
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) this.moveDir.z = 1;
-        else this.moveDir.z = 0;
+        this.moveDir = Vector2.zero;
 
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) this.moveDir.x = -1;
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) this.moveDir.x = 1;
-        else this.moveDir.x = 0;
-
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) this.moveDir.y = 1;
-        else this.moveDir.y = 0;
-
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) this.moveDir.w = 1;
-        else this.moveDir.w = 0;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) this.moveDir.x = -1;
     }
 
     protected virtual void GetNumberPressed()

@@ -4,14 +4,7 @@ using UnityEngine;
 
 public abstract class AtkableObjStat : BaseObj
 {
-    #region Variable
-    public float MaxHealth ;
-    public float Health;
-    public float MoveSpeed;
-    public float AtkDamage;
-    public float AtkSpeed;
-    public float Amor;
-    public int CharacterLevel;
+    #region Variablezx
     public AtkObjType AtkObjType;
     #endregion
 }
