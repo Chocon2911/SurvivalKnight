@@ -5,12 +5,12 @@ using UnityEngine;
 public abstract class BaseSkill : HuyMonoBehaviour
 {
     #region Variable
-    public virtual float CooldownDelay { get; set; }
-    public virtual float CooldownTimer { get; set; }
-    public virtual float ChargeDelay { get; set; }
-    public virtual float ChargeTimer { get; set; }
-    public virtual float DoingLength { get; set; }
-    public virtual float DoingTimer { get; set; }
+    public float CooldownDelay;
+    public float CooldownTimer;
+    public float ChargeDelay;
+    public float ChargeTimer;
+    public float DoingLength;
+    public float DoingTimer;
 
     [Header("Attackable Obj Skill")]
     [Header("Stat")]
@@ -70,6 +70,17 @@ public abstract class BaseSkill : HuyMonoBehaviour
 
     protected abstract void ChargeSkill();
     protected abstract void DoSkill();
+
+    protected virtual void FinishCharging()
+    {
+        this.isCharging = false;
+        this.isDoing = true;
+    }
+
+    protected virtual void FinshDoing()
+    {
+        this.isDoing = false;
+    }
     #endregion
 
 

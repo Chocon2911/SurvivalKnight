@@ -10,27 +10,13 @@ public abstract class ShootSkill : WeaponSkill
     public Transform MainObj => mainObj;
 
     //==========================================Get Set===========================================
-    public virtual string BulletName {  get; set; }
-    public virtual float AppearRad { get; set; }
+    public string BulletName;
+    public float AppearRad;
 
     //============================================Set=============================================
     public virtual void SetMainObj(Transform mainObj)
     {
         this.mainObj = mainObj;
-    }
-
-    //===========================================Shoot============================================
-    protected override void DoSkill()
-    {
-        this.isDoing = false;
-        //Debug.Log("Do Shoot", transform.gameObject);
-    }
-
-    protected override void ChargeSkill()
-    {
-        this.isCharging = false;
-        this.isDoing = true;
-        //Debug.Log("Charge", transform.gameObject);
     }
 
     //============================================Get=============================================
