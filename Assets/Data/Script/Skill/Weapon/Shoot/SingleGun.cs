@@ -12,10 +12,17 @@ public class SingleGun : ShootSkill
 
     protected override void DoSkill()
     {
+        if (this.targetObj == null || this.mainObj == null)
+        {
+            Debug.LogError("target or main obj are null", transform.gameObject);
+        }
+
         this.FinshDoing();
 
         Vector3 dir = this.GetDir();
         Vector3 spawnPos = this.GetSpawnPos(dir);
-        
+        Quaternion spawnRot = this.GetSpawnRot(dir);
+
+        this.GetNewBullet(spawnPos, spawnRot);
     }
 }

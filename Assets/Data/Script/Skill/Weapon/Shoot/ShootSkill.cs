@@ -9,6 +9,9 @@ public abstract class ShootSkill : WeaponSkill
     [SerializeField] protected Transform mainObj;
     public Transform MainObj => mainObj;
 
+    [SerializeField] protected Transform targetObj;
+    public Transform TargetObj => targetObj;
+
     //==========================================Get Set===========================================
     public string BulletName;
     public float AppearRad;
@@ -17,6 +20,11 @@ public abstract class ShootSkill : WeaponSkill
     public virtual void SetMainObj(Transform mainObj)
     {
         this.mainObj = mainObj;
+    }
+
+    public virtual void SetTargetObj(Transform targetObj)
+    {
+        this.targetObj = targetObj;
     }
 
     //============================================Get=============================================
@@ -38,9 +46,9 @@ public abstract class ShootSkill : WeaponSkill
         return this.mainObj.transform.position + dir.normalized * this.AppearRad;
     }
 
-    protected virtual Vector3 GetDir(Vector3 targetPos)
+    protected virtual Vector3 GetDir()
     {
-        return (targetPos - this.mainObj.transform.position);
+        return (this.targetObj.position - this.mainObj.position).normalized;
     }
 
     protected virtual Quaternion GetSpawnRot(Vector3 dir)
