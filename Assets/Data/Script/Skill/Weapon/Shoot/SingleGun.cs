@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleGun : ShootSkill
+public abstract class SingleGun : ShootSkill
 {
     //===========================================Shoot============================================
     protected override void ChargeSkill()
@@ -12,12 +12,7 @@ public class SingleGun : ShootSkill
 
     protected override void DoSkill()
     {
-        if (this.targetObj == null || this.mainObj == null)
-        {
-            Debug.LogError("target or main obj are null", transform.gameObject);
-        }
-
-        this.FinshDoing();
+        this.FinishDoing();
 
         Vector3 dir = this.GetDir();
         Vector3 spawnPos = this.GetSpawnPos(dir);

@@ -12,7 +12,7 @@ public abstract class ShootSkill : WeaponSkill
     [SerializeField] protected Transform targetObj;
     public Transform TargetObj => targetObj;
 
-    //==========================================Get Set===========================================
+    [Header("Stat")]
     public string BulletName;
     public float AppearRad;
 
@@ -58,5 +58,15 @@ public abstract class ShootSkill : WeaponSkill
         Quaternion spawnRot = Quaternion.Euler(0, 0, zRot);
 
         return spawnRot;
+    }
+
+    //===========================================Shoot============================================
+    protected override void DoSkill()
+    {
+        if (this.targetObj == null || this.mainObj == null)
+        {
+            Debug.LogError("Target or main obj are null", transform.gameObject);
+            return;
+        }
     }
 }

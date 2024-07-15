@@ -26,17 +26,17 @@ public abstract class BaseSkill : HuyMonoBehaviour
 
 
     #region Unity
-    protected virtual void FixedUpdate()
+    protected virtual void LateUpdate()
     {
         this.CheckIfSkillIsReady();
         this.CheckIfCharging();
         this.CheckIfDoing();
     }
 
-    protected virtual void OnDisable()
-    {
-        StopAllCoroutines();
-    }
+    //protected virtual void OnDisable()
+    //{
+    //    StopAllCoroutines();
+    //}
     #endregion
 
 
@@ -71,15 +71,22 @@ public abstract class BaseSkill : HuyMonoBehaviour
     protected abstract void ChargeSkill();
     protected abstract void DoSkill();
 
+    protected virtual void FinishCoolingdown()
+    {
+        this.isReady = true;
+    }
+
     protected virtual void FinishCharging()
     {
         this.isCharging = false;
         this.isDoing = true;
+        this.ChargeTimer = 0;
     }
 
-    protected virtual void FinshDoing()
+    protected virtual void FinishDoing()
     {
         this.isDoing = false;
+        this.CooldownTimer = 0;
     }
     #endregion
 
@@ -89,11 +96,10 @@ public abstract class BaseSkill : HuyMonoBehaviour
     //==========================================Checker===========================================
     protected virtual void CheckIfSkillIsReady()
     {
-        if (this.CooldownDelay == 0) return;
         if (this.isDoing || this.isCharging) return;
         if (this.CooldownTimer >= this.CooldownDelay)
         {
-            this.isReady = true;
+            this.FinishCoolingdown();
             return;
         }
 
@@ -102,13 +108,10 @@ public abstract class BaseSkill : HuyMonoBehaviour
 
     protected virtual void CheckIfCharging()
     {
-        if (this.ChargeDelay == 0) return;
         if (!this.isCharging) return;
         if (this.ChargeTimer >= this.ChargeDelay)
         {
-            this.isCharging = false;
-            this.isDoing = true;
-            this.ChargeTimer = 0;
+            this.FinishCharging();
             return;
         }
 
@@ -117,12 +120,10 @@ public abstract class BaseSkill : HuyMonoBehaviour
 
     protected virtual void CheckIfDoing()
     {
-        if (this.DoingLength == 0) return;
         if (!this.isDoing) return;
         if (this.DoingTimer >= this.DoingLength)
         {
-            this.isDoing = false;
-            this.DoingTimer = 0;
+            this.FinishDoing();
             return;
         }
 

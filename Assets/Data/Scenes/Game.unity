@@ -1248,55 +1248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1258252732}
---- !u!1 &576969980
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 576969982}
-  - component: {fileID: 576969981}
-  m_Layer: 0
-  m_Name: Shotgun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &576969981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576969980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610dc3e8aaefecb4cbffe24bc772f0b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isReady: 0
-  isCharging: 0
-  isDoing: 0
-  mainObj: {fileID: 425942210}
-  skill: {fileID: 644185631}
---- !u!4 &576969982
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576969980}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 644185630}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625014163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,8 +1354,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 179845993}
-  - {fileID: 1519268059}
-  - {fileID: 576969982}
   m_Father: {fileID: 425942210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &644185631
@@ -1421,8 +1370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 425942211}
   dash: {fileID: 179845994}
-  shoot: {fileID: 1519268060}
-  shotgun: {fileID: 576969981}
+  shoot: {fileID: 0}
+  shotgun: {fileID: 0}
 --- !u!1 &650477677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,55 +3065,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472323265}
   m_CullTransparentMesh: 1
---- !u!1 &1519268058
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1519268059}
-  - component: {fileID: 1519268060}
-  m_Layer: 0
-  m_Name: Shoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1519268059
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519268058}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 644185630}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1519268060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519268058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f61b04eca8e53e4e80e2d97efc94fc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isReady: 0
-  isCharging: 0
-  isDoing: 0
-  mainObj: {fileID: 425942210}
-  skill: {fileID: 644185631}
 --- !u!1 &1547301728
 GameObject:
   m_ObjectHideFlags: 0
