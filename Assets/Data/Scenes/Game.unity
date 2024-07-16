@@ -261,10 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3a06b5b97be4147a3be9e6916dcab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReady: 0
-  isCharging: 0
-  isDoing: 0
-  skill: {fileID: 644185631}
 --- !u!1 &180929598
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,53 +649,6 @@ MonoBehaviour:
   - {fileID: 1385432929}
   - {fileID: 306498725}
   ctrl: {fileID: 407739393}
---- !u!1 &413950842
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 413950843}
-  - component: {fileID: 413950844}
-  m_Layer: 0
-  m_Name: Fly
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &413950843
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413950842}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1258252731}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &413950844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413950842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e5cc223a67be2844bb93c33cf499216, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1258252735}
-  affectedObj: {fileID: 1258252731}
-  manager: {fileID: 1258252732}
 --- !u!1 &420590418
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,8 +737,8 @@ Transform:
   - {fileID: 1380671132}
   - {fileID: 1085269719}
   - {fileID: 644185630}
-  - {fileID: 674236982}
   - {fileID: 837390793}
+  - {fileID: 674236982}
   m_Father: {fileID: 1570302287}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &425942211
@@ -807,9 +756,6 @@ MonoBehaviour:
   model: {fileID: 1380671133}
   rb: {fileID: 425942212}
   body: {fileID: 425942214}
-  movement: {fileID: 1085269720}
-  skill: {fileID: 644185631}
-  stat: {fileID: 425942213}
   damageReceiver: {fileID: 674236983}
   ctrl: {fileID: 425942215}
 --- !u!50 &425942212
@@ -851,44 +797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e29cc300e5ffdd44be10e93299d1416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjType: 0
-  ObjName: 
-  MaxHealth: 0
-  Health: 0
-  MoveSpeed: 0
-  AtkDamage: 0
-  AtkSpeed: 0
-  Amor: 0
-  CharacterLevel: 0
-  AtkObjType: 0
-  playerSO: {fileID: 11400000, guid: 5b3fa5fd47aaf5a41945e1c8964d190e, type: 2}
-  manager: {fileID: 425942211}
-  Satiety: 0
-  DashSpeed: 0
-  DashCooldown: 0
-  DashCooldownTimer: 0
-  DashChargeTime: 0
-  DashChargeTimer: 0
-  DashTime: 0
-  DashTimer: 0
-  BulletName: 
-  BulletSpeed: 0
-  ShootCooldown: 0
-  ShootCooldownTimer: 0
-  ShootChargeTime: 0
-  ShootChargeTimer: 0
-  ShootTime: 0
-  ShootTimer: 0
-  BulletAppearRad: 0
-  ShotgunBulletName: 
-  ShotgunBulletSpeed: 0
-  ShotgunCooldown: 0
-  ShotgunCooldownTimer: 0
-  ShotgunChargeTime: 0
-  ShotgunChargeTimer: 0
-  ShotgunTime: 0
-  ShotgunTimer: 0
-  ShotgunPelletAmount: 0
 --- !u!70 &425942214
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1017,8 +925,6 @@ MonoBehaviour:
   model: {fileID: 1287898271}
   rb: {fileID: 475008891}
   body: {fileID: 475008894}
-  stat: {fileID: 475008893}
-  movement: {fileID: 1037559341}
   damageReceiver: {fileID: 296585772}
 --- !u!114 &475008893
 MonoBehaviour:
@@ -1032,19 +938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ddabf947388e4a893344aba0c4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjType: 0
-  ObjName: 
-  MaxHealth: 0
-  Health: 0
-  MoveSpeed: 0
-  AtkDamage: 0
-  AtkSpeed: 0
-  Amor: 0
-  CharacterLevel: 0
-  AtkObjType: 0
-  so: {fileID: 11400000, guid: ab59c99c517f204448a2801824096013, type: 2}
-  manager: {fileID: 475008892}
-  DetectRange: 0
 --- !u!70 &475008894
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1332,7 +1225,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644185630}
-  - component: {fileID: 644185631}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -1356,22 +1248,6 @@ Transform:
   - {fileID: 179845993}
   m_Father: {fileID: 425942210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &644185631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644185629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ee8b471711fedb4b95bd5a68f399b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 425942211}
-  dash: {fileID: 179845994}
-  shoot: {fileID: 0}
-  shotgun: {fileID: 0}
 --- !u!1 &650477677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d850113ded815fa41a01e678f59183d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDir: {x: 0, y: 0, z: 0, w: 0}
+  moveDir: {x: 0, y: 0}
   numberPressed: 0
   dash: 0
   shoot: 0
@@ -1582,7 +1458,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 837390793}
-  - component: {fileID: 837390794}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -1598,7 +1473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837390792}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1608,20 +1483,6 @@ Transform:
   - {fileID: 537229998}
   m_Father: {fileID: 425942210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &837390794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837390792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d18d4735ede68642bdfc23f0b65f917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons: []
-  manager: {fileID: 425942211}
 --- !u!1 &854994418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,10 +1529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68c13291d8d1d946b1e14b25b03c503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 2002363621}
-  skills: []
-  weaponsManager: {fileID: 0}
-  shoot: {fileID: 0}
 --- !u!1 &940102159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,11 +1859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313c00fe019de8f4f92475f0c89d4e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 475008891}
-  moveDir: {x: 0, y: 0, z: 0, w: 0}
-  target: {fileID: 0}
-  detectEnemy: {fileID: 1037559342}
-  mananger: {fileID: 475008892}
 --- !u!58 &1037559342
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2103,7 +1955,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085269719}
-  - component: {fileID: 1085269720}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -2123,24 +1974,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1660545837}
   m_Father: {fileID: 425942210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1085269720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085269718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21402e87c9b85e941a49cbc45df43a4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 425942212}
-  moveDir: {x: 0, y: 0, z: 0, w: 0}
-  manager: {fileID: 425942211}
 --- !u!1 &1176750467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2153,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedUIObj: {fileID: 1472323266}
+--- !u!1 &1252692267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252692268}
+  - component: {fileID: 1252692269}
+  m_Layer: 0
+  m_Name: Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252692268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252692267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1449474726}
+  m_Father: {fileID: 1258252731}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1252692269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252692267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f28848e90a5bf4492616b13a76c507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1258252732}
+  movements:
+  - {fileID: 1449474727}
 --- !u!1 &1258252730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,9 +2236,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1176750468}
-  - {fileID: 413950843}
   - {fileID: 558980358}
   - {fileID: 719045897}
+  - {fileID: 1252692268}
   m_Father: {fileID: 60082225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1258252732
@@ -2371,8 +2256,7 @@ MonoBehaviour:
   rb: {fileID: 1258252735}
   body: {fileID: 1258252734}
   model: {fileID: 1176750469}
-  fly: {fileID: 413950844}
-  stat: {fileID: 1258252733}
+  fly: {fileID: 0}
   despawnByTime: {fileID: 558980359}
   damageSender: {fileID: 719045898}
 --- !u!114 &1258252733
@@ -2387,15 +2271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b6ee1a58f2201438a71be67e23ce84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjType: 0
-  ObjName: 
-  FlySpeed: 0
-  ExistTime: 0
-  ExistTimer: 0
-  Damage: 0
-  CanDamageType: 0
-  manager: {fileID: 1258252732}
-  so: {fileID: 11400000, guid: 118602b70d6902041a125b388aa4934b, type: 2}
 --- !u!70 &1258252734
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2900,6 +2775,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385432927}
   m_CullTransparentMesh: 1
+--- !u!1 &1449474725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1449474726}
+  - component: {fileID: 1449474727}
+  m_Layer: 0
+  m_Name: Fly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1449474726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449474725}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1252692268}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449474727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449474725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5cc223a67be2844bb93c33cf499216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementType: 0
+  isMoving: 0
+  MoveSpeed: 0
+  rb: {fileID: 1258252735}
+  movementRbType: 0
+  moveDir: {x: 0, y: 0}
+  movement: {fileID: 1252692269}
 --- !u!1 &1461493915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,6 +3098,37 @@ Transform:
   - {fileID: 425942210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1660545836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660545837}
+  m_Layer: 0
+  m_Name: Move
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1660545837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660545836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1085269719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1688282196
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,11 +3279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3492353455d114a8ac62336eb9bb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReady: 0
-  isCharging: 0
-  isDoing: 0
-  mainObj: {fileID: 0}
-  manager: {fileID: 0}
 --- !u!1 &1846779457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3757,8 +3709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6001c1e737c7c6e48a77e9b9236a962d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 425942210}
-  moveSpeed: 0.1
 --- !u!1 &2110087307
 GameObject:
   m_ObjectHideFlags: 0

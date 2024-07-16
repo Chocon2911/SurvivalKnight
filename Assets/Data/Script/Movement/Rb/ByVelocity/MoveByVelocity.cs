@@ -10,7 +10,7 @@ public abstract class MoveByVelocity : MovementRb
     public Vector2 MoveDir => moveDir;
 
     //==========================================Movement==========================================
-    protected virtual void DoMove()
+    protected override void DoMove()
     {
         if (this.rb == null)
         {
@@ -19,5 +19,16 @@ public abstract class MoveByVelocity : MovementRb
         }
 
         this.rb.velocity = this.moveDir.normalized * MoveSpeed;
+    }
+
+    protected override void StopMove()
+    {
+        if (this.rb == null)
+        {
+            Debug.LogError(transform.name + ": Rb is null", transform.gameObject);
+            return;
+        }
+
+        this.rb.velocity = Vector2.zero;
     }
 }

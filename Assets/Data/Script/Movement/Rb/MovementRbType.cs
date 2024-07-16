@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObjMovement : PlayerObjAbstract
+public enum MovementRbType
 {
+    Zero = 0,
     
+    ByVelocity = 1,
+    ByForce = 2,
 }

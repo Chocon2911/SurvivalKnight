@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowTargetVelocity : MoveByVelocity
+public abstract class FollowTargetVelocity : MoveByVelocity
 {
     [Header("Follow Target Velocity")]
     [Header("Other")]
@@ -38,5 +38,12 @@ public class FollowTargetVelocity : MoveByVelocity
         }
 
         return this.target.position - transform.position;
+    }
+
+    //===========================================Other============================================
+    protected override void DefaultStat()
+    {
+        base.DefaultStat();
+        this.movementRbType = MovementRbType.ByVelocity;
     }
 }

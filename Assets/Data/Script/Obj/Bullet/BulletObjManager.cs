@@ -4,7 +4,6 @@ using UnityEditor.Search;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CapsuleCollider2D))]
 public class BulletObjManager : HuyMonoBehaviour
 {
     [Header("Bullet Obj Manager")]
@@ -12,21 +11,18 @@ public class BulletObjManager : HuyMonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
-    [SerializeField] protected CapsuleCollider2D body;
-    public CapsuleCollider2D Body => body;
-
     [SerializeField] protected SpriteRenderer model;
     public SpriteRenderer Model => model;
 
     [Header("Script")]
-    [SerializeField] protected BulletObjFly fly;
-    public BulletObjFly Fly => fly;
+    [SerializeField] protected BulletObjCtrl ctrl;
+    public BulletObjCtrl Ctrl => ctrl;
 
-    [SerializeField] protected BulletObjStat stat;
-    public BulletObjStat Stat => stat;
+    [SerializeField] protected BulletObjMovement movement;
+    public BulletObjMovement Movement => movement;
 
-    [SerializeField] protected BulletDespawnByTime despawnByTime;
-    public BulletDespawnByTime DespawnByTime => despawnByTime;
+    [SerializeField] protected BulletObjDespawn despawn;
+    public BulletObjDespawn Despawn => despawn;
 
     [SerializeField] protected BulletDamageSender damageSender;
     public BulletDamageSender DamageSender => damageSender;
@@ -37,20 +33,13 @@ public class BulletObjManager : HuyMonoBehaviour
         base.LoadComponent();
         //Other
         this.LoadRb();
-        this.LoadBody();
         this.LoadModel();
 
         //Script
-        this.LoadFly();
-        this.LoadStat();
-        this.LoadDespawnByTime();
+        this.LoadCtrl();
+        this.LoadMovement();
+        this.LoadDespawn();
         this.LoadDamageSender();
-    }
-
-    protected virtual void OnEnable()
-    {
-        this.stat.DefaultStat();
-        this.fly.Fly();
     }
 
     //=======================================Load Component=======================================
@@ -63,14 +52,6 @@ public class BulletObjManager : HuyMonoBehaviour
         Debug.LogWarning(transform.name + ": Load Rb", transform.gameObject);
     }
 
-    protected virtual void LoadBody()
-    {
-        if (this.body != null) return;
-        this.body = transform.GetComponent<CapsuleCollider2D>();
-        this.body.isTrigger = true;
-        Debug.LogWarning(transform.name + ": Load Body", transform.gameObject);
-    }
-
     protected virtual void LoadModel()
     {
         if (this.model != null) return;
@@ -79,25 +60,25 @@ public class BulletObjManager : HuyMonoBehaviour
     }
 
     //Script
-    protected virtual void LoadFly()
+    protected virtual void LoadCtrl()
     {
-        if (this.fly != null) return;
-        this.fly = transform.GetComponentInChildren<BulletObjFly>();
-        Debug.LogWarning(transform.name + ": Load Fly", transform.gameObject);
+        if (this.ctrl != null) return;
+        this.ctrl = transform.GetComponent<BulletObjCtrl>();
+        Debug.LogWarning(transform.name + ": Load Ctrl", transform.gameObject);
     }
 
-    protected virtual void LoadStat()
+    protected virtual void LoadMovement()
     {
-        if (this.stat != null) return;
-        this.stat = transform.GetComponent<BulletObjStat>();
-        Debug.LogWarning(transform.name + ": Load Stat", transform.gameObject);
+        if (this.movement != null) return;
+        this.movement = transform.GetComponentInChildren<BulletObjMovement>();
+        Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
     }
 
-    protected virtual void LoadDespawnByTime()
+    protected virtual void LoadDespawn()
     {
-        if (this.despawnByTime != null) return;
-        this.despawnByTime = transform.GetComponentInChildren<BulletDespawnByTime>();
-        Debug.LogWarning(transform.name + ": Load DespawnByTime", transform.gameObject);
+        if (this.despawn != null) return;
+        this.despawn = transform.GetComponentInChildren<BulletObjDespawn>();
+        Debug.LogWarning(transform.name + ": Load Despawn", transform.gameObject);
     }
 
     protected virtual void LoadDamageSender()

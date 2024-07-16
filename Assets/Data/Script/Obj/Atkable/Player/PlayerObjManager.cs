@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerObjManager : HuyMonoBehaviour
 {
     #region Variable
@@ -17,19 +16,7 @@ public class PlayerObjManager : HuyMonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
-    [SerializeField] protected CapsuleCollider2D body;
-    public CapsuleCollider2D Body => body;
-
     [Header("Script")]
-    [SerializeField] protected PlayerObjMovement movement;
-    public PlayerObjMovement Movement => movement;
-
-    [SerializeField] protected PlayerObjSkill skill;
-    public PlayerObjSkill Skill => skill;
-
-    [SerializeField] protected PlayerObjStat stat;
-    public PlayerObjStat Stat => stat;
-
     [SerializeField] protected PlayerDamageReceiver damageReceiver;
     public PlayerDamageReceiver DamageReceiver => damageReceiver;
 
@@ -46,12 +33,8 @@ public class PlayerObjManager : HuyMonoBehaviour
         //Other
         this.LoadModel();
         this.LoadRigidbody();
-        this.LoadBody();
 
         //Script
-        this.LoadMovement();
-        this.LoadSkill();
-        this.LoadStat();
         this.LoadDamageReceiver();
         this.LoadCtrl();
     }
@@ -81,37 +64,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         Debug.LogWarning(transform.name + ": Load Rigidbody", transform.gameObject);
     }
 
-    protected virtual void LoadBody()
-    {
-        if (this.body != null) return;
-        this.body = transform.GetComponent<CapsuleCollider2D>();
-        this.body.isTrigger = false;
-        this.body.size = new Vector2(1, 1);
-        Debug.LogWarning(transform.name + ": Load Body", transform.gameObject);
-    }
-
     //Script
-    protected virtual void LoadMovement()
-    {
-        if (this.movement != null) return;
-        this.movement = transform.GetComponentInChildren<PlayerObjMovement>();
-        Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
-    }
-
-    protected virtual void LoadSkill()
-    {
-        if (this.skill != null) return;
-        this.skill = transform.GetComponentInChildren<PlayerObjSkill>();
-        Debug.LogWarning(transform.name + ": Load Skill", transform.gameObject);
-    }
-
-    protected virtual void LoadStat()
-    {
-        if (this.stat != null) return;
-        this.stat = transform.GetComponent<PlayerObjStat>();
-        Debug.LogWarning(transform.name + ": Load Stat", transform.gameObject);
-    }
-
     protected virtual void LoadDamageReceiver()
     {
         if (this.damageReceiver != null) return;

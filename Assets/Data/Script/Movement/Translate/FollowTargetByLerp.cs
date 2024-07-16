@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowTargetByLerp : MovementTrans
+public abstract class FollowTargetByLerp : MovementTrans
 {
     //=======================================Movement Trans=======================================
     protected override void Move()
@@ -11,7 +11,7 @@ public class FollowTargetByLerp : MovementTrans
     }
 
     //==========================================Movement==========================================
-    protected virtual void DoMove()
+    protected override void DoMove()
     {
         this.moveObj.position = Vector3.Lerp(this.moveObj.position, this.target.position, this.MoveSpeed * Time.fixedDeltaTime);
     }

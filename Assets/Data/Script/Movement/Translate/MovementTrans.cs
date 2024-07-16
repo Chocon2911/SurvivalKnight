@@ -29,6 +29,9 @@ public abstract class MovementTrans : BaseMovement
         this.target = target;
     }
 
-    //==========================================Movement==========================================
-    protected abstract void Move();
+    //===========================================Other============================================
+    protected override void DefaultStat()
+    {
+        this.movementType = MovementType.Translate;
+    }
 }

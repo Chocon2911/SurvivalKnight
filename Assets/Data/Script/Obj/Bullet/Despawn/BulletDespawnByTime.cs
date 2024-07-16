@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageReceiver : DamageReceiver
+public class BulletDespawnByTime : DespawnByTime
 {
-    [Header("Enemy DamageReceiver")]
+    [Header("Bullet Despawn By Time")]
     [Header("Script")]
-    [SerializeField] protected EnemyObjManager manager;
-    public EnemyObjManager Manager => manager;
+    [SerializeField] protected BulletObjManager manager;
+    public BulletObjManager Manager => manager;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -20,13 +20,13 @@ public class EnemyDamageReceiver : DamageReceiver
     protected virtual void LoadManager()
     {
         if (this.manager != null) return;
-        this.manager = transform.parent.GetComponent<EnemyObjManager>();
+        this.manager = transform.parent.GetComponent<BulletObjManager>();
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
     }
 
-    //======================================Damage Receiver=======================================
-    protected override void DespawnObj()
+    //=========================================Despawner==========================================
+    public override void DespawnObj()
     {
-        EnemySpawner.Instance.Despawn(transform.parent);
+        BulletSpawner.Instance.Despawn(transform.parent);
     }
 }

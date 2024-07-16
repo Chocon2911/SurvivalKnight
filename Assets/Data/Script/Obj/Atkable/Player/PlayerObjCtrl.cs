@@ -2,60 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObjCtrl : AtkableObjCtrl
+[RequireComponent(typeof(CapsuleCollider2D))]
+public class PlayerObjCtrl : PlayerObjAbstract
 {
     [Header("Player Obj Ctrl")]
-    [Header("Script")]
-    [SerializeField] protected PlayerObjManager manager;
-    public PlayerObjManager Manager => manager;
+    [Header("Other")]
+    [SerializeField] protected CapsuleCollider2D body;
+    public CapsuleCollider2D Body => body;
 
     //===========================================Unity============================================
-    protected virtual void OnEnable()
-    {
-        this.manager.Stat.DefaultStat();
-    }
-
-    protected virtual void Update()
-    {
-        this.ChooseSKillCtrl();
-        this.ActionCtrl();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadManager();
+        //Other
+        this.LoadBody();
     }
 
     //=======================================Load Component=======================================
-    protected virtual void LoadManager()
+    protected virtual void LoadBody()
     {
-        if (this.manager != null) return;
-        this.manager = transform.GetComponent<PlayerObjManager>();
-        Debug.Log(transform.name + ": Load Manager", transform.gameObject);
+        if (this.body != null) return;
+        this.body = transform.GetComponent<CapsuleCollider2D>();
+        this.body.isTrigger = false;
+        this.body.size = new Vector2(1, 1);
+        Debug.LogWarning(transform.name + ": Load Body", transform.gameObject);
     }
 
     //============================================Ctrl============================================
-    protected virtual void ActionCtrl()
-    {
-        if (this.manager.Skill.Dash.IsDoing || this.manager.Skill.Dash.IsCharging) return;
-        this.manager.Movement.Move();
-        this.manager.Skill.Dash.ActivateSkill();
-    }
-
-    protected virtual void ChooseSKillCtrl()
-    {
-        if (InputManager.Instance.NumberPressed == 10) return;
-        if (InputManager.Instance.NumberPressed == 1)
-        {
-            this.manager.Skill.Shoot.transform.gameObject.SetActive(true);
-            this.manager.Skill.Shotgun.transform.gameObject.SetActive(false);
-        }
-
-        if (InputManager.Instance.NumberPressed == 2)
-        {
-            this.manager.Skill.Shoot.transform.gameObject.SetActive(false);
-            this.manager.Skill.Shotgun.transform.gameObject.SetActive(true);
-        }
-    }
 }

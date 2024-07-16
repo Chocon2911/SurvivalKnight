@@ -18,12 +18,6 @@ public class EnemyObjManager : HuyMonoBehaviour
     public CapsuleCollider2D Body => body;
 
     [Header("Script")]
-    [SerializeField] protected EnemyObjStat stat;
-    public EnemyObjStat Stat => stat;
-
-    [SerializeField] protected EnemyObjMovement movement;
-    public EnemyObjMovement Movement => movement;
-
     [SerializeField] protected EnemyDamageReceiver damageReceiver;
     public EnemyDamageReceiver DamageReceiver => damageReceiver;
 
@@ -37,14 +31,7 @@ public class EnemyObjManager : HuyMonoBehaviour
         this.LoadBody();
 
         //Script
-        this.LoadStat();
-        this.LoadMovement();
         this.LoadDamageReceiver();
-    }
-
-    protected virtual void OnEnable()
-    {
-        this.stat.DefaultStat();
     }
 
     //=======================================Load Component=======================================
@@ -78,20 +65,6 @@ public class EnemyObjManager : HuyMonoBehaviour
     }
 
     //Script
-    protected virtual void LoadStat()
-    {
-        if (this.stat != null) return;
-        this.stat = transform.GetComponent<EnemyObjStat>();
-        Debug.LogWarning(transform.name + ": Load Stat", transform.gameObject);
-    }
-
-    protected virtual void LoadMovement()
-    {
-        if (this.movement != null) return;
-        this.movement = transform.GetComponentInChildren<EnemyObjMovement>();
-        Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
-    }
-
     protected virtual void LoadDamageReceiver()
     {
         if (this.damageReceiver != null) return;

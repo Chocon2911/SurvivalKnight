@@ -10,19 +10,23 @@ public abstract class MovementRb : BaseMovement
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
-    //===========================================Unity============================================
-    protected virtual void Update()
-    {
-        this.Move();
-    }
+    [Header("Stat")]
+    [SerializeField] protected MovementRbType movementRbType;
+    public MovementRbType MovementRbType => movementRbType;
 
-    //==========================================Movement==========================================
-    protected abstract void Move();
+    //===========================================Unity============================================
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadRb();
+    }
 
     //=======================================Load Component=======================================
-    public void SetRb(Rigidbody2D rb)
-    {
-        this.rb = rb;
-    }
+    protected abstract void LoadRb();
 
+    //===========================================Other============================================
+    protected override void DefaultStat()
+    {
+        this.movementType = MovementType.Rb;
+    }
 }

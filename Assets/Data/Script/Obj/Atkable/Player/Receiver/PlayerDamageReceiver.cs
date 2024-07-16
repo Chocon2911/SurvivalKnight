@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageReceiver : DamageReceiver
+public class PlayerDamageReceiver : DamageReceiver
 {
-    [Header("Enemy DamageReceiver")]
+    [Header("Player Damage Receiver")]
     [Header("Script")]
-    [SerializeField] protected EnemyObjManager manager;
-    public EnemyObjManager Manager => manager;
+    [SerializeField] protected PlayerObjManager manager;
+    public PlayerObjManager Manager => manager;
 
-    //===========================================Unity============================================
+    //=======================================Load Component=======================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -20,13 +20,18 @@ public class EnemyDamageReceiver : DamageReceiver
     protected virtual void LoadManager()
     {
         if (this.manager != null) return;
-        this.manager = transform.parent.GetComponent<EnemyObjManager>();
+        this.manager = transform.parent.GetComponent<PlayerObjManager>();
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
     }
 
     //======================================Damage Receiver=======================================
     protected override void DespawnObj()
     {
-        EnemySpawner.Instance.Despawn(transform.parent);
+        
+    }
+
+    public override void DefaultStat()
+    {
+        base.DefaultStat();
     }
 }
