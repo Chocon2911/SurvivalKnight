@@ -18,7 +18,7 @@ public abstract class FollowTargetVelocity : MoveByVelocity
     //======================================Move By Velocity======================================
     protected override void Move()
     {
-        //Any Condition here
+        base.Move();
         this.DoFollow();
     }
 

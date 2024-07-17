@@ -21,6 +21,11 @@ public abstract class MovementRb : BaseMovement
         this.LoadRb();
     }
 
+    protected virtual void Update()
+    {
+        this.Move();
+    }
+
     //=======================================Load Component=======================================
     protected abstract void LoadRb();
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Shotgun : ShootSkill
+public abstract class ShotgunSkill : ShootSkill
 {
     [Header("Shotgun")]
     [Header("Stat")]

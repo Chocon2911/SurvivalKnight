@@ -22,11 +22,21 @@ public class PlayerObjManager : HuyMonoBehaviour
 
     [SerializeField] protected PlayerObjCtrl ctrl;
     public PlayerObjCtrl Ctrl => ctrl;
+
+    [SerializeField] protected PlayerObjMovement movement;
+    public PlayerObjMovement Movement => movement;
+
+    [SerializeField] protected PlayerObjWeapon weapon;
+    public PlayerObjWeapon Weapon => weapon;
+
+    [SerializeField] protected PlayerObjSkill skill;
+    public PlayerObjSkill Skill => skill;
     #endregion
 
 
 
     #region Unity
+    //=======================================Load Component=======================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -37,6 +47,9 @@ public class PlayerObjManager : HuyMonoBehaviour
         //Script
         this.LoadDamageReceiver();
         this.LoadCtrl();
+        this.LoadMovement();
+        this.LoadWeapon();
+        this.LoadSkill();
     }
     #endregion
 
@@ -77,6 +90,27 @@ public class PlayerObjManager : HuyMonoBehaviour
         if (this.ctrl != null) return;
         this.ctrl = transform.GetComponent<PlayerObjCtrl>();
         Debug.LogWarning(transform.name + ": Load Ctrl", transform.gameObject);
+    }
+
+    protected virtual void LoadMovement()
+    {
+        if (this.movement != null) return;
+        this.movement = transform.GetComponentInChildren<PlayerObjMovement>();
+        Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
+    }
+
+    protected virtual void LoadWeapon()
+    {
+        if (this.weapon != null) return;
+        this.weapon = transform.GetComponentInChildren<PlayerObjWeapon>();
+        Debug.LogWarning(transform.name + ": Load Weapon", transform.gameObject);
+    }
+
+    protected virtual void LoadSkill()
+    {
+        if (this.skill != null) return;
+        this.skill = transform.GetComponentInChildren<PlayerObjSkill>();
+        Debug.LogWarning(transform.name + ": Load Skill", transform.gameObject);
     }
     #endregion
 }

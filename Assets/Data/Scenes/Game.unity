@@ -801,6 +801,9 @@ MonoBehaviour:
   rb: {fileID: 425942212}
   damageReceiver: {fileID: 674236983}
   ctrl: {fileID: 425942215}
+  movement: {fileID: 0}
+  weapon: {fileID: 0}
+  skill: {fileID: 0}
 --- !u!50 &425942212
 Rigidbody2D:
   serializedVersion: 4
@@ -1259,6 +1262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644185630}
+  - component: {fileID: 644185631}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -1282,6 +1286,21 @@ Transform:
   - {fileID: 179845993}
   m_Father: {fileID: 425942210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644185631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644185629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc71b1834fd60443ab3cf199042a2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 425942211}
+  skills: []
+  maxSkillAmount: 0
 --- !u!1 &650477677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,6 +2045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 425942211}
+  keyBoard: {fileID: 0}
 --- !u!1 &1176750467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,6 +3749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2061592027}
+  - component: {fileID: 2061592028}
   m_Layer: 0
   m_Name: FollowPlayer
   m_TagString: Untagged
@@ -3751,6 +3772,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 940102160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2061592028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061592026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c77641f0ab7824aace9a9120106cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementType: 0
+  isMoving: 0
+  MoveSpeed: 1
+  moveObj: {fileID: 940102160}
+  target: {fileID: 425942210}
 --- !u!1 &2110087307
 GameObject:
   m_ObjectHideFlags: 0

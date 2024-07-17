@@ -23,6 +23,12 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
         Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
     }
 
+    //============================================Get=============================================
+    protected virtual void GetDir()
+    {
+        this.moveDir = InputManager.Instance.MoveDir;
+    }
+
     //======================================Move By Velocity======================================
     protected override void LoadRb()
     {
@@ -33,12 +39,15 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
 
     protected override void Move()
     {
+        base.Move();
+        this.GetDir();
+
+        if (this.moveDir == Vector2.zero) return;
         this.DoMove();
     }
 
     protected override void DoMove()
     {
-        this.moveDir = InputManager.Instance.MoveDir;
         base.DoMove();
     }
 }

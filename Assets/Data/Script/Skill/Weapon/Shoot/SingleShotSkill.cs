@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SingleGun : ShootSkill
+public abstract class SingleShotSkill : ShootSkill
 {
     //===========================================Shoot============================================
     protected override void ChargeSkill()

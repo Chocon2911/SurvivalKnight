@@ -20,17 +20,24 @@ public abstract class BaseMovement : HuyMonoBehaviour
         this.DefaultStat();
     }
 
-    protected virtual void Update()
+    protected override void LoadComponent()
     {
-        this.Move();
+        base.LoadComponent();
+        this.DefaultStat();
     }
 
     //==========================================Movement==========================================
-    protected abstract void Move();
+    protected virtual void Move()
+    {
+        this.isMoving = false;
+        this.StopMove();
+    } 
+
     protected virtual void DoMove()
     {
         this.isMoving = true;
     }
+
     protected abstract void StopMove();
 
     //===========================================Other============================================
