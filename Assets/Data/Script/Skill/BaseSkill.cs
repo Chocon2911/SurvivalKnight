@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class BaseSkill : HuyMonoBehaviour
 {
     #region Variable
+    [Header("Attackable Obj Skill")]
+    [Header("Stat")]
     public float CooldownDelay;
     public float CooldownTimer;
     public float ChargeDelay;
@@ -12,14 +14,13 @@ public abstract class BaseSkill : HuyMonoBehaviour
     public float DoingLength;
     public float DoingTimer;
 
-    [Header("Attackable Obj Skill")]
-    [Header("Stat")]
     [SerializeField] protected bool isReady;
-    [SerializeField] protected bool isCharging;
-    [SerializeField] protected bool isDoing;
-
     public bool IsReady => isReady;
+
+    [SerializeField] protected bool isCharging;
     public bool IsCharging => isCharging;
+
+    [SerializeField] protected bool isDoing;
     public bool IsDoing => isDoing;
     #endregion
 

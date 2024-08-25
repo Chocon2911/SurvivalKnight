@@ -8,6 +8,9 @@ public class GameManager : HuyMonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance;
 
+    [SerializeField] protected Transform mouseObj;
+    public Transform MouseObj => mouseObj;
+
     [Header("Stat")]
     [SerializeField] protected Vector3 mousePos;
     public Vector3 MousePos => mousePos;
@@ -25,14 +28,31 @@ public class GameManager : HuyMonoBehaviour
         base.Awake();
     }
 
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadMouseObj();
+    }
+
     protected virtual void FixedUpdate()
     {
         this.GetMousePos();
+    }
+
+    //=======================================Load Component=======================================
+    protected virtual void LoadMouseObj()
+    {
+        if (this.mouseObj != null) return;
+        this.mouseObj = transform.Find("Mouse");
+        Debug.LogWarning(transform.name + ": Load MouseObj", transform.gameObject);
     }
 
     //============================================Get=============================================
     protected virtual void GetMousePos()
     {
         this.mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10));
+
+        if (this.mousePos == null) return;
+        this.mouseObj.position = this.mousePos;
     }
 }

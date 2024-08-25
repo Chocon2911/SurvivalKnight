@@ -24,14 +24,10 @@ public class PlayerObjSkill : PlayerObjAbstract
     protected virtual void LoadSkills()
     {
         if (this.skills.Count > 0) return;
-        foreach (CharacterSkill skill in transform)
+        foreach (Transform child in transform)
         {
-            if (this.skills.Count >= this.maxSkillAmount)
-            {
-                skill.transform.gameObject.SetActive(false);
-                break;
-            }
-            this.skills.Add(skill);
+            CharacterSkill skill = child.GetComponent<CharacterSkill>();
+            if (skill != null) this.skills.Add(skill);
         }
 
         if (this.skills.Count == 0) return;

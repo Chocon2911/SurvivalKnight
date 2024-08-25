@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PlayerObjWeapon : PlayerObjAbstract
 {
-    
+    [SerializeField] protected List<BaseWeapon> weapons;
+    public List<BaseWeapon> Weapons => weapons;
 }
