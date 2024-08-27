@@ -55,6 +55,7 @@ public class EnemySpawner : Spawner
         if (newEnemyObj == null)
         {
             Debug.LogError(transform.name + ": new enemy obj is null", transform.gameObject);
+            // When it reaches max amount, it will be null
         }
 
         else

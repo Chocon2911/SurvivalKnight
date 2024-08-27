@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class DamageSR : HuyMonoBehaviour
 {
-    public virtual float AtkDamage { get; set; }
+    public float AtkDamage;
 }

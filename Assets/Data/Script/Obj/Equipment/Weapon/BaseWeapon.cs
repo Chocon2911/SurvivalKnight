@@ -5,18 +5,16 @@ using UnityEngine;
 public abstract class BaseWeapon : BaseObj
 {
     [Header("Base Weapon")]
-    [Header("Other")]
+    // Other
     [SerializeField] protected SpriteRenderer model;
     public SpriteRenderer Model => model;
 
-    [Header("Script")]
+    //Script
     [SerializeField] protected List<WeaponSkill> weaponSkills;
     public List<WeaponSkill> WeaponSkills => weaponSkills;
 
     [SerializeField] protected WeaponType weaponType;
-
-    [Header("Stat")]
-    public float AppearRad;
+    public WeaponType WeaponType => weaponType;
 
     //===========================================Unity============================================
     protected override void LoadComponent()

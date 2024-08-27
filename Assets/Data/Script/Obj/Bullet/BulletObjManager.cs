@@ -27,6 +27,9 @@ public class BulletObjManager : HuyMonoBehaviour
     [SerializeField] protected BulletDamageSender damageSender;
     public BulletDamageSender DamageSender => damageSender;
 
+    [SerializeField] protected BulletDataReceiver bulletReceiver;
+    public BulletDataReceiver BulletDataReceiver => bulletReceiver;
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -40,6 +43,7 @@ public class BulletObjManager : HuyMonoBehaviour
         this.LoadMovement();
         this.LoadDespawn();
         this.LoadDamageSender();
+        this.LoadBulletReceiver();
     }
 
     //=======================================Load Component=======================================
@@ -86,5 +90,12 @@ public class BulletObjManager : HuyMonoBehaviour
         if (this.damageSender != null) return;
         this.damageSender = transform.GetComponentInChildren<BulletDamageSender>();
         Debug.LogWarning(transform.name + ": Load DamageSender", transform.gameObject);
+    }
+
+    protected virtual void LoadBulletReceiver()
+    {
+        if (this.bulletReceiver != null) return;
+        this.bulletReceiver = transform.Find("BulletReceiver").GetComponent<BulletDataReceiver>();
+        Debug.LogWarning(transform.name + ": Load Bullet Receiver", transform.gameObject);
     }
 }

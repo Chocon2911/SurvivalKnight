@@ -10,7 +10,7 @@ public abstract class DamageReceiver : DamageSR
     public bool IsDead => isDead;
 
     //Get Set
-    public virtual AtkObjType AtkObjType { get; set; }
+    public AtkObjType AtkObjType;
 
     //==========================================Receive===========================================
     public virtual void Receive(float atkDamageReceive)

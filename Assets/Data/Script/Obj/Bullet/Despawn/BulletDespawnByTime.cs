@@ -6,27 +6,27 @@ public class BulletDespawnByTime : DespawnByTime
 {
     [Header("Bullet Despawn By Time")]
     [Header("Script")]
-    [SerializeField] protected BulletObjManager manager;
-    public BulletObjManager Manager => manager;
+    [SerializeField] protected BulletObjDespawn bulletObjDespawn;
+    public BulletObjDespawn BulletObjDespawn => bulletObjDespawn;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadManager();
+        this.LoadBulletObjDespawn();
     }
 
     //=======================================Load Component=======================================
-    protected virtual void LoadManager()
+    protected virtual void LoadBulletObjDespawn()
     {
-        if (this.manager != null) return;
-        this.manager = transform.parent.GetComponent<BulletObjManager>();
-        Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
+        if (this.bulletObjDespawn != null) return;
+        this.bulletObjDespawn = transform.parent.GetComponent<BulletObjDespawn>();
+        Debug.LogWarning(transform.name + ": Load Bullet Obj Despawn", transform.gameObject);
     }
 
     //=========================================Despawner==========================================
     public override void DespawnObj()
     {
-        BulletSpawner.Instance.Despawn(transform.parent);
+        BulletSpawner.Instance.Despawn(this.bulletObjDespawn.transform.parent);
     }
 }

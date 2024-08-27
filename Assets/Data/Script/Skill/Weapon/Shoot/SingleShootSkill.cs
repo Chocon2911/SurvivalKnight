@@ -18,6 +18,7 @@ public abstract class SingleShootSkill : ShootSkill
         Vector3 spawnPos = this.GetSpawnPos(dir);
         Quaternion spawnRot = this.GetSpawnRot(dir);
 
-        this.GetNewBullet(spawnPos, spawnRot);
+        Transform newBullet = this.GetNewBullet(spawnPos, spawnRot);
+        newBullet.gameObject.SetActive(true);
     }
 }

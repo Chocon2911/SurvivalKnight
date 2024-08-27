@@ -27,6 +27,13 @@ public abstract class BaseSkill : HuyMonoBehaviour
 
 
     #region Unity
+    //===========================================Unity============================================
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.DefaultStat();
+    }
+
     protected virtual void LateUpdate()
     {
         this.CheckIfSkillIsReady();
@@ -136,7 +143,7 @@ public abstract class BaseSkill : HuyMonoBehaviour
 
     #region Other
     //===========================================Other============================================
-    public virtual void DefaultStat()
+    protected virtual void DefaultStat()
     {
         this.isDoing = false;
         this.isCharging = false;

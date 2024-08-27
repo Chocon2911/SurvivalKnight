@@ -5,16 +5,40 @@ using UnityEngine;
 public abstract class ShootSkill : WeaponSkill
 {
     [Header("Shoot Skill")]
-    [Header("Other")]
+    // Other
     [SerializeField] protected Transform mainObj;
     public Transform MainObj => mainObj;
 
     [SerializeField] protected Transform targetObj;
     public Transform TargetObj => targetObj;
 
-    [Header("Stat")]
+    // Script
+    [SerializeField] protected BulletDataSender bulletSender;
+    public BulletDataSender BulletSender => bulletSender;
+
+    // Stat
     public string BulletName;
-    public float AppearRad;
+    public float AppearRange;
+    public float BulletSpeed;
+    public float BulletDespawnTime;
+    public float BulletDespawnDistance;
+
+
+
+    //===========================================Unity============================================
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadBulletSender();
+    }
+
+    //=======================================Load Component=======================================
+    protected virtual void LoadBulletSender()
+    {
+        if (this.bulletSender != null) return;
+        this.bulletSender = transform.GetComponentInChildren<BulletDataSender>();
+        Debug.LogWarning(transform.name + ": Load BulletSender", transform.gameObject);
+    }
 
     //============================================Set=============================================
     public virtual void SetMainObj(Transform mainObj)
@@ -28,22 +52,33 @@ public abstract class ShootSkill : WeaponSkill
     }
 
     //============================================Get=============================================
-    protected virtual void GetNewBullet(Vector3 spawnPos, Quaternion spawnRot)
+    protected virtual Transform GetNewBullet(Vector3 spawnPos, Quaternion spawnRot)
     {
         Transform newBullet = BulletSpawner.Instance.SpawnByName(this.BulletName, spawnPos, spawnRot);
 
         if (newBullet == null)
         {
             Debug.LogError(transform.name + ": New Bullet is null", transform.gameObject);
-            return;
+            return null;
         }
 
-        newBullet.gameObject.SetActive(true);
+        BulletObjManager bulletObjManager = newBullet.GetComponentInChildren<BulletObjManager>();
+
+        if (bulletObjManager == null)
+        {
+            Debug.LogError(transform.name + ": Bullet Obj Manager is null", transform.gameObject);
+            return null;
+        }
+
+        this.bulletSender.DefaultStat(this.Damage, this.BulletSpeed, this.BulletDespawnTime, this.BulletDespawnDistance);
+        this.bulletSender.Send(bulletObjManager.BulletDataReceiver);
+
+        return newBullet;
     }
 
     protected virtual Vector3 GetSpawnPos(Vector3 dir)
     {
-        return this.mainObj.transform.position + dir.normalized * this.AppearRad;
+        return this.mainObj.transform.position + dir.normalized * this.AppearRange;
     }
 
     protected virtual Vector3 GetDir()
