@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 189986309}
   - component: {fileID: 189986310}
   m_Layer: 0
-  m_Name: Shotgun
+  m_Name: Skill_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3548,7 +3548,7 @@ GameObject:
   - component: {fileID: 1802846328}
   - component: {fileID: 1802846329}
   m_Layer: 0
-  m_Name: SingleShoot
+  m_Name: Skill_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

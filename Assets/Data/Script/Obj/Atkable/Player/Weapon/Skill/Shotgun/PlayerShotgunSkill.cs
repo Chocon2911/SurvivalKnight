@@ -60,8 +60,6 @@ public class PlayerShotgunSkill : ShotgunSkill
             return;
         }
 
-        Debug.Log("Default Stat", transform.gameObject);
-
         // Base Skill
         this.CooldownDelay = this.so.CooldownDelay;
         this.ChargeDelay = this.so.ChargingDelay;
