@@ -8,16 +8,11 @@ public class PlayerGunM4 : GunM4
     // Script
     [SerializeField] protected PlayerObjWeapon weapon;
     public PlayerObjWeapon Weapon => weapon;
-
-    [SerializeField] protected PlayerSingleShootSkill singleShootSkill;
-    public PlayerSingleShootSkill SingleShootSkill => singleShootSkill;
-
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadWeapon();
-        this.LoadSingleShootSkill();
     }
 
     protected virtual void Update()
@@ -34,16 +29,20 @@ public class PlayerGunM4 : GunM4
         Debug.LogWarning(transform.name + ": Load Weapon", transform.gameObject);
     }
 
-    protected virtual void LoadSingleShootSkill()
-    {
-        if (this.singleShootSkill != null) return;
-        this.singleShootSkill = transform.GetComponentInChildren<PlayerSingleShootSkill>();
-        Debug.LogWarning(transform.name + ": Load SingleShootSkill", transform.gameObject);
-    }
-
     //========================================Player Shoot========================================
     protected virtual void PlayerShoot()
     {
-        if (InputManager.Instance.LeftMouse) this.singleShootSkill.ActivateSkill();
+        foreach (WeaponSkill skill in this.weaponSkills)
+        {
+            if (InputManager.Instance.LeftMouse && skill.WeaponSkillCode == WeaponSkillCode.First)
+            {
+                skill.ActivateSkill();
+            }
+
+            if (InputManager.Instance.RightMouse && skill.WeaponSkillCode == WeaponSkillCode.Second)
+            {
+                skill.ActivateSkill();
+            }
+        }
     }
 }

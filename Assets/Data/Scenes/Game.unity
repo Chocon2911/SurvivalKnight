@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74500ba83485e4b4a915f019dbd98780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CooldownDelay: 0
+  CooldownDelay: 1
   CooldownTimer: 0
   ChargeDelay: 0
   ChargeTimer: 0
@@ -369,18 +369,18 @@ MonoBehaviour:
   isCharging: 0
   isDoing: 0
   weapon: {fileID: 854994420}
-  weaponSkillCode: 0
-  Damage: 0
+  weaponSkillCode: 2
+  Damage: 1
   mainObj: {fileID: 0}
   targetObj: {fileID: 0}
   bulletSender: {fileID: 519615409}
-  BulletName: 
-  AppearRange: 0
-  BulletSpeed: 0
-  BulletDespawnTime: 0
-  BulletDespawnDistance: 0
-  SpreadRange: 0
-  PelletAmount: 0
+  BulletName: Bullet_1
+  AppearRange: 1
+  BulletSpeed: 20
+  BulletDespawnTime: 2
+  BulletDespawnDistance: 30
+  SpreadRange: 45
+  PelletAmount: 3
   so: {fileID: 11400000, guid: 50729c7465d7d1b44a7fa775fc7af722, type: 2}
   playerObjWeapon: {fileID: 837390794}
 --- !u!1 &236251345
@@ -1665,6 +1665,7 @@ MonoBehaviour:
   numberPressed: 0
   dash: 0
   leftMouse: 0
+  rightMouse: 0
 --- !u!1 &837390792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,9 +1766,9 @@ MonoBehaviour:
   model: {fileID: 2002363621}
   weaponSkills:
   - {fileID: 1802846329}
+  - {fileID: 189986310}
   weaponType: 1
   weapon: {fileID: 837390794}
-  singleShootSkill: {fileID: 1802846329}
 --- !u!1 &904430578
 GameObject:
   m_ObjectHideFlags: 0

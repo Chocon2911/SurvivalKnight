@@ -52,7 +52,7 @@ public abstract class ShotgunSkill : ShootSkill
         for (int i = 0; i < this.PelletAmount; i++)
         {
             spawnRot.eulerAngles = new Vector3(0, 0, spawnAngle);
-            this.GetNewBullet(spawnPos, spawnRot);
+            this.GetNewBullet(spawnPos, spawnRot).gameObject.SetActive(true);
             spawnAngle -= angle;
         }
     }

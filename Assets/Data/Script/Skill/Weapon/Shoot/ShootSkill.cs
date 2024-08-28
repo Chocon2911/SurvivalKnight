@@ -70,7 +70,9 @@ public abstract class ShootSkill : WeaponSkill
             return null;
         }
 
-        Vector2 flyDir = this.GetDir();
+        float yDir = Mathf.Sin(spawnRot.eulerAngles.z * Mathf.Deg2Rad);
+        float xDir = Mathf.Cos(spawnRot.eulerAngles.z * Mathf.Deg2Rad);
+        Vector2 flyDir = new Vector2 (xDir, yDir); 
         this.bulletSender.SetStat(this.Damage, this.BulletSpeed, flyDir, this.BulletDespawnTime, this.BulletDespawnDistance);
         this.bulletSender.Send(bulletObjManager.BulletDataReceiver);
 

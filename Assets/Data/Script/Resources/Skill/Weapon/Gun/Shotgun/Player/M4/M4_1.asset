@@ -22,4 +22,5 @@ MonoBehaviour:
   AppearRange: 1
   BulletDespawnTime: 2
   BulletDespawnDistance: 30
+  SpreadRange: 45
   PelletAmount: 3

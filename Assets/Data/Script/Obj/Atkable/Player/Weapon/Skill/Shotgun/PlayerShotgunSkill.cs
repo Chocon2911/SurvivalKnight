@@ -15,11 +15,10 @@ public class PlayerShotgunSkill : ShotgunSkill
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
+        this.LoadSO();
         base.LoadComponent();
         // Script
-        this.LoadSO();
         this.LoadPlayerObjWeapon();
-        this.DefaultStat();
     }
 
     protected virtual void OnEnable()
@@ -52,13 +51,16 @@ public class PlayerShotgunSkill : ShotgunSkill
     }
 
     //===========================================Other============================================
-    protected virtual void DefautStat()
+    protected override void DefaultStat()
     {
+        base.DefaultStat();
         if (this.so == null)
         {
             Debug.Log(transform.name + ": SO is null", transform.gameObject);
             return;
         }
+
+        Debug.Log("Default Stat", transform.gameObject);
 
         // Base Skill
         this.CooldownDelay = this.so.CooldownDelay;
@@ -70,6 +72,10 @@ public class PlayerShotgunSkill : ShotgunSkill
         this.DoingTimer = 0;
 
         // Weapon Skill
+        this.Damage = this.so.Damage;
+        this.weaponSkillCode = this.so.WeaponSkillCode;
+
+        // Gun Skill
         this.BulletName = this.so.BulletName;
         this.BulletSpeed = this.so.BulletSpeed;
         this.AppearRange = this.so.AppearRange;
@@ -77,6 +83,7 @@ public class PlayerShotgunSkill : ShotgunSkill
         this.BulletDespawnDistance = this.so.BulletDespawnDistance;
 
         // Shotgun Skill
+        this.SpreadRange = this.so.SpreadRange;
         this.PelletAmount = this.so.PelletAmount;
     }
 }

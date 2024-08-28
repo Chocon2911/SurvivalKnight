@@ -5,5 +5,6 @@ using UnityEngine;
 public class ShotgunSkillSO : GunSkillSO
 {
     [Header("Shotgun Skill SO")]
+    public float SpreadRange;
     public int PelletAmount;
 }

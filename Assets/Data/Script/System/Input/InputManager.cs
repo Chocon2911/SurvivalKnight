@@ -21,6 +21,9 @@ public class InputManager : HuyMonoBehaviour
 
     [SerializeField] protected bool leftMouse;
     public bool LeftMouse => leftMouse;
+
+    [SerializeField] protected bool rightMouse;
+    public bool RightMouse => rightMouse;
     #endregion
 
 
@@ -43,7 +46,7 @@ public class InputManager : HuyMonoBehaviour
         this.GetMoveDir();
         this.GetNumberPressed();
         this.GetDash();
-        this.GetShoot();
+        this.GetMouse();
     }
     #endregion
 
@@ -82,10 +85,19 @@ public class InputManager : HuyMonoBehaviour
         else this.dash = false;
     }
 
-    protected virtual void GetShoot()
+    protected virtual void GetMouse()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0)) this.leftMouse = true;
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0))
+        {
+            this.leftMouse = true;
+        }
         else this.leftMouse = false;
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse1))
+        {
+            this.rightMouse = true;
+        }
+        else this.rightMouse = false;
     }
     #endregion
 
