@@ -70,7 +70,8 @@ public abstract class ShootSkill : WeaponSkill
             return null;
         }
 
-        this.bulletSender.DefaultStat(this.Damage, this.BulletSpeed, this.BulletDespawnTime, this.BulletDespawnDistance);
+        Vector2 flyDir = this.GetDir();
+        this.bulletSender.SetStat(this.Damage, this.BulletSpeed, flyDir, this.BulletDespawnTime, this.BulletDespawnDistance);
         this.bulletSender.Send(bulletObjManager.BulletDataReceiver);
 
         return newBullet;

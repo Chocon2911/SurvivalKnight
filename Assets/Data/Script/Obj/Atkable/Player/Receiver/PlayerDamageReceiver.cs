@@ -27,11 +27,6 @@ public class PlayerDamageReceiver : DamageReceiver
     //======================================Damage Receiver=======================================
     protected override void DespawnObj()
     {
-        
-    }
 
-    public override void DefaultStat()
-    {
-        base.DefaultStat();
     }
 }

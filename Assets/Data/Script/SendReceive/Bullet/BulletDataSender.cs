@@ -8,6 +8,7 @@ public class BulletDataSender : HuyMonoBehaviour
     // Stat
     public float Damage;
     public float BulletSpeed;
+    public Vector2 FlyDir;
     public float BulletDespawnTime;
     public float BulletDespawnDistance;
 
@@ -20,14 +21,15 @@ public class BulletDataSender : HuyMonoBehaviour
             return;
         }
 
-        receiver.Receive(this.Damage, this.BulletSpeed, this.BulletDespawnTime, this.BulletDespawnDistance);
+        receiver.Receive(this.Damage, this.BulletSpeed, this.FlyDir, this.BulletDespawnTime, this.BulletDespawnDistance);
     }
 
     //===========================================Other============================================
-    public virtual void DefaultStat(float damage, float bulletSpeed, float bulletDespawnTime, float bulletDespawnDistance)
+    public virtual void SetStat(float damage, float bulletSpeed, Vector2 flyDir, float bulletDespawnTime, float bulletDespawnDistance)
     {
         this.Damage = damage;
         this.BulletSpeed = bulletSpeed;
+        this.FlyDir = flyDir;
         this.BulletDespawnTime = bulletDespawnTime;
         this.BulletDespawnDistance = bulletDespawnDistance;
     }

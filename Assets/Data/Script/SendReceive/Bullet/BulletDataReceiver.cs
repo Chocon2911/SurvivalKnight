@@ -24,10 +24,11 @@ public class BulletDataReceiver : HuyMonoBehaviour
     }
 
     //==========================================Receiver==========================================
-    public virtual void Receive(float damage, float bulletSpeed, float bulletDespawnTime, float bulletDespawnDistance)
+    public virtual void Receive(float damage, float bulletSpeed, Vector2 flyDir, float bulletDespawnTime, float bulletDespawnDistance)
     {
         this.manager.DamageSender.AtkDamage = damage;
         this.manager.Movement.Fly.MoveSpeed = bulletSpeed;
+        this.manager.Movement.Fly.MoveDir = flyDir;
         this.manager.Despawn.ByTime.DespawnDelay = bulletDespawnTime;
     }
 }

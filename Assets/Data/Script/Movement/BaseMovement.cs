@@ -29,7 +29,6 @@ public abstract class BaseMovement : HuyMonoBehaviour
     //==========================================Movement==========================================
     protected virtual void Move()
     {
-        this.isMoving = false;
         this.StopMove();
     } 
 
@@ -38,7 +37,10 @@ public abstract class BaseMovement : HuyMonoBehaviour
         this.isMoving = true;
     }
 
-    protected abstract void StopMove();
+    protected virtual void StopMove()
+    {
+        this.isMoving = false;
+    }
 
     //===========================================Other============================================
     protected abstract void DefaultStat();

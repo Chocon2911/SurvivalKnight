@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletObjFly : MoveStraight
+public class BulletObjFly : MoveByVelocity
 {
     [Header("Bullet Obj Fly")]
     [Header("Script")]
@@ -42,5 +42,6 @@ public class BulletObjFly : MoveStraight
     protected override void Move()
     {
         base.Move();
+        this.DoMove();
     }
 }

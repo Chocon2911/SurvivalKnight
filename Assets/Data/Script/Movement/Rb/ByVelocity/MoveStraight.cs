@@ -7,8 +7,8 @@ public abstract class MoveStraight : MoveByVelocity
     //======================================Move By Velocity======================================
     protected override void Move()
     {
-        this.moveDir = Vector2.zero;
-        this.moveDir.x = 1;
+        this.MoveDir = Vector2.zero;
+        this.MoveDir.x = 1;
         this.DoMove();
     }
 }

@@ -26,7 +26,7 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
     //============================================Get=============================================
     protected virtual void GetDir()
     {
-        this.moveDir = InputManager.Instance.MoveDir;
+        this.MoveDir = InputManager.Instance.MoveDir;
     }
 
     //======================================Move By Velocity======================================
@@ -42,7 +42,7 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
         base.Move();
         this.GetDir();
 
-        if (this.moveDir == Vector2.zero) return;
+        if (this.MoveDir == Vector2.zero) return;
         this.DoMove();
     }
 

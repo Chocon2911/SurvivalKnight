@@ -37,7 +37,7 @@ public class PlayerGunM4 : GunM4
     protected virtual void LoadSingleShootSkill()
     {
         if (this.singleShootSkill != null) return;
-        this.singleShootSkill = transform.Find("Shoot").GetComponent<PlayerSingleShootSkill>();
+        this.singleShootSkill = transform.GetComponentInChildren<PlayerSingleShootSkill>();
         Debug.LogWarning(transform.name + ": Load SingleShootSkill", transform.gameObject);
     }
 

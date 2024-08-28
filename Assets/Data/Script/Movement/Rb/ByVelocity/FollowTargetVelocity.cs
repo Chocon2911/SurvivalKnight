@@ -24,7 +24,7 @@ public abstract class FollowTargetVelocity : MoveByVelocity
 
     protected virtual void DoFollow()
     {
-        this.moveDir = this.GetDir();
+        this.MoveDir = this.GetDir();
         this.DoMove();
     }
 

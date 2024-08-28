@@ -6,8 +6,7 @@ public abstract class MoveByVelocity : MovementRb
 {
     [Header("Move By Velocity")]
     [Header("Stat")]
-    [SerializeField] protected Vector2 moveDir;
-    public Vector2 MoveDir => moveDir;
+    public Vector2 MoveDir;
 
     //==========================================Movement==========================================
     protected override void DoMove()
@@ -20,7 +19,7 @@ public abstract class MoveByVelocity : MovementRb
             return;
         }
 
-        this.rb.velocity = this.moveDir.normalized * MoveSpeed;
+        this.rb.velocity = this.MoveDir.normalized * MoveSpeed;
     }
 
     protected override void StopMove()

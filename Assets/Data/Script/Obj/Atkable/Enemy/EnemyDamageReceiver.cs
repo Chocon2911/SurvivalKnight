@@ -16,6 +16,8 @@ public class EnemyDamageReceiver : DamageReceiver
         this.LoadManager();
     }
 
+
+
     //=======================================Load Component=======================================
     protected virtual void LoadManager()
     {
