@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class MoveByVelocity : MovementRb
 {
     [Header("Move By Velocity")]
-    [Header("Stat")]
     public Vector2 MoveDir;
 
     //==========================================Movement==========================================

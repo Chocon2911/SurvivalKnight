@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSingleShootM4 : PlayerSingleShoot
+public class PlayerShotgunM4 : PlayerShotgunSkill
 {
-    [Header("Player Single Shoot M4")]
+    [Header("Player Shotgun M4")]
     [SerializeField] protected PlayerGunM4 gunM4;
     public PlayerGunM4 GunM4 => gunM4;
 
@@ -29,25 +29,29 @@ public class PlayerSingleShootM4 : PlayerSingleShoot
         base.DefaultStat();
         if (this.gunM4.SO == null)
         {
-            Debug.LogError(transform.name + ": so is null", transform.gameObject);
+            Debug.LogError(transform.name + ": SO is null", transform.gameObject);
             return;
         }
 
-        SingleShootStat skillStat1 = this.gunM4.SO.Stats[0].SkillStat1;
+        ShotgunStat skillStat2 = this.gunM4.SO.Stats[0].SkillStat2;
         // Skill Stat
-        this.CooldownDelay = skillStat1.CooldownDelay;
-        this.ChargeDelay = skillStat1.ChargeDelay;
-        this.DoingLength = skillStat1.DoingTime;
+        this.CooldownDelay = skillStat2.CooldownDelay;
+        this.ChargeDelay = skillStat2.ChargeDelay;
+        this.DoingLength = skillStat2.DoingTime;
 
         // Weapon Skill Stat
-        this.Damage = skillStat1.Damage;
-        this.WeaponSkillCode = skillStat1.WeaponSkillCode;
-
+        this.Damage = skillStat2.Damage;
+        this.WeaponSkillCode = skillStat2.WeaponSkillCode;
+        
         // Shoot Skill Stat
-        this.BulletName = skillStat1.BulletName;
-        this.AppearRange = skillStat1.AppearRange;
-        this.BulletSpeed = skillStat1.BulletSpeed;
-        this.BulletDespawnTime = skillStat1.BulletDespawnTime;
-        this.BulletDespawnDistance = skillStat1.BulletDespawnDistance;
+        this.BulletName = skillStat2.BulletName;
+        this.AppearRange = skillStat2.AppearRange;
+        this.BulletSpeed = skillStat2.BulletSpeed;
+        this.BulletDespawnTime = skillStat2.BulletDespawnTime;
+        this.BulletDespawnDistance = skillStat2.BulletDespawnDistance;
+
+        // Shotgun Stat
+        this.SpreadRange = skillStat2.SpreadRange;
+        this.PelletAmount = skillStat2.PelletAmount;
     }
 }

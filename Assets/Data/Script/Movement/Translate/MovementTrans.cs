@@ -28,10 +28,4 @@ public abstract class MovementTrans : BaseMovement
     {
         this.target = target;
     }
-
-    //===========================================Other============================================
-    protected override void DefaultStat()
-    {
-        this.movementType = MovementType.Translate;
-    }
 }

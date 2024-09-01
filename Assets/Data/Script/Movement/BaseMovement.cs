@@ -5,25 +5,16 @@ using UnityEngine;
 public abstract class BaseMovement : HuyMonoBehaviour
 {
     [Header("Base Movement")]
-    [Header("Stat")]
-    [SerializeField] protected MovementType movementType;
-    public MovementType MovementType => movementType;
-
+    //Stat
     [SerializeField] protected bool isMoving;
     public bool IsMoving => isMoving;
 
     public float MoveSpeed;
 
     //===========================================Unity============================================
-    protected virtual void OnEnable()
-    {
-        this.DefaultStat();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.DefaultStat();
     }
 
     //==========================================Movement==========================================
@@ -41,7 +32,4 @@ public abstract class BaseMovement : HuyMonoBehaviour
     {
         this.isMoving = false;
     }
-
-    //===========================================Other============================================
-    protected abstract void DefaultStat();
 }

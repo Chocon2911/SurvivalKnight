@@ -8,5 +8,5 @@ public class ShotgunStat : ShootSkillStat
 {
     [Header("Shotgun Stat")]
     public float SpreadRange;
-    public float PelletAmount;
+    public int PelletAmount;
 }

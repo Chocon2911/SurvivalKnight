@@ -7,6 +7,6 @@ using UnityEngine;
 [Serializable]
 public class M4Stat
 {
-    public SingleShootStat SingleShootStat;
-    public ShotgunStat ShotgunStat;
+    public SingleShootStat SkillStat1;
+    public ShotgunStat SkillStat2;
 }

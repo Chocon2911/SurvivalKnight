@@ -356,10 +356,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 189986308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74500ba83485e4b4a915f019dbd98780, type: 3}
+  m_Script: {fileID: 11500000, guid: 9de23282dec04454b92a48ba398b8451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CooldownDelay: 1
+  CooldownDelay: 2
   CooldownTimer: 0
   ChargeDelay: 0
   ChargeTimer: 0
@@ -369,20 +369,20 @@ MonoBehaviour:
   isCharging: 0
   isDoing: 0
   weapon: {fileID: 854994420}
-  WeaponSkillCode: 0
+  WeaponSkillCode: 2
   Damage: 1
   mainObj: {fileID: 0}
   targetObj: {fileID: 0}
   bulletSender: {fileID: 519615409}
   BulletName: Bullet_1
   AppearRange: 1
-  BulletSpeed: 20
-  BulletDespawnTime: 2
+  BulletSpeed: 5
+  BulletDespawnTime: 3
   BulletDespawnDistance: 30
-  SpreadRange: 45
+  SpreadRange: 60
   PelletAmount: 3
-  so: {fileID: 11400000, guid: 50729c7465d7d1b44a7fa775fc7af722, type: 2}
   playerObjWeapon: {fileID: 837390794}
+  gunM4: {fileID: 854994420}
 --- !u!1 &236251345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +1001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &475008890
 Transform:
   m_ObjectHideFlags: 0
@@ -1767,7 +1767,8 @@ MonoBehaviour:
   weaponType: 1
   so: {fileID: 11400000, guid: 9f03ccf1c42739a43b58a3bc272dd6cd, type: 2}
   weapon: {fileID: 837390794}
-  skill1: {fileID: 0}
+  skill1: {fileID: 1802846329}
+  skill2: {fileID: 189986310}
 --- !u!1 &857129958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 857129959}
+  - component: {fileID: 857129960}
   m_Layer: 0
   m_Name: ChasePlayer
   m_TagString: Untagged
@@ -1799,6 +1801,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1037559340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &857129960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857129958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9be750853af5ff40a215e778cf57b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  MoveSpeed: 0
+  rb: {fileID: 475008891}
+  movementRbType: 1
+  MoveDir: {x: 0, y: 0}
+  target: {fileID: 0}
+  movement: {fileID: 1037559343}
 --- !u!1 &904430578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,7 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cff3f3a1c763024ab2195c1e41d25ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectCollide: {fileID: 0}
+  detectCollide: {fileID: 1037559342}
   manager: {fileID: 475008892}
 --- !u!1 &1056124146
 GameObject:
@@ -2268,7 +2289,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 475008890}
   holders: []
-  maxAmount: 5
+  maxAmount: 10
 --- !u!1 &1085269718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,7 +3200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5cc223a67be2844bb93c33cf499216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 0
   isMoving: 0
   MoveSpeed: 0
   rb: {fileID: 1258252735}
@@ -3502,7 +3522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56289c7f1e0a1c4fac158b96c3f1d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 0
   isMoving: 0
   MoveSpeed: 10
   rb: {fileID: 425942212}
@@ -3646,10 +3665,9 @@ MonoBehaviour:
   bulletSender: {fileID: 904430579}
   BulletName: Bullet_1
   AppearRange: 1
-  BulletSpeed: 20
+  BulletSpeed: 10
   BulletDespawnTime: 2
   BulletDespawnDistance: 30
-  so: {fileID: 11400000, guid: 9df7731f87fa9ad47a7a0f8cc7b50224, type: 2}
   playerObjWeapon: {fileID: 837390794}
   gunM4: {fileID: 854994420}
 --- !u!1 &1846779457
@@ -4082,7 +4100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c77641f0ab7824aace9a9120106cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementType: 0
   isMoving: 0
   MoveSpeed: 10
   moveObj: {fileID: 940102160}

@@ -15,7 +15,7 @@ MonoBehaviour:
   ObjName: M4
   HoldRange: 1
   Stats:
-  - SingleShootStat:
+  - SkillStat1:
       CooldownDelay: 0.3
       ChargeDelay: 0
       DoingTime: 0
@@ -23,19 +23,19 @@ MonoBehaviour:
       WeaponSkillCode: 1
       BulletName: Bullet_1
       AppearRange: 1
-      BulletSpeed: 10
+      BulletSpeed: 20
       BulletDespawnTime: 2
       BulletDespawnDistance: 30
-    ShotgunStat:
-      CooldownDelay: 1
+    SkillStat2:
+      CooldownDelay: 2
       ChargeDelay: 0
       DoingTime: 0
       Damage: 1
       WeaponSkillCode: 2
       BulletName: Bullet_1
       AppearRange: 1
-      BulletSpeed: 5
-      BulletDespawnTime: 2
+      BulletSpeed: 10
+      BulletDespawnTime: 3
       BulletDespawnDistance: 30
       SpreadRange: 60
       PelletAmount: 3

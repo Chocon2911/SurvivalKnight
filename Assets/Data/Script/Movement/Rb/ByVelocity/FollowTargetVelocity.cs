@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class FollowTargetVelocity : MoveByVelocity
 {
     [Header("Follow Target Velocity")]
-    [Header("Other")]
     [SerializeField] protected Transform target;
     public Transform Target => target;
 
@@ -41,9 +40,8 @@ public abstract class FollowTargetVelocity : MoveByVelocity
     }
 
     //===========================================Other============================================
-    protected override void DefaultStat()
+    protected virtual void DefaultStat()
     {
-        base.DefaultStat();
         this.movementRbType = MovementRbType.ByVelocity;
     }
 }

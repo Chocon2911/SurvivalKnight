@@ -16,9 +16,8 @@ public class BulletObjFly : MoveByVelocity
         base.LoadComponent();
     }
     
-    protected override void OnEnable()
+    protected virtual void OnEnable()
     {
-        base.OnEnable();
         this.Move();
     }
 

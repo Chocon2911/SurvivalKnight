@@ -6,11 +6,11 @@ using UnityEngine;
 public abstract class MovementRb : BaseMovement
 {
     [Header("Movement Rb")]
-    [Header("Other")]
+    // Other
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
-
-    [Header("Stat")]
+    
+    // Stat
     [SerializeField] protected MovementRbType movementRbType;
     public MovementRbType MovementRbType => movementRbType;
 
@@ -28,10 +28,4 @@ public abstract class MovementRb : BaseMovement
 
     //=======================================Load Component=======================================
     protected abstract void LoadRb();
-
-    //===========================================Other============================================
-    protected override void DefaultStat()
-    {
-        this.movementType = MovementType.Rb;
-    }
 }
