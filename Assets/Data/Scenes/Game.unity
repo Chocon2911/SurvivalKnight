@@ -369,7 +369,7 @@ MonoBehaviour:
   isCharging: 0
   isDoing: 0
   weapon: {fileID: 854994420}
-  weaponSkillCode: 2
+  WeaponSkillCode: 0
   Damage: 1
   mainObj: {fileID: 0}
   targetObj: {fileID: 0}
@@ -1001,7 +1001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &475008890
 Transform:
   m_ObjectHideFlags: 0
@@ -1764,11 +1764,41 @@ MonoBehaviour:
   ObjType: 3
   ObjName: M4
   model: {fileID: 2002363621}
-  weaponSkills:
-  - {fileID: 1802846329}
-  - {fileID: 189986310}
   weaponType: 1
+  so: {fileID: 11400000, guid: 9f03ccf1c42739a43b58a3bc272dd6cd, type: 2}
   weapon: {fileID: 837390794}
+  skill1: {fileID: 0}
+--- !u!1 &857129958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857129959}
+  m_Layer: 0
+  m_Name: ChasePlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &857129959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857129958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1037559340}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &904430578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,6 +2143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1037559340}
   - component: {fileID: 1037559342}
+  - component: {fileID: 1037559343}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -2132,7 +2163,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 857129959}
+  - {fileID: 2091641150}
   m_Father: {fileID: 475008890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1037559342
@@ -2170,6 +2203,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1037559343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037559339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cff3f3a1c763024ab2195c1e41d25ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectCollide: {fileID: 0}
+  manager: {fileID: 475008892}
 --- !u!1 &1056124146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,7 +3626,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802846327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2deab7eefc87b174e8771939fcb0cd97, type: 3}
+  m_Script: {fileID: 11500000, guid: 3441393a2044bb74d93ab28b23d0882f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CooldownDelay: 0.3
@@ -3592,18 +3639,19 @@ MonoBehaviour:
   isCharging: 0
   isDoing: 0
   weapon: {fileID: 854994420}
-  weaponSkillCode: 1
+  WeaponSkillCode: 1
   Damage: 1
   mainObj: {fileID: 0}
   targetObj: {fileID: 0}
   bulletSender: {fileID: 904430579}
   BulletName: Bullet_1
   AppearRange: 1
-  BulletSpeed: 3
+  BulletSpeed: 20
   BulletDespawnTime: 2
   BulletDespawnDistance: 30
   so: {fileID: 11400000, guid: 9df7731f87fa9ad47a7a0f8cc7b50224, type: 2}
   playerObjWeapon: {fileID: 837390794}
+  gunM4: {fileID: 854994420}
 --- !u!1 &1846779457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4039,6 +4087,37 @@ MonoBehaviour:
   MoveSpeed: 10
   moveObj: {fileID: 940102160}
   target: {fileID: 425942210}
+--- !u!1 &2091641149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091641150}
+  m_Layer: 0
+  m_Name: MoveRandomly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2091641150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091641149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1037559340}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110087307
 GameObject:
   m_ObjectHideFlags: 0

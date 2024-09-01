@@ -71,7 +71,7 @@ public class PlayerShotgunSkill : ShotgunSkill
 
         // Weapon Skill
         this.Damage = this.so.Damage;
-        this.weaponSkillCode = this.so.WeaponSkillCode;
+        this.WeaponSkillCode = this.so.WeaponSkillCode;
 
         // Gun Skill
         this.BulletName = this.so.BulletName;

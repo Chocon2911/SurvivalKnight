@@ -10,8 +10,7 @@ public abstract class WeaponSkill : BaseSkill
     public BaseWeapon Weapon => weapon;
 
     //Stat
-    [SerializeField] protected WeaponSkillCode weaponSkillCode;
-    public WeaponSkillCode WeaponSkillCode => weaponSkillCode;
+    public WeaponSkillCode WeaponSkillCode;
 
     public float Damage;
 

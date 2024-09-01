@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SkillSO : ScriptableObject
+public abstract class SkillStat : BaseStat
 {
-    [Header("Skill SO")]
+    [Header("Skill Stat")]
     public float CooldownDelay;
-    public float ChargingDelay;
+    public float ChargeDelay;
     public float DoingTime;
 }

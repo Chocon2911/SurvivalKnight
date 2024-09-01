@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSingleShootSkill : SingleShootSkill
+public abstract class PlayerSingleShoot : SingleShootSkill
 {
     [Header("Player Single Shoot Skill")]
     //Other
@@ -72,7 +72,7 @@ public class PlayerSingleShootSkill : SingleShootSkill
 
         // Weapon Skill
         this.Damage = this.so.Damage;
-        this.weaponSkillCode = this.so.WeaponSkillCode;
+        this.WeaponSkillCode = this.so.WeaponSkillCode;
 
         // Single Shoot Skill
         this.BulletName = this.so.BulletName;

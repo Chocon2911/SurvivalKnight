@@ -8,6 +8,10 @@ public class PlayerGunM4 : GunM4
     // Script
     [SerializeField] protected PlayerObjWeapon weapon;
     public PlayerObjWeapon Weapon => weapon;
+
+    [SerializeField] protected PlayerSingleShootM4 skill1;
+    public PlayerSingleShootM4 Skill1 => skill1;
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -32,17 +36,9 @@ public class PlayerGunM4 : GunM4
     //========================================Player Shoot========================================
     protected virtual void PlayerShoot()
     {
-        foreach (WeaponSkill skill in this.weaponSkills)
+        if (InputManager.Instance.LeftMouse)
         {
-            if (InputManager.Instance.LeftMouse && skill.WeaponSkillCode == WeaponSkillCode.First)
-            {
-                skill.ActivateSkill();
-            }
-
-            if (InputManager.Instance.RightMouse && skill.WeaponSkillCode == WeaponSkillCode.Second)
-            {
-                skill.ActivateSkill();
-            }
+            this.skill1.ActivateSkill();
         }
     }
 }
