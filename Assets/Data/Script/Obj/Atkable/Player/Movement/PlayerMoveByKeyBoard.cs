@@ -40,14 +40,14 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
     protected override void Move()
     {
         base.Move();
-        this.GetDir();
-
-        if (this.MoveDir == Vector2.zero) return;
         this.DoMove();
     }
 
     protected override void DoMove()
     {
+        this.GetDir();
+        if (this.MoveDir == Vector2.zero) return;
+
         base.DoMove();
     }
 }

@@ -15,7 +15,7 @@ public abstract class MovementTrans : BaseMovement
     //===========================================Unity============================================
     protected virtual void FixedUpdate()
     {
-        this.DoMove();
+        this.Move();
     }    
 
     //============================================Set=============================================

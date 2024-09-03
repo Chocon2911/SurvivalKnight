@@ -6,10 +6,11 @@ public abstract class BaseMovement : HuyMonoBehaviour
 {
     [Header("Base Movement")]
     //Stat
+    public float MoveSpeed;
+
     [SerializeField] protected bool isMoving;
     public bool IsMoving => isMoving;
 
-    public float MoveSpeed;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -21,6 +22,7 @@ public abstract class BaseMovement : HuyMonoBehaviour
     protected virtual void Move()
     {
         this.StopMove();
+        this.DoMove();
     } 
 
     protected virtual void DoMove()

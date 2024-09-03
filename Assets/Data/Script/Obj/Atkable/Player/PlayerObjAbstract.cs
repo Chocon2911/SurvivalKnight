@@ -6,7 +6,7 @@ public abstract class PlayerObjAbstract : HuyMonoBehaviour
 {
     #region Variable
     [Header("Player Obj Abstract")]
-    [Header("Script")]
+    // Script
     [SerializeField] protected PlayerObjManager manager;
     public PlayerObjManager Manager => manager;
     #endregion

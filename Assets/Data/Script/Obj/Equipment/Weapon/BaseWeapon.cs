@@ -9,10 +9,6 @@ public abstract class BaseWeapon : BaseObj
     [SerializeField] protected SpriteRenderer model;
     public SpriteRenderer Model => model;
 
-    //Script
-    [SerializeField] protected WeaponType weaponType;
-    public WeaponType WeaponType => weaponType;
-
     //===========================================Unity============================================
     protected override void LoadComponent()
     {

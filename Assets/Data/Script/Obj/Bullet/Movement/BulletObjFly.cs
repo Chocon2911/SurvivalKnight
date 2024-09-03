@@ -36,11 +36,4 @@ public class BulletObjFly : MoveByVelocity
         this.movement = transform.parent.GetComponent<BulletObjMovement>();
         Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
     }
-
-    //============================================Move============================================
-    protected override void Move()
-    {
-        base.Move();
-        this.DoMove();
-    }
 }

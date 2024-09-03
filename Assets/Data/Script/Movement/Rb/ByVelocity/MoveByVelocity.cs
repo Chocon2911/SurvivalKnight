@@ -11,7 +11,6 @@ public abstract class MoveByVelocity : MovementRb
     protected override void DoMove()
     {
         base.DoMove();
-
         if (this.rb == null)
         {
             Debug.LogError(transform.name + ": Rb is null", transform.gameObject);
@@ -23,6 +22,7 @@ public abstract class MoveByVelocity : MovementRb
 
     protected override void StopMove()
     {
+        base.StopMove();
         if (this.rb == null)
         {
             Debug.LogError(transform.name + ": Rb is null", transform.gameObject);

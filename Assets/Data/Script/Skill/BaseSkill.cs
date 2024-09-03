@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class BaseSkill : HuyMonoBehaviour
 {
     #region Variable
-    [Header("Attackable Obj Skill")]
-    [Header("Stat")]
+    [Header("Base Skill")]
+    // Stat
     public float CooldownDelay;
     public float CooldownTimer;
     public float ChargeDelay;
@@ -94,6 +94,7 @@ public abstract class BaseSkill : HuyMonoBehaviour
     protected virtual void FinishDoing()
     {
         this.isDoing = false;
+        this.DoingTimer = 0;
         this.CooldownTimer = 0;
     }
     #endregion
@@ -111,7 +112,7 @@ public abstract class BaseSkill : HuyMonoBehaviour
             return;
         }
 
-        this.CooldownTimer += Time.fixedDeltaTime;
+        this.CooldownTimer += Time.deltaTime;
     }
 
     protected virtual void CheckIfCharging()
@@ -123,7 +124,7 @@ public abstract class BaseSkill : HuyMonoBehaviour
             return;
         }
 
-        this.ChargeTimer += Time.fixedDeltaTime;
+        this.ChargeTimer += Time.deltaTime;
     }
 
     protected virtual void CheckIfDoing()
@@ -135,7 +136,7 @@ public abstract class BaseSkill : HuyMonoBehaviour
             return;
         }
 
-        this.DoingTimer += Time.fixedDeltaTime;
+        this.DoingTimer += Time.deltaTime;
     }
     #endregion
 

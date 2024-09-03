@@ -18,30 +18,20 @@ public abstract class FollowTargetVelocity : MoveByVelocity
     protected override void Move()
     {
         base.Move();
-        this.DoFollow();
+        this.DoMove();
     }
 
-    protected virtual void DoFollow()
+    protected override void DoMove()
     {
         this.MoveDir = this.GetDir();
-        this.DoMove();
+        base.DoMove();
     }
 
     //============================================Get=============================================
     protected virtual Vector2 GetDir()
     {
-        if (this.target == null)
-        {
-            Debug.LogError(transform.name + ": Target is null", transform.gameObject);
-            return Vector2.zero;
-        }
+        if (this.target == null) return Vector2.zero;
 
         return this.target.position - transform.position;
-    }
-
-    //===========================================Other============================================
-    protected virtual void DefaultStat()
-    {
-        this.movementRbType = MovementRbType.ByVelocity;
     }
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerObjSkill : PlayerObjAbstract
 {
     [Header("Player Obj Skill")]
-    [Header("Script")]
+    // Script
     [SerializeField] protected List<CharacterSkill> skills;
     public List<CharacterSkill> Skills => skills;
 
-    [Header("Stat")]
+    // Stat
     [SerializeField] protected int maxSkillAmount;
     public int MaxSkillAmount => maxSkillAmount;
 

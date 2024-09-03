@@ -9,10 +9,6 @@ public abstract class MovementRb : BaseMovement
     // Other
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
-    
-    // Stat
-    [SerializeField] protected MovementRbType movementRbType;
-    public MovementRbType MovementRbType => movementRbType;
 
     //===========================================Unity============================================
     protected override void LoadComponent()

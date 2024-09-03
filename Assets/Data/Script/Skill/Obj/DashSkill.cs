@@ -5,11 +5,11 @@ using UnityEngine;
 public abstract class DashSkill : CharacterSkill
 {
     [Header("Dash Skill")]
-    [Header("Other")]
+    // Other
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
-    [Header("Stat")]
+    // Stat
     public Vector2 DashDir;
     public float DashSpeed;
 

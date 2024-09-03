@@ -226,6 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179845993}
+  - component: {fileID: 179845994}
   m_Layer: 0
   m_Name: Dash
   m_TagString: Untagged
@@ -248,6 +249,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 644185630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179845994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179845992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca390dbb8e2471458474d23e579e9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownDelay: 2
+  CooldownTimer: 0
+  ChargeDelay: 0
+  ChargeTimer: 0
+  DoingLength: 0.3
+  DoingTimer: 0
+  isReady: 0
+  isCharging: 0
+  isDoing: 0
+  rb: {fileID: 425942212}
+  DashDir: {x: 0, y: 0}
+  DashSpeed: 30
+  so: {fileID: 11400000, guid: 19bec5afd322a3940b1bd41cd8d267b8, type: 2}
+  skill: {fileID: 644185631}
 --- !u!1 &180929598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,8 +1516,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 425942211}
-  skills: []
-  maxSkillAmount: 0
+  skills:
+  - {fileID: 179845994}
+  maxSkillAmount: 1
 --- !u!1 &650477677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1792,6 @@ MonoBehaviour:
   ObjType: 3
   ObjName: M4
   model: {fileID: 2002363621}
-  weaponType: 1
   so: {fileID: 11400000, guid: 9f03ccf1c42739a43b58a3bc272dd6cd, type: 2}
   weapon: {fileID: 837390794}
   skill1: {fileID: 1802846329}
@@ -1813,10 +1840,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9be750853af5ff40a215e778cf57b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
   MoveSpeed: 0
+  isMoving: 0
   rb: {fileID: 475008891}
-  movementRbType: 1
   MoveDir: {x: 0, y: 0}
   target: {fileID: 0}
   movement: {fileID: 1037559343}
@@ -3200,10 +3226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5cc223a67be2844bb93c33cf499216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
   MoveSpeed: 0
+  isMoving: 0
   rb: {fileID: 1258252735}
-  movementRbType: 0
   MoveDir: {x: 0, y: 0}
   movement: {fileID: 1252692269}
 --- !u!1 &1461493915
@@ -3522,10 +3547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56289c7f1e0a1c4fac158b96c3f1d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
   MoveSpeed: 10
+  isMoving: 0
   rb: {fileID: 425942212}
-  movementRbType: 0
   MoveDir: {x: 0, y: 0}
   movement: {fileID: 1085269720}
 --- !u!1 &1688282196
@@ -4100,8 +4124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c77641f0ab7824aace9a9120106cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
   MoveSpeed: 10
+  isMoving: 0
   moveObj: {fileID: 940102160}
   target: {fileID: 425942210}
 --- !u!1 &2091641149
