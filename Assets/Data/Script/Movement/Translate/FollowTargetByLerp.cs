@@ -7,7 +7,8 @@ public abstract class FollowTargetByLerp : MovementTrans
     //=======================================Movement Trans=======================================
     protected override void Move()
     {
-        base.Move();
+        this.StopMove();
+        this.DoMove();
     }
 
     //==========================================Movement==========================================

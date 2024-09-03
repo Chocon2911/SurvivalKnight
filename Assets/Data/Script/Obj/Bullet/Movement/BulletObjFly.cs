@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletObjFly : MoveByVelocity
 {
     [Header("Bullet Obj Fly")]
-    [Header("Script")]
     [SerializeField] protected BulletObjMovement movement;
     public BulletObjMovement Movement => movement;
 

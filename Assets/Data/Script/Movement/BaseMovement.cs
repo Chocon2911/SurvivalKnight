@@ -8,6 +8,9 @@ public abstract class BaseMovement : HuyMonoBehaviour
     //Stat
     public float MoveSpeed;
 
+    [SerializeField] protected bool canMove;
+    public bool CanMove => canMove;
+
     [SerializeField] protected bool isMoving;
     public bool IsMoving => isMoving;
 
@@ -18,19 +21,24 @@ public abstract class BaseMovement : HuyMonoBehaviour
         base.LoadComponent();
     }
 
+    //============================================Set=============================================
+    protected virtual void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
+
     //==========================================Movement==========================================
     protected virtual void Move()
     {
-        this.StopMove();
-        this.DoMove();
-    } 
+        if (!this.canMove) return;
+    }
 
     protected virtual void DoMove()
     {
         this.isMoving = true;
     }
 
-    protected virtual void StopMove()
+    public virtual void StopMove()
     {
         this.isMoving = false;
     }

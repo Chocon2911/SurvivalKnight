@@ -20,7 +20,7 @@ public abstract class MoveByVelocity : MovementRb
         this.rb.velocity = this.MoveDir.normalized * MoveSpeed;
     }
 
-    protected override void StopMove()
+    public override void StopMove()
     {
         base.StopMove();
         if (this.rb == null)

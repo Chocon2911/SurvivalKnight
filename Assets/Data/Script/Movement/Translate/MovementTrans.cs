@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class MovementTrans : BaseMovement
 {
     [Header("MovementTrans")]
-    [Header("Other")]
+    // Other
     [SerializeField] protected Transform moveObj;
     public Transform MoveObj => moveObj;
 
