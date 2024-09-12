@@ -22,7 +22,7 @@ public abstract class PlayerSingleShoot : SingleShootSkill
     {
         if (GameManager.Instance == null)
         {
-            Debug.LogError("GameManager.Instance is null in OnEnable");
+            Debug.LogError("GameManager.Instance is null in OnEnable", transform.gameObject);
             return;
         }
 

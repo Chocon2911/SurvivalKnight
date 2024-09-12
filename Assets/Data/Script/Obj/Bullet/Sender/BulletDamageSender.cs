@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletDamageSender : DamageSender
 {
     [Header("Bullet Damage Sender")]
-    [Header("Script")]
+    // Script
     [SerializeField] protected BulletObjManager manager;
     public BulletObjManager Manager => manager;
 

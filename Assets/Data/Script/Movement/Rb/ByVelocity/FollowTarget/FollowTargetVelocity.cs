@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class FollowTargetVelocity : MoveByVelocity
 {
     [Header("Follow Target Velocity")]
+    // Script
     [SerializeField] protected Transform target;
     public Transform Target => target;
 
@@ -15,9 +16,8 @@ public abstract class FollowTargetVelocity : MoveByVelocity
     }
 
     //======================================Move By Velocity======================================
-    protected override void Move()
+    protected override void Execute()
     {
-        base.Move();
         this.DoMove();
     }
 
@@ -32,6 +32,6 @@ public abstract class FollowTargetVelocity : MoveByVelocity
     {
         if (this.target == null) return Vector2.zero;
 
-        return this.target.position - transform.position;
+        return (this.target.position - this.rb.transform.position).normalized;
     }
 }

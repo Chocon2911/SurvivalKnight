@@ -5,42 +5,35 @@ using UnityEngine;
 public class EnemyObjMovement : HuyMonoBehaviour
 {
     [Header("Enemy Movement")]
-    // Other
-    [SerializeField] protected CircleCollider2D detectCollide;
-
     // Script
     [SerializeField] protected EnemyObjManager manager;
     public EnemyObjManager Manager => manager;
+
+    [SerializeField] protected EnemyObjChaseOpponent chaseOpponent;
+    public EnemyObjChaseOpponent ChaseOpponent => chaseOpponent;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        // Other
-        this.LoadDetectCollide();
         // Script
         this.LoadManager();
-    }
-
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        
+        this.LoadChaseOpponent();
     }
 
     //=======================================Load Component=======================================
-    // Other
-    protected virtual void LoadDetectCollide()
-    {
-        if (this.detectCollide != null) return;
-        this.detectCollide = transform.GetComponent<CircleCollider2D>();
-        Debug.LogWarning(transform.name + ": Load DetectCollide", transform.gameObject);
-    }
-
     // Script
     protected virtual void LoadManager()
     {
         if (this.manager != null) return;
         this.manager = transform.parent.GetComponent<EnemyObjManager>();
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
+    }
+
+    protected virtual void LoadChaseOpponent()
+    {
+        if (this.chaseOpponent != null) return;
+        this.chaseOpponent = transform.Find("ChaseOpponent").GetComponent<EnemyObjChaseOpponent>();
+        Debug.LogWarning(transform.name + ": Load ChaseOpponent", transform.gameObject);
     }
 }

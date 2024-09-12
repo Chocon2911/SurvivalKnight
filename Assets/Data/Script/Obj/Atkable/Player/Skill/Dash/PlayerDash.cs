@@ -36,8 +36,6 @@ public class PlayerDash : DashSkill
         Debug.LogWarning(transform.name + ": Load Rb", transform.gameObject);
     }
 
-    protected override void ChargeSkill() { }
-
     //=======================================Load Component=======================================
     // Other
     protected virtual void LoadSO()
@@ -60,15 +58,31 @@ public class PlayerDash : DashSkill
     protected virtual void Dash()
     {
         if (!InputManager.Instance.Dash) return;
-        // this.skill.Manager.Movement.KeyBoard.SetCanMove(false);
+
+        // Activate Skill
         this.DashDir = InputManager.Instance.MoveDir;
         this.ActivateSkill();
+    }
+
+    protected override void UseSkill()
+    {
+        base.UseSkill();
+
+        // Deactive Move by Keyboard
+        this.skill.Manager.Movement.KeyBoard.SetCanMove(false);
+        this.skill.Manager.Movement.KeyBoard.StopMove();
+    }
+
+    protected override void ChargeSkill()
+    {
+
     }
 
     protected override void FinishDoing()
     {
         base.FinishDoing();
-        // this.skill.Manager.Movement.KeyBoard.SetCanMove(true);
+        this.rb.velocity = Vector2.zero;
+        this.skill.Manager.Movement.KeyBoard.SetCanMove(true);
     }
 
     //===========================================Other============================================

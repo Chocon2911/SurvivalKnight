@@ -5,6 +5,12 @@ using UnityEngine;
 public abstract class MoveStraight : MoveByVelocity
 {
     //======================================Move By Velocity======================================
+    protected override void Move()
+    {
+        base.Move();
+        this.DoMove();
+    }
+
     protected override void DoMove()
     {
         this.MoveDir = Vector2.zero;

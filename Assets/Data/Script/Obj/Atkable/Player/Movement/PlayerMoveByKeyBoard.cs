@@ -15,6 +15,11 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
         base.LoadComponent();
     }
 
+    protected virtual void OnEnable()
+    {
+        this.canMove = true;
+    }
+
     //=======================================Load Component=======================================
     protected virtual void LoadMovement()
     {
@@ -37,9 +42,9 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
         Debug.LogWarning(transform.name + ": Load Rb", transform.gameObject);
     }
 
-    protected override void Move()
+    protected override void Execute()
     {
-        base.Move();
+        this.StopMove();
         this.DoMove();
     }
 

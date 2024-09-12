@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShotgunM4 : PlayerShotgunSkill
+public class PlayerM4Skill_2 : PlayerShotgunSkill
 {
     [Header("Player Shotgun M4")]
     [SerializeField] protected PlayerGunM4 gunM4;
@@ -42,6 +42,7 @@ public class PlayerShotgunM4 : PlayerShotgunSkill
         // Weapon Skill Stat
         this.Damage = skillStat2.Damage;
         this.WeaponSkillCode = skillStat2.WeaponSkillCode;
+        this.AtkObjTypes = skillStat2.AtkObjTypes;
         
         // Shoot Skill Stat
         this.BulletName = skillStat2.BulletName;

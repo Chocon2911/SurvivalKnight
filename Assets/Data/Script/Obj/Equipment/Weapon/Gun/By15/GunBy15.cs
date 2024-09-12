@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunBy15 : BaseGun
+public abstract class GunBy15 : BaseGun
 {
-    //===========================================Other============================================
-    protected override void DefaultStat()
+    [Header("Gun By15")]
+    [SerializeField] protected By15SO so;
+    public By15SO SO => so;
+
+    //===========================================Unity============================================
+    protected override void LoadComponent()
     {
-        base.DefaultStat();
-        this.ObjName = "By15";
+        base.LoadComponent();
+        this.LoadSO();
     }
+
+    //=======================================Load Component=======================================
+    protected abstract void LoadSO();
 }

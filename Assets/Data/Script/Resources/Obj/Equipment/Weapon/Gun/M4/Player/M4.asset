@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e71ee3bbacc08e4ab4d44aaeee80199, type: 3}
-  m_Name: M4_1
+  m_Name: M4
   m_EditorClassIdentifier: 
   ObjName: M4
-  HoldRange: 1
+  HoldRange: 0.5
   Stats:
   - SkillStat1:
       CooldownDelay: 0.3
@@ -21,6 +21,7 @@ MonoBehaviour:
       DoingTime: 0
       Damage: 1
       WeaponSkillCode: 1
+      AtkObjTypes: 02000000
       BulletName: Bullet_1
       AppearRange: 1
       BulletSpeed: 20
@@ -32,6 +33,7 @@ MonoBehaviour:
       DoingTime: 0
       Damage: 1
       WeaponSkillCode: 2
+      AtkObjTypes: 02000000
       BulletName: Bullet_1
       AppearRange: 1
       BulletSpeed: 10

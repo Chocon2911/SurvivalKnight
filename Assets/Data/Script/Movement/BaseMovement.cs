@@ -22,7 +22,7 @@ public abstract class BaseMovement : HuyMonoBehaviour
     }
 
     //============================================Set=============================================
-    protected virtual void SetCanMove(bool canMove)
+    public virtual void SetCanMove(bool canMove)
     {
         this.canMove = canMove;
     }
@@ -31,7 +31,10 @@ public abstract class BaseMovement : HuyMonoBehaviour
     protected virtual void Move()
     {
         if (!this.canMove) return;
+        this.Execute();
     }
+
+    protected abstract void Execute();
 
     protected virtual void DoMove()
     {

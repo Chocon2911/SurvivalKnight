@@ -11,8 +11,8 @@ public abstract class WeaponSkill : BaseSkill
 
     //Stat
     public WeaponSkillCode WeaponSkillCode;
-
     public float Damage;
+    public List<AtkObjType> AtkObjTypes;
 
     //===========================================Unity============================================
     protected override void LoadComponent()

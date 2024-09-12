@@ -17,7 +17,7 @@ public class BulletObjFly : MoveByVelocity
     
     protected virtual void OnEnable()
     {
-        this.Move();
+        this.canMove = true;
     }
 
     //=======================================Move Straight========================================
@@ -26,6 +26,11 @@ public class BulletObjFly : MoveByVelocity
         if (this.rb != null) return;
         this.rb = this.movement.Manager.Rb;
         Debug.LogWarning(transform.name + ": Load Rb", transform.gameObject);
+    }
+
+    protected override void Execute()
+    {
+        this.DoMove();
     }
 
     //=======================================Load Component=======================================

@@ -62,7 +62,7 @@ public class EnemySpawner : Spawner
         {
             newEnemyObj.gameObject.SetActive(true);
         }
-
+            
         StartCoroutine(SpawnObjByTime(spawnDelay));
     }
 }

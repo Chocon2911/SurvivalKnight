@@ -73,7 +73,7 @@ public abstract class ShootSkill : WeaponSkill
         float yDir = Mathf.Sin(spawnRot.eulerAngles.z * Mathf.Deg2Rad);
         float xDir = Mathf.Cos(spawnRot.eulerAngles.z * Mathf.Deg2Rad);
         Vector2 flyDir = new Vector2 (xDir, yDir); 
-        this.bulletSender.SetStat(this.Damage, this.BulletSpeed, flyDir, this.BulletDespawnTime, this.BulletDespawnDistance);
+        this.bulletSender.SetStat(this.Damage, this.AtkObjTypes, this.BulletSpeed, flyDir, this.BulletDespawnTime, this.BulletDespawnDistance);
         this.bulletSender.Send(bulletObjManager.BulletDataReceiver);
 
         return newBullet;
@@ -92,7 +92,6 @@ public abstract class ShootSkill : WeaponSkill
     protected virtual Quaternion GetSpawnRot(Vector3 dir)
     {
         float zRot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        //Debug.Log("ZRot: " + zRot, transform.gameObject);
         Quaternion spawnRot = Quaternion.Euler(0, 0, zRot);
 
         return spawnRot;

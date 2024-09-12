@@ -7,4 +7,5 @@ public abstract class WeaponSkillStat : SkillStat
     [Header("Weapon Skill Stat")]
     public float Damage;
     public WeaponSkillCode WeaponSkillCode;
+    public List<AtkObjType> AtkObjTypes;
 }

@@ -57,16 +57,6 @@ public abstract class BaseSkill : HuyMonoBehaviour
         {
             this.UseSkill();
         }
-
-        if (this.isCharging)
-        {
-            this.ChargeSkill();
-        }
-
-        if (this.isDoing)
-        {
-            this.DoSkill();
-        }
     }
     
     protected virtual void UseSkill()
@@ -118,6 +108,8 @@ public abstract class BaseSkill : HuyMonoBehaviour
     protected virtual void CheckIfCharging()
     {
         if (!this.isCharging) return;
+        
+        this.ChargeSkill();
         if (this.ChargeTimer >= this.ChargeDelay)
         {
             this.FinishCharging();
@@ -130,6 +122,8 @@ public abstract class BaseSkill : HuyMonoBehaviour
     protected virtual void CheckIfDoing()
     {
         if (!this.isDoing) return;
+        
+        this.DoSkill();
         if (this.DoingTimer >= this.DoingLength)
         {
             this.FinishDoing();

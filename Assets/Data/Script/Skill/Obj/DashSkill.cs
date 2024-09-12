@@ -39,6 +39,7 @@ public abstract class DashSkill : CharacterSkill
         }
 
         this.rb.velocity = this.DashSpeed * this.DashDir;
+        Debug.Log("Dash");
     }
 
     //===========================================Skill============================================

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3739d8a95210644ac208f7c7409c8d, type: 3}
+  m_Name: By15
+  m_EditorClassIdentifier: 
+  ObjName: By15
+  HoldRange: 0.5
+  Stats:
+  - skill_1:
+      CooldownDelay: 1
+      ChargeDelay: 0
+      DoingTime: 0
+      Damage: 0.4
+      WeaponSkillCode: 1
+      AtkObjTypes: 02000000
+      BulletName: Bullet_1
+      AppearRange: 1
+      BulletSpeed: 20
+      BulletDespawnTime: 0.5
+      BulletDespawnDistance: 10
+      SpreadRange: 30
+      PelletAmount: 6
+    skill_2:
+      CooldownDelay: 1
+      ChargeDelay: 0
+      DoingTime: 0
+      Damage: 0.5
+      WeaponSkillCode: 2
+      AtkObjTypes: 02000000
+      BulletName: Bullet_1
+      AppearRange: 1
+      BulletSpeed: 20
+      BulletDespawnTime: 1
+      BulletDespawnDistance: 20
+      SpreadRange: 10
+      PelletAmount: 3

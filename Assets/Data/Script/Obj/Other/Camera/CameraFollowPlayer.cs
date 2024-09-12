@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraFollowPlayer : FollowTargetByLerp
 {
-    protected override void StopMove()
+    //===========================================Unity============================================
+    protected virtual void OnEnable()
     {
-        
+        this.canMove = true;
     }
 }

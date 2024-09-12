@@ -5,13 +5,11 @@ using UnityEngine;
 public abstract class FollowTargetByLerp : MovementTrans
 {
     //=======================================Movement Trans=======================================
-    protected override void Move()
+    protected override void Execute()
     {
-        this.StopMove();
         this.DoMove();
     }
 
-    //==========================================Movement==========================================
     protected override void DoMove()
     {
         base.DoMove();
