@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ObjType
+public enum EquipmentDropObjType
 {
     NoType = 0,
-    AtkableObj = 1,
-    ItemDrop = 2,
-    Equipment = 3,
-    Bullet = 4,
+    Weapon = 1,
 }
