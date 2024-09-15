@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class DespawnByTime : Despawner
 {
-    public virtual float DespawnDelay { get; set; }
-    public virtual float DespawnTimer { get; set; }
+    public float DespawnDelay;
+    public float DespawnTimer;
 
     //===========================================Unity============================================
     protected virtual void FixedUpdate()

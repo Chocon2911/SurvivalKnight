@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunM4DropDespawnByPickUp : EquipmentDropDespawn
+public class GunM4DropDespawnByTime : EquipmentDropDespawnByTime
 {
-    [Header("Gun M4 Despawn By Pick Up")]
-    // Script
+    [Header("GunM4Drop Despawn By Time")]
     [SerializeField] protected GunM4DropDespawner despawner;
     public GunM4DropDespawner Despawner => despawner;
 
@@ -16,7 +15,7 @@ public class GunM4DropDespawnByPickUp : EquipmentDropDespawn
         base.LoadComponent();
     }
 
-    //======================================ItemDrop Despawn======================================
+    //===============================EquipmentDrop Despawn By Time================================
     protected override void LoadStat()
     {
         if (this.stat != null) return;
@@ -25,7 +24,6 @@ public class GunM4DropDespawnByPickUp : EquipmentDropDespawn
     }
 
     //=======================================Load Component=======================================
-    // Script
     protected virtual void LoadDespawner()
     {
         if (this.despawner != null) return;
