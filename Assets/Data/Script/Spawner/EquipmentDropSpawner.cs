@@ -10,7 +10,7 @@ public class EquipmentDropSpawner : Spawner
 
     [Header("EquipmentDrop Spawner")]
     //Stat
-    [SerializeField] protected string gunM4Drop = "M4Drop";
+    private string gunM4Drop = "M4Drop";
     public string GunM4Drop => gunM4Drop;
 
     //===========================================Unity============================================

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RandomNumber
+public class RandomString
 {
     private const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -12,11 +12,14 @@ public class RandomNumber
         if (amount <= 0) return "error";
 
         string result = "";
-        for (int i = 0; i< amount; i++)
+        for (int i = 0; i < amount; i++)
         {
-            result.Append(chars[Random.Range(0, chars.Length - 1)]);
+            char randomChar = chars[Random.Range(0, chars.Length - 1)];
+            result += randomChar;
+            //Debug.Log(randomChar);
         }
 
+        //Debug.Log("RandomChar: " + result);
         return result;
     }
 }

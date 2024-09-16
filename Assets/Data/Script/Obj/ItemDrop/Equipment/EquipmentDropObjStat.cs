@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class EquipmentDropObjStat : ItemDropObjStat
 {
     //==========================================Variable==========================================
+    [Header("EquipmentDrop Obj Stat")]
     public EquipmentDropObjType EquipmentDropObjType;
 
     //===========================================Other============================================
