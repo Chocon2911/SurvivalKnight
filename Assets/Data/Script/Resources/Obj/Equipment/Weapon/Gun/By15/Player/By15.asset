@@ -25,7 +25,7 @@ MonoBehaviour:
       BulletName: Bullet_1
       AppearRange: 1
       BulletSpeed: 20
-      BulletDespawnTime: 0.5
+      BulletDespawnTime: 0.25
       BulletDespawnDistance: 10
       SpreadRange: 30
       PelletAmount: 6
