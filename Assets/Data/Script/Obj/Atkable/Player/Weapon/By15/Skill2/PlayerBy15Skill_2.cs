@@ -34,7 +34,7 @@ public class PlayerBy15Skill_2 : PlayerShotgunSkill
             return;
         }
 
-        ShotgunStat skillStat_2 = this.gunBy15.SO.Stats[0].skill_2;
+        ShotgunStat skillStat_2 = this.gunBy15.SO.Stat.skill_2;
 
         // Skill Stat
         this.CooldownDelay = skillStat_2.CooldownDelay;

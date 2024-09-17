@@ -6,5 +6,5 @@ using UnityEngine;
 public class M4SO : GunSO
 {
     [Header("M4 SO")]
-    public List<M4Stat> Stats;
+    public M4Stat Stat;
 }

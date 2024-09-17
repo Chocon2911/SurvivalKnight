@@ -6,5 +6,5 @@ using UnityEngine;
 public class By15SO : GunSO
 {
     [Header("By15 SO")]
-    public List<By15Stat> Stats;
+    public By15Stat Stat;
 }

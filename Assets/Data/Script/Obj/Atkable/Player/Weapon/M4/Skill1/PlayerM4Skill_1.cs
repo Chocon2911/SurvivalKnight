@@ -33,7 +33,7 @@ public class PlayerM4Skill_1 : PlayerSingleShoot
             return;
         }
 
-        SingleShootStat skillStat1 = this.gunM4.SO.Stats[0].SkillStat1;
+        SingleShootStat skillStat1 = this.gunM4.SO.Stat.SkillStat1;
         // Skill Stat
         this.CooldownDelay = skillStat1.CooldownDelay;
         this.ChargeDelay = skillStat1.ChargeDelay;

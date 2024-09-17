@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyObjManager : HuyMonoBehaviour
 {
     [Header("Enemy Obj Manager")]
-    [Header("Other")]
+    // Other
     [SerializeField] protected SpriteRenderer model;
     public SpriteRenderer Model => model;
 
@@ -17,7 +17,10 @@ public class EnemyObjManager : HuyMonoBehaviour
     [SerializeField] protected CapsuleCollider2D body;
     public CapsuleCollider2D Body => body;
 
-    [Header("Script")]
+    [SerializeField] protected EnemySO so;
+    public EnemySO SO => so;
+
+    // Script
     [SerializeField] protected EnemyDamageReceiver damageReceiver;
     public EnemyDamageReceiver DamageReceiver => damageReceiver;
 
@@ -62,6 +65,14 @@ public class EnemyObjManager : HuyMonoBehaviour
         this.body.isTrigger = false;
         this.body.size = new Vector2(1, 1);
         Debug.LogWarning(transform.name + ": Load Body", transform.gameObject);
+    }
+
+    protected virtual void LoadSO()
+    {
+        if (this.so != null) return;
+        string filePath = "Obj/AtkObj/Enemy/Enemy_1";
+        this.so = Resources.Load<EnemySO>(filePath);
+        Debug.LogWarning(transform.name + ": Load SO", transform.gameObject);
     }
 
     //Script

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjName: M4
   HoldRange: 0.5
-  Stats:
-  - SkillStat1:
-      CooldownDelay: 0.3
+  Stat:
+    SkillStat1:
+      CooldownDelay: 0.1
       ChargeDelay: 0
       DoingTime: 0
       Damage: 1
@@ -25,10 +25,10 @@ MonoBehaviour:
       BulletName: Bullet_1
       AppearRange: 1
       BulletSpeed: 20
-      BulletDespawnTime: 2
+      BulletDespawnTime: 3
       BulletDespawnDistance: 30
     SkillStat2:
-      CooldownDelay: 2
+      CooldownDelay: 1
       ChargeDelay: 0
       DoingTime: 0
       Damage: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
       BulletName: Bullet_1
       AppearRange: 1
       BulletSpeed: 10
-      BulletDespawnTime: 3
+      BulletDespawnTime: 1
       BulletDespawnDistance: 30
-      SpreadRange: 60
+      SpreadRange: 45
       PelletAmount: 3

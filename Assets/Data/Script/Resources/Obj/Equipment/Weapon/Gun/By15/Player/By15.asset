@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjName: By15
   HoldRange: 0.5
-  Stats:
-  - skill_1:
+  Stat:
+    skill_1:
       CooldownDelay: 1
       ChargeDelay: 0
       DoingTime: 0
