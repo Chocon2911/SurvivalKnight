@@ -18,7 +18,7 @@ public abstract class EquipmentDropDespawn : Despawner
     //=========================================Despawner==========================================
     public override void DespawnObj()
     {
-        EquipmentDropSpawner.Instance.Despawn(this.stat.transform);
+        ItemDropSpawner.Instance.Despawn(this.stat.transform);
     }
 
     //=======================================Load Component=======================================

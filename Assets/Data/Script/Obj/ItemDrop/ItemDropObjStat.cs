@@ -16,10 +16,14 @@ public abstract class ItemDropObjStat : BaseObj
         this.DefaultStat();
     }
 
+    protected virtual void OnEnable()
+    {
+        this.DefaultStat();
+    }
+
     //===========================================Other============================================
     protected virtual void DefaultStat()
     {
-        this.ObjDropId = RandomString.GetRandomId(20);
         this.ObjType = ObjType.ItemDrop;
     }
 }

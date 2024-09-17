@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentDropSpawner : Spawner
+public class ItemDropSpawner : Spawner
 {
     //==========================================Variable==========================================
-    private static EquipmentDropSpawner instance;
-    public static EquipmentDropSpawner Instance => instance;
+    private static ItemDropSpawner instance;
+    public static ItemDropSpawner Instance => instance;
 
     [Header("EquipmentDrop Spawner")]
     //Stat
+    public Vector2 distanceBtwItems;
+
     private string gunM4Drop = "M4Drop";
     public string GunM4Drop => gunM4Drop;
 
@@ -25,4 +27,7 @@ public class EquipmentDropSpawner : Spawner
         instance = this;
         base.Awake();
     }
+
+    //============================================Drop============================================
+    
 }

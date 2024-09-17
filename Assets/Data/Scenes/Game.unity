@@ -203,6 +203,37 @@ Transform:
   - {fileID: 1258252731}
   m_Father: {fileID: 420590419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &68787975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68787976}
+  m_Layer: 0
+  m_Name: DropItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &68787976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68787975}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 475008890}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &71723582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,6 +1408,7 @@ Transform:
   - {fileID: 1287898270}
   - {fileID: 1037559340}
   - {fileID: 296585771}
+  - {fileID: 68787976}
   m_Father: {fileID: 2009075911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &475008891
@@ -2641,6 +2673,8 @@ MonoBehaviour:
   model: {fileID: 1323110624}
   stat: {fileID: 915403928}
   despawner: {fileID: 993447791}
+  statSender: {fileID: 1543479912}
+  statReceiver: {fileID: 1194323787}
 --- !u!114 &915403928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2655,10 +2689,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjType: 2
   ObjName: 
-  ObjDropId: u8ysdsm1stsk2jqag425
+  ObjDropId: 
   ItemDropObjType: 1
   EquipmentDropObjType: 1
   manager: {fileID: 915403927}
+  Stats: []
 --- !u!70 &915403929
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -21,6 +21,12 @@ public class GunM4DropManager : HuyMonoBehaviour
     [SerializeField] protected GunM4DropDespawner despawner;
     public GunM4DropDespawner Despawner => despawner;
 
+    [SerializeField] protected GunM4DropSender statSender;
+    public GunM4DropSender StatSender => statSender;
+
+    [SerializeField] protected GunM4DropReceiver statReceiver;
+    public GunM4DropReceiver StatReceiver => statReceiver;
+
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
@@ -32,6 +38,8 @@ public class GunM4DropManager : HuyMonoBehaviour
         // Script
         this.LoadStat();
         this.LoadDespawner();
+        this.LoadStatSender();
+        this.LoadStatReceiver();
     }
 
     //=======================================Load Component=======================================
@@ -63,5 +71,19 @@ public class GunM4DropManager : HuyMonoBehaviour
         if (this.despawner != null) return;
         this.despawner = transform.Find("Despawn").GetComponent<GunM4DropDespawner>();
         Debug.LogWarning(transform.name + ": Load Despawner", transform.gameObject);
+    }
+
+    protected virtual void LoadStatSender()
+    {
+        if (this.statSender != null) return;
+        this.statSender = transform.Find("StatSender").GetComponent<GunM4DropSender>();
+        Debug.LogWarning(transform.name + ": Load StatSender", transform.gameObject);
+    }
+
+    protected virtual void LoadStatReceiver()
+    {
+        if (this.statReceiver != null) return;
+        this.statReceiver = transform.Find("StatReceiver").GetComponent<GunM4DropReceiver>();
+        Debug.LogWarning(transform.name + ": Load StatReceiver", transform.gameObject);
     }
 }

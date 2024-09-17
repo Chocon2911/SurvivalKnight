@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Enemy", menuName = "SO/Obj/AtkObj/Enemy")]
 public class EnemySO : AtkObjSO
 {
-    
+    public float Health;
+    public float ChaseSpeed;
+    public List<ItemDropStat> DropList;
 }
