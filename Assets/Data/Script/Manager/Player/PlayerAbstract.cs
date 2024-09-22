@@ -6,8 +6,8 @@ public class PlayerAbstract : HuyMonoBehaviour
 {
     //==========================================Variable==========================================
     [Header("Player Abstract")]
-    [SerializeField] protected PlayerManager manager;
-    public PlayerManager Manager => manager;
+    [SerializeField] protected PlayerObjManager manager;
+    public PlayerObjManager Manager => manager;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -20,7 +20,7 @@ public class PlayerAbstract : HuyMonoBehaviour
     protected virtual void LoadManager()
     {
         if (this.manager != null) return;
-        this.manager = transform.parent.GetComponent<PlayerManager>();
+        this.manager = transform.parent.GetComponent<PlayerObjManager>();
         Debug.LogWarning(transform.name + ": Load Manager");
     }
 }

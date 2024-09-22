@@ -7,5 +7,5 @@ public class EnemySO : AtkObjSO
 {
     public float Health;
     public float ChaseSpeed;
-    public List<ItemDropStat> DropList;
+    public List<ItemDropByRate> DropList;
 }

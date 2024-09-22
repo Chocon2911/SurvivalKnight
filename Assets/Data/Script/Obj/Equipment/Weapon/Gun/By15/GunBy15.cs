@@ -11,8 +11,8 @@ public abstract class GunBy15 : BaseGun
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
-        base.LoadComponent();
         this.LoadSO();
+        base.LoadComponent();
     }
 
     //=======================================Load Component=======================================

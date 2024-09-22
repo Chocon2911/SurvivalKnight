@@ -24,8 +24,8 @@ public class BulletObjManager : HuyMonoBehaviour
     [SerializeField] protected BulletObjDespawn despawn;
     public BulletObjDespawn Despawn => despawn;
 
-    [SerializeField] protected BulletDamageSender damageSender;
-    public BulletDamageSender DamageSender => damageSender;
+    [SerializeField] protected DamageSender damageSender;
+    public DamageSender DamageSender => damageSender;
 
     [SerializeField] protected BulletDataReceiver bulletReceiver;
     public BulletDataReceiver BulletDataReceiver => bulletReceiver;
@@ -88,7 +88,7 @@ public class BulletObjManager : HuyMonoBehaviour
     protected virtual void LoadDamageSender()
     {
         if (this.damageSender != null) return;
-        this.damageSender = transform.GetComponentInChildren<BulletDamageSender>();
+        this.damageSender = transform.GetComponentInChildren<DamageSender>();
         Debug.LogWarning(transform.name + ": Load DamageSender", transform.gameObject);
     }
 

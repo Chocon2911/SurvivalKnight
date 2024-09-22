@@ -6,8 +6,8 @@ public class PlayerObjSkill : PlayerObjAbstract
 {
     [Header("Player Obj Skill")]
     // Script
-    [SerializeField] protected List<CharacterSkill> skills;
-    public List<CharacterSkill> Skills => skills;
+    [SerializeField] protected PlayerDash dash;
+    public PlayerDash Dash => dash;
 
     // Stat
     [SerializeField] protected int maxSkillAmount;
@@ -17,20 +17,15 @@ public class PlayerObjSkill : PlayerObjAbstract
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadSkills();
+        this.LoadDash();
     }
 
     //=======================================Load Component=======================================
-    protected virtual void LoadSkills()
+    // Script
+    protected virtual void LoadDash()
     {
-        if (this.skills.Count > 0) return;
-        foreach (Transform child in transform)
-        {
-            CharacterSkill skill = child.GetComponent<CharacterSkill>();
-            if (skill != null) this.skills.Add(skill);
-        }
-
-        if (this.skills.Count == 0) return;
-        Debug.LogWarning(transform.name + ": Load Skills", transform.gameObject);
+        if (this.dash != null) return;
+        this.dash = transform.Find("Dash").GetComponent<PlayerDash>();
+        Debug.LogWarning(transform.name + ": Load Dash", transform.gameObject);
     }
 }

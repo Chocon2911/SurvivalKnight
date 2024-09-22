@@ -17,8 +17,8 @@ public class PlayerObjManager : HuyMonoBehaviour
     public Rigidbody2D Rb => rb;
 
     [Header("Script")]
-    [SerializeField] protected PlayerDamageReceiver damageReceiver;
-    public PlayerDamageReceiver DamageReceiver => damageReceiver;
+    [SerializeField] protected DamageReceiver damageReceiver;
+    public DamageReceiver DamageReceiver => damageReceiver;
 
     [SerializeField] protected PlayerObjCtrl ctrl;
     public PlayerObjCtrl Ctrl => ctrl;
@@ -31,6 +31,9 @@ public class PlayerObjManager : HuyMonoBehaviour
 
     [SerializeField] protected PlayerObjSkill skill;
     public PlayerObjSkill Skill => skill;
+
+    [SerializeField] protected PlayerObjDespawn despawn;
+    public PlayerObjDespawn Despawn => despawn;
     #endregion
 
 
@@ -50,6 +53,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.LoadMovement();
         this.LoadWeapon();
         this.LoadSkill();
+        this.LoadDespawn();
     }
     #endregion
 
@@ -81,7 +85,7 @@ public class PlayerObjManager : HuyMonoBehaviour
     protected virtual void LoadDamageReceiver()
     {
         if (this.damageReceiver != null) return;
-        this.damageReceiver = transform.GetComponentInChildren<PlayerDamageReceiver>();
+        this.damageReceiver = transform.GetComponentInChildren<DamageReceiver>();
         Debug.LogWarning(transform.name + ": Load DamageReceiver", transform.gameObject);
     }
 
@@ -111,6 +115,13 @@ public class PlayerObjManager : HuyMonoBehaviour
         if (this.skill != null) return;
         this.skill = transform.GetComponentInChildren<PlayerObjSkill>();
         Debug.LogWarning(transform.name + ": Load Skill", transform.gameObject);
+    }
+
+    protected virtual void LoadDespawn()
+    {
+        if (this.despawn != null) return;   
+        this.despawn = transform.Find("Despawn").GetComponent<PlayerObjDespawn>();
+        Debug.LogWarning(transform.name + ": Load Despawn", transform.gameObject);
     }
     #endregion
 }

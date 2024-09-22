@@ -8,4 +8,5 @@ public class ItemDropSO : ScriptableObject
     public string ItemName;
     public ItemType ItemType;
     public ItemCode ItemCode;
+    public int MaxStack;
 }

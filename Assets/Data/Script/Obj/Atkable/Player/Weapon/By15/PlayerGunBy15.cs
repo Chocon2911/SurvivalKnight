@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGunBy15 : GunBy15
+public class PlayerGunBy15 : GunBy15, IDashSkillObserver
 {
     [Header("Player Gun By15")]
     // Script
@@ -21,17 +21,26 @@ public class PlayerGunBy15 : GunBy15
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
-        base.LoadComponent();
-        // Script
-        this.LoadWeapon();
         this.LoadHoldRange();
         this.LoadSkill_1();
         this.LoadSkill_2();
+        base.LoadComponent();
+        this.LoadWeapon();
     }
 
     protected virtual void Update()
     {
         this.PlayerShoot();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    protected virtual void Start()
+    {
+        this.RegisterDashSkillObserver();
     }
 
     //==========================================Gun By15==========================================
@@ -85,6 +94,24 @@ public class PlayerGunBy15 : GunBy15
         {
             this.skill_2.ActivateSkill();
         }
+    }
+
+    //====================================Dash Skill Observer=====================================
+    public void OnDashStart()
+    {
+        this.skill_1.gameObject.SetActive(false);
+        this.skill_2.gameObject.SetActive(false);
+    }
+
+    public void OnDashFinished()
+    {
+        this.skill_1.gameObject.SetActive(true);
+        this.skill_2.gameObject.SetActive(true);
+    }
+
+    protected virtual void RegisterDashSkillObserver()
+    {
+        this.weapon.Manager.Skill.Dash.AddObserver(this); 
     }
 
     //===========================================Other============================================

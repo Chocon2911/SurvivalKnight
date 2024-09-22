@@ -15,3 +15,4 @@ MonoBehaviour:
   ItemName: GunM4Drop
   ItemType: 2
   ItemCode: 1
+  MaxStack: 1

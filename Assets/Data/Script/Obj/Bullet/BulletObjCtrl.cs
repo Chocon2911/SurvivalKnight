@@ -30,7 +30,7 @@ public class BulletObjCtrl : HuyMonoBehaviour
         Transform collidedObj = collision.transform;
         if (collidedObj == null) return;
 
-        this.manager.DamageSender.CollideWith(collidedObj);
+        this.CollideWithTarget(collidedObj);
     }
 
     //=======================================Load Component=======================================
@@ -47,5 +47,16 @@ public class BulletObjCtrl : HuyMonoBehaviour
         if (this.manager != null) return;
         this.manager = transform.GetComponent<BulletObjManager>();
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
+    }
+
+    //==========================================Collide===========================================
+    public virtual void CollideWithTarget(Transform target)
+    {
+        DamageReceiver receiver = target.transform.GetComponentInChildren<DamageReceiver>();
+        if (receiver == null) return;
+        //if (receiver.AtkObjType != this.CanDamageType) return;
+
+        this.manager.DamageSender.Send(receiver);
+        this.manager.Despawn.ByTime.DespawnObj();
     }
 }

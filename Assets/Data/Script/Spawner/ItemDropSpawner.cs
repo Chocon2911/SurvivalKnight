@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -28,45 +29,74 @@ public class ItemDropSpawner : Spawner
     }
 
     //============================================Drop============================================
-    public virtual void DropItems(List<ItemDropStat> itemDropStats, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
+    public virtual void DropItemsByRate(List<ItemDropByRate> itemDropByRates, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
     {
-        List<Transform> dropItems = new List<Transform>();
-        foreach (ItemDropStat itemDropStat in itemDropStats)
+        List<Transform> dropItemObjs = new List<Transform>();
+        foreach (ItemDropByRate itemDropByRate in itemDropByRates)
         {
-            int dropAmount = GetDroppableItemByRate(itemDropStat);
-            for (int i = 0; i < dropAmount; i++)
+            foreach (Transform itemDrop in this.DropItemByRate(itemDropByRate, droppableArea, spawnPos, spawnRot))
             {
-                Vector3 dropPos = this.GetRandomDropPos(droppableArea, spawnPos);
-                Transform newItemObj = this.SpawnByName(itemDropStat.ItemDropSO.name, dropPos, spawnRot);
-                if (newItemObj == null)
-                {
-                    Debug.LogError(transform.name + ": NewItemObj is null", transform.gameObject);
-                    continue;
-                }
-
-                dropItems.Add(newItemObj);
+                dropItemObjs.Add(itemDrop);
             }
         }
 
-        foreach (Transform newItemObj in dropItems)
+        foreach (Transform newItemObj in dropItemObjs)
         {
             newItemObj.gameObject.SetActive(true);
         }
     }
 
-    protected virtual int GetDroppableItemByRate(ItemDropStat itemDropStat)
+    public virtual List<Transform> DropItemByRate(ItemDropByRate itemDropStat, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
     {
-        int droppableItem = itemDropStat.MinAmount;
-
-        for (int i = 0; i < itemDropStat.MaxAmount - itemDropStat.MinAmount; i++)
+        int dropAmount = GetItemAmountByRate(itemDropStat);
+        List<Transform> itemDropObjs = new List<Transform>();
+        for (int i = 0; i < dropAmount; i++)
         {
-            float randomRate = Random.Range(0, 100 * 1000) / 1000;
-            if (randomRate > itemDropStat.DropRate) continue;
+            Vector3 dropPos = this.GetRandomDropPos(droppableArea, spawnPos);
+            Transform newItemObj = this.SpawnByName(itemDropStat.ItemDropSO.name, dropPos, spawnRot);
+            if (newItemObj == null)
+            {
+                Debug.LogError(transform.name + ": NewItemObj is null", transform.gameObject);
+                continue;
+            }
 
-            droppableItem++;
+            itemDropObjs.Add(newItemObj);
         }
 
-        return droppableItem;
+        return itemDropObjs;
+    }
+
+    public virtual void DropItemByItemInventory(ItemInventory itemInventory, Vector3 spawnPos, Quaternion spawnRot)
+    {
+        Transform newItemDrop = this.SpawnByName(itemInventory.SO.name, spawnPos, spawnRot);
+        if (newItemDrop == null)
+        {
+            Debug.Log(transform.name + ": ItemDrop is null", transform.gameObject);
+            return;
+        }
+
+        ItemDropObjStat stat = newItemDrop.GetComponent<ItemDropObjStat>();
+        if (stat == null)
+        {
+            Debug.LogError(transform.name + ": No ItemDropObjStat in ItemDrop", transform.gameObject);
+            return;
+        }
+
+        stat.Amount = itemInventory.Amount;
+        newItemDrop.gameObject.SetActive(true);
+    }
+
+    //============================================Get=============================================
+    protected virtual int GetItemAmountByRate(ItemDropByRate itemDropStat)
+    {
+        float randomRate = Random.Range(0, 100000) / 1000;
+        foreach (ItemDropRate itemDropRate in itemDropStat.ItemDropRates)
+        {
+            if (randomRate > itemDropRate.DropRate) continue;
+            return itemDropRate.Amount;
+        }
+
+        return 0;
     }
 
     protected virtual Vector3 GetRandomDropPos(Vector2 droppableArea, Vector3 spawnPos)

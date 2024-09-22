@@ -16,6 +16,11 @@ public class BulletDespawnByTime : DespawnByTime
         this.LoadBulletObjDespawn();
     }
 
+    protected virtual void OnEnable()
+    {
+        this.DefaultStat();
+    }
+
     //=======================================Load Component=======================================
     protected virtual void LoadBulletObjDespawn()
     {

@@ -6,8 +6,9 @@ public abstract class ItemDropObjStat : BaseObj
 {
     //==========================================Variable==========================================
     [Header("ItemDrop Obj Stat")]
-    public string ObjDropId;
-    public ItemDropObjType ItemDropObjType;
+    public ItemType ItemType;
+    public ItemCode ItemCode;
+    public int Amount;
 
     //===========================================Unity============================================
     protected override void LoadComponent()

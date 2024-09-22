@@ -23,6 +23,11 @@ public class PlayerDash : DashSkill
         base.LoadComponent();
     }
 
+    protected virtual void Start()
+    {
+        this.AddObserver(this.skill.Manager.Movement.KeyBoard);
+    }
+
     protected virtual void Update()
     {
         this.Dash();
@@ -57,7 +62,7 @@ public class PlayerDash : DashSkill
     //============================================Dash============================================
     protected virtual void Dash()
     {
-        if (!InputManager.Instance.Dash) return;
+        if (!InputManager.Instance.Dash || this.isReady == false) return;
 
         // Activate Skill
         this.DashDir = InputManager.Instance.MoveDir;
@@ -68,9 +73,7 @@ public class PlayerDash : DashSkill
     {
         base.UseSkill();
 
-        // Deactive Move by Keyboard
-        this.skill.Manager.Movement.KeyBoard.SetCanMove(false);
-        this.skill.Manager.Movement.KeyBoard.StopMove();
+        this.OnDashStart();
     }
 
     protected override void ChargeSkill()
@@ -81,8 +84,7 @@ public class PlayerDash : DashSkill
     protected override void FinishDoing()
     {
         base.FinishDoing();
-        this.rb.velocity = Vector2.zero;
-        this.skill.Manager.Movement.KeyBoard.SetCanMove(true);
+        this.OnDashFinished();
     }
 
     //===========================================Other============================================

@@ -17,6 +17,6 @@ MonoBehaviour:
   ChaseSpeed: 5
   DropList:
   - ItemDropSO: {fileID: 11400000, guid: ce4616d7abf42df4b9f036ab188bbb24, type: 2}
-    MaxAmount: 2
-    MinAmount: 0
-    DropRate: 50
+    ItemDropRates:
+    - Amount: 1
+      DropRate: 50

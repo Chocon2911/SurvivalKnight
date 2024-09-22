@@ -21,8 +21,14 @@ public class EnemyObjManager : HuyMonoBehaviour
     public EnemySO SO => so;
 
     // Script
-    [SerializeField] protected EnemyDamageReceiver damageReceiver;
-    public EnemyDamageReceiver DamageReceiver => damageReceiver;
+    [SerializeField] protected DamageReceiver damageReceiver;
+    public DamageReceiver DamageReceiver => damageReceiver;
+
+    [SerializeField] protected EnemyObjMovement movement;
+    public EnemyObjMovement Movement => movement;
+
+    [SerializeField] protected EnemyObjDespawn despawn;
+    public EnemyObjDespawn Despawn => despawn;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -32,9 +38,17 @@ public class EnemyObjManager : HuyMonoBehaviour
         this.LoadModel();
         this.LoadRb();
         this.LoadBody();
+        this.LoadSO();
 
         //Script
         this.LoadDamageReceiver();
+        this.LoadMovement();
+        this.LoadDespawn();
+    }
+
+    protected virtual void OnEnable()
+    {
+        this.damageReceiver.Hp = 10;
     }
 
     //=======================================Load Component=======================================
@@ -79,7 +93,21 @@ public class EnemyObjManager : HuyMonoBehaviour
     protected virtual void LoadDamageReceiver()
     {
         if (this.damageReceiver != null) return;
-        this.damageReceiver = transform.GetComponentInChildren<EnemyDamageReceiver>();
+        this.damageReceiver = transform.GetComponentInChildren<DamageReceiver>();
         Debug.LogWarning(transform.name + ": Load DamageReceiver", transform.gameObject);
+    }
+
+    protected virtual void LoadMovement()
+    {
+        if (this.movement != null) return;
+        this.movement = transform.Find("Movement").GetComponent<EnemyObjMovement>();
+        Debug.LogWarning(transform.name + ": Load Movement", transform.gameObject);
+    }
+
+    protected virtual void LoadDespawn()
+    {
+        if (this.despawn != null) return;
+        this.despawn = transform.Find("Despawn").GetComponent<EnemyObjDespawn>();
+        Debug.LogWarning(transform.name + ": Load Despawn", transform.gameObject);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGunM4 : GunM4
+public class PlayerGunM4 : GunM4, IDashSkillObserver
 {
     [Header("Player Gun M4")]
     // Script
@@ -31,6 +31,11 @@ public class PlayerGunM4 : GunM4
     protected virtual void Update()
     {
         this.PlayerShoot();
+    }
+
+    protected virtual void Start()
+    {
+        this.RegisterDashSkillObserver();
     }
 
     //===========================================Gun M4===========================================
@@ -84,6 +89,23 @@ public class PlayerGunM4 : GunM4
         {
             this.skill2.ActivateSkill();
         }
+    }
+
+    //====================================Dash Skill Observer=====================================
+    public void OnDashStart()
+    {
+        this.skill1.gameObject.SetActive(false);
+        this.skill2.gameObject.SetActive(false);    }
+
+    public void OnDashFinished()
+    {
+        this.skill1.gameObject.SetActive(true);
+        this.skill2.gameObject.SetActive(true);
+    }
+
+    protected virtual void RegisterDashSkillObserver()
+    {
+        this.weapon.Manager.Skill.Dash.AddObserver(this);
     }
 
     //===========================================Other============================================

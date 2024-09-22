@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMoveByKeyBoard : MoveByVelocity
+public class PlayerMoveByKeyBoard : MoveByVelocity, IDashSkillObserver
 {
     [SerializeField] protected PlayerObjMovement movement;
     public PlayerObjMovement Movement => movement;
@@ -54,5 +54,18 @@ public class PlayerMoveByKeyBoard : MoveByVelocity
         if (this.MoveDir == Vector2.zero) return;
 
         base.DoMove();
+    }
+
+    //====================================Dash Skill Observer=====================================
+    public void OnDashStart()
+    {
+        Debug.Log(transform.name + ": On Dash Start", transform.gameObject);
+        this.canMove = false;
+    }
+
+    public void OnDashFinished()
+    {
+        Debug.Log(transform.name + ": On Dash Finished", transform.gameObject);
+        this.canMove = true;
     }
 }
