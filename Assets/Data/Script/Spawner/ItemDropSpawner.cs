@@ -28,6 +28,12 @@ public class ItemDropSpawner : Spawner
         base.Awake();
     }
 
+    //===========================================Spawn============================================
+    public virtual void SpawnByItemCode(ItemCode itemCode, Vector3 spawnPos, Quaternion spawnRot)
+    {
+
+    }
+
     //============================================Drop============================================
     public virtual void DropItemsByRate(List<ItemDropByRate> itemDropByRates, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
     {
@@ -87,6 +93,22 @@ public class ItemDropSpawner : Spawner
     }
 
     //============================================Get=============================================
+    protected virtual Transform GetObjByItemCode(ItemCode itemCode)
+    {
+        string itemName;
+        foreach (Transform obj in this.prefabs)
+        {
+            ItemDropObjStat stat = obj.GetComponent<ItemDropObjStat>();
+            if (stat == null || stat.ItemCode != itemCode) continue;
+
+            itemName = stat.transform.name;
+            return this.GetObjByName(itemName);
+        }
+
+        Debug.LogError("No ItemCode: " + itemCode, transform.gameObject);
+        return null;
+    }
+    
     protected virtual int GetItemAmountByRate(ItemDropByRate itemDropStat)
     {
         float randomRate = Random.Range(0, 100000) / 1000;
