@@ -2,26 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ItemDropObjDespawnByTime : DespawnByTime
+public class ItemDropObjDespawnByTime : DespawnByTime
 {
     //==========================================Variable==========================================
     [Header("Item Drop Despawn By Time")]
-    [SerializeField] protected ItemDropObjStat stat;
-    public ItemDropObjStat Stat => stat;
+    [SerializeField] protected ItemDropObjDespawn despawner;
+    public ItemDropObjDespawn Despawner => despawner;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadStat(); 
+        this.LoadDespawner(); 
     }
 
     //=======================================Load Component=======================================
-    protected abstract void LoadStat();
+    protected virtual void LoadDespawner()
+    {
+        if (this.despawner != null) return;
+        this.despawner = transform.parent.GetComponent<ItemDropObjDespawn>();
+        Debug.LogWarning(transform.name + ": Load Despawner", transform.gameObject);
+    }
 
     //==========================================Despawn===========================================
     public override void DespawnObj()
     {
-        ItemDropSpawner.Instance.Despawn(this.stat.transform);
+        ItemDropSpawner.Instance.Despawn(this.despawner.Manager.transform);
     }
 }

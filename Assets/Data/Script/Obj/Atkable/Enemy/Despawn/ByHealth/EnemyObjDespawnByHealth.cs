@@ -7,7 +7,7 @@ public class EnemyObjDespawnByHealth : EnemyObjDespawnAbstract
     //==========================================Variable==========================================
     [Header("Enemy Obj Despawn By Health")]
     // Script
-    [SerializeField] protected List<IEnemyObjDespawnByHealthObserver> observers;
+    [SerializeField] protected List<IEnemyObjDespawnByHealthObserver> observers = new List<IEnemyObjDespawnByHealthObserver>();
     public List<IEnemyObjDespawnByHealthObserver> Observers => observers;
 
     //===========================================Unity============================================

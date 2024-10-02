@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDropObjStat : BaseObj
+public class EnemyObjDamageReceiver : DamageReceiver
 {
     //==========================================Variable==========================================
-    [Header("ItemDrop Obj Stat")]
-    [SerializeField] protected ItemDropObjManager manager;
-    public ItemDropObjManager Manager => manager;
-
-    public ItemType ItemType;
-    public ItemCode ItemCode;
-    public int Amount;
-    public int MaxStack;
+    [Header("Enemy Obj Damage Receiver")]
+    [SerializeField] protected EnemyObjManager manager;
+    public EnemyObjManager Manager => manager;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -22,35 +17,41 @@ public class ItemDropObjStat : BaseObj
         this.DefaultStat();
     }
 
+    protected virtual void OnEnable()
+    {
+        this.Revive();
+    }
+
     //=======================================Load Component=======================================
     protected virtual void LoadManager()
     {
         if (this.manager != null) return;
-        this.manager = transform.GetComponent<ItemDropObjManager>();
+        this.manager = transform.parent.GetComponent<EnemyObjManager>();
         Debug.LogWarning(transform.name + ": Load Manager", transform.gameObject);
     }
 
-
-    protected virtual void OnEnable()
+    //======================================Damage Receiver=======================================
+    protected virtual void Revive()
     {
-        this.DefaultStat();
+        if (this.manager.SO == null)
+        {
+            Debug.LogError(transform.name + ": SO is null", transform.gameObject);
+            return;
+        }
+
+        this.Hp = this.manager.SO.Health;
     }
 
     //===========================================Other============================================
     protected virtual void DefaultStat()
     {
-        this.ObjType = ObjType.ItemDrop;
-
         if (this.manager.SO == null)
         {
-            Debug.LogError(transform.name + ": so is null", transform.gameObject);
+            Debug.LogError(transform.name + ": SO is null", transform.gameObject);
             return;
         }
 
-        ItemDropSO so = this.manager.SO;
-        this.ObjName = so.ItemName;
-        this.ItemType = so.ItemType;
-        this.ItemCode = so.ItemCode;
-        this.MaxStack = so.MaxStack;
+        this.Hp = this.manager.SO.Health;
+        this.AtkObjType = AtkObjType.Enemy;
     }
 }

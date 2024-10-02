@@ -21,8 +21,8 @@ public class EnemyObjManager : HuyMonoBehaviour
     public EnemySO SO => so;
 
     // Script
-    [SerializeField] protected DamageReceiver damageReceiver;
-    public DamageReceiver DamageReceiver => damageReceiver;
+    [SerializeField] protected EnemyObjDamageReceiver damageReceiver;
+    public EnemyObjDamageReceiver DamageReceiver => damageReceiver;
 
     [SerializeField] protected EnemyObjMovement movement;
     public EnemyObjMovement Movement => movement;
@@ -93,7 +93,7 @@ public class EnemyObjManager : HuyMonoBehaviour
     protected virtual void LoadDamageReceiver()
     {
         if (this.damageReceiver != null) return;
-        this.damageReceiver = transform.GetComponentInChildren<DamageReceiver>();
+        this.damageReceiver = transform.GetComponentInChildren<EnemyObjDamageReceiver>();
         Debug.LogWarning(transform.name + ": Load DamageReceiver", transform.gameObject);
     }
 

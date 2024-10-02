@@ -29,37 +29,34 @@ public class ItemDropSpawner : Spawner
     }
 
     //===========================================Spawn============================================
-    public virtual void SpawnByItemCode(ItemCode itemCode, Vector3 spawnPos, Quaternion spawnRot)
+    public virtual Transform SpawnByItemCode(ItemCode itemCode, Vector3 spawnPos, Quaternion spawnRot)
     {
-
-    }
-
-    //============================================Drop============================================
-    public virtual void DropItemsByRate(List<ItemDropByRate> itemDropByRates, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
-    {
-        List<Transform> dropItemObjs = new List<Transform>();
-        foreach (ItemDropByRate itemDropByRate in itemDropByRates)
+        Transform newItemDropObj = null;
+        foreach (Transform prefab in this.prefabs)
         {
-            foreach (Transform itemDrop in this.DropItemByRate(itemDropByRate, droppableArea, spawnPos, spawnRot))
+            ItemDropObjStat itemDropStat= prefab.GetComponent<ItemDropObjStat>();
+            if (itemDropStat == null) continue;
+            if (itemDropStat.ItemCode != itemCode) continue;
+
+            newItemDropObj = this.SpawnByName(itemDropStat.transform.name, spawnPos, spawnRot);
+            if (newItemDropObj == null)
             {
-                dropItemObjs.Add(itemDrop);
+                Debug.LogWarning(itemDropStat.name ,itemDropStat.transform.gameObject);
+                Debug.LogError(transform.name + ": new ItemDropObj is null", transform.gameObject);
             }
         }
 
-        foreach (Transform newItemObj in dropItemObjs)
-        {
-            newItemObj.gameObject.SetActive(true);
-        }
+        return newItemDropObj;
     }
-
-    public virtual List<Transform> DropItemByRate(ItemDropByRate itemDropStat, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
+    
+    public virtual List<Transform> SpawnItemsByRate(ItemDropByRate itemDropStat, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
     {
         int dropAmount = GetItemAmountByRate(itemDropStat);
         List<Transform> itemDropObjs = new List<Transform>();
         for (int i = 0; i < dropAmount; i++)
         {
             Vector3 dropPos = this.GetRandomDropPos(droppableArea, spawnPos);
-            Transform newItemObj = this.SpawnByName(itemDropStat.ItemDropSO.name, dropPos, spawnRot);
+            Transform newItemObj = this.SpawnByItemCode(itemDropStat.ItemDropSO.ItemCode, dropPos, spawnRot);
             if (newItemObj == null)
             {
                 Debug.LogError(transform.name + ": NewItemObj is null", transform.gameObject);
@@ -70,6 +67,24 @@ public class ItemDropSpawner : Spawner
         }
 
         return itemDropObjs;
+    }
+
+    //============================================Drop============================================
+    public virtual void DropItemsByRate(List<ItemDropByRate> itemDropByRates, Vector2 droppableArea, Vector3 spawnPos, Quaternion spawnRot)
+    {
+        List<Transform> dropItemObjs = new List<Transform>();
+        foreach (ItemDropByRate itemDropByRate in itemDropByRates)
+        {
+            foreach (Transform itemDrop in this.SpawnItemsByRate(itemDropByRate, droppableArea, spawnPos, spawnRot))
+            {
+                dropItemObjs.Add(itemDrop);
+            }
+        }
+
+        foreach (Transform newItemObj in dropItemObjs)
+        {
+            newItemObj.gameObject.SetActive(true);
+        }
     }
 
     public virtual void DropItemByItemInventory(ItemInventory itemInventory, Vector3 spawnPos, Quaternion spawnRot)
