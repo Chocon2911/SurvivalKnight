@@ -24,8 +24,8 @@ public class ItemDropObjManager : HuyMonoBehaviour
     [SerializeField] protected ItemDropObjDespawn despawn;
     public ItemDropObjDespawn Despawn => despawn;
 
-    [SerializeField] protected ItemDropObjPickedUp pickUp;
-    public ItemDropObjPickedUp PickUp => pickUp;
+    [SerializeField] protected ItemDropDataSender dataSender;
+    public ItemDropDataSender DataSender => dataSender;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
@@ -39,7 +39,7 @@ public class ItemDropObjManager : HuyMonoBehaviour
         // Script
         this.LoadStat();
         this.LoadDespawn();
-        this.LoadPickUp();
+        this.LoadDataSender();
     }
 
     //=======================================Load Component=======================================
@@ -48,6 +48,7 @@ public class ItemDropObjManager : HuyMonoBehaviour
     {
         if (this.bodyCollide != null) return;
         this.bodyCollide = transform.GetComponent<CapsuleCollider2D>();
+        this.bodyCollide.isTrigger = true;
         Debug.LogWarning(transform.name + ": Load BodyCollide", transform.gameObject);
     }
 
@@ -81,10 +82,10 @@ public class ItemDropObjManager : HuyMonoBehaviour
         Debug.LogWarning(transform.name + ": Load Despawn", transform.gameObject);
     }
 
-    protected virtual void LoadPickUp()
+    protected virtual void LoadDataSender()
     {
-        if (this.pickUp != null) return;
-        this.pickUp = transform.Find("PickUp").GetComponent<ItemDropObjPickedUp>();
-        Debug.LogWarning(transform.name + ": Load PickUP", transform.gameObject);
+        if (this.dataSender != null) return;
+        this.dataSender = transform.Find("DataSender").GetComponent<ItemDropDataSender>();
+        Debug.LogWarning(transform.name + ": Load DataSender", transform.gameObject);
     }
 }

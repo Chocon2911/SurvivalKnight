@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPickUpItem : PlayerAbstract
+public abstract class CharacterLevel : BaseLevel
 {
     
 }

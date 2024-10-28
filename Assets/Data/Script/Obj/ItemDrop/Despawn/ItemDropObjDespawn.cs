@@ -10,15 +10,15 @@ public class ItemDropObjDespawn : ItemDropObjAbstract
     [SerializeField] protected ItemDropObjDespawnByTime byTime;
     public ItemDropObjDespawnByTime ByTime => ByTime;
 
-    [SerializeField] protected ItemDropObjDespawnByPickUp byPickUp;
-    public ItemDropObjDespawnByPickUp ByPickUp => byPickUp;
+    [SerializeField] protected ItemDropObjDespawnByAmount byAmount;
+    public ItemDropObjDespawnByAmount ByAmount => ByAmount;
 
     //===========================================Unity============================================
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadByTime();
-        this.LoadbyPickUp();
+        this.LoadByAmount();
     }
 
     //=======================================Load Component=======================================
@@ -29,10 +29,10 @@ public class ItemDropObjDespawn : ItemDropObjAbstract
         Debug.LogWarning(transform.name + ": Load ByTime", transform.gameObject);
     }
 
-    protected virtual void LoadbyPickUp()
+    protected virtual void LoadByAmount()
     {
-        if (this.byPickUp != null) return;
-        this.byPickUp = transform.Find("ByPickUp").GetComponent<ItemDropObjDespawnByPickUp>();
-        Debug.LogWarning(transform.name + ": Load ByPickUp", transform.gameObject);
+        if (this.byAmount != null) return;
+        this.byAmount = transform.Find("ByAmount").GetComponent<ItemDropObjDespawnByAmount>();
+        Debug.LogWarning(transform.name + ": Load ByAmount", transform.gameObject);
     }
 }

@@ -24,11 +24,15 @@ public class InputManager : HuyMonoBehaviour
 
     [SerializeField] protected bool rightMouse;
     public bool RightMouse => rightMouse;
+
+    [SerializeField] protected bool ePressed;
+    public bool EPressed => ePressed;
     #endregion
 
 
 
     #region Unity
+    //===========================================Unity============================================
     protected override void Awake()
     {
         if (instance != null)
@@ -45,6 +49,7 @@ public class InputManager : HuyMonoBehaviour
     {
         this.GetMoveDir();
         this.GetNumberPressed();
+        this.GetKeyboard();
         this.GetDash();
         this.GetMouse();
     }
@@ -77,6 +82,13 @@ public class InputManager : HuyMonoBehaviour
         else if (Input.GetKey(KeyCode.Alpha8)) this.numberPressed = 8;
         else if (Input.GetKey(KeyCode.Alpha9)) this.numberPressed = 9;
         else this.numberPressed = 10;
+    }
+
+    protected virtual void GetKeyboard()
+    {
+        // E
+        if (Input.GetKeyDown(KeyCode.E)) this.ePressed = true;
+        else this.ePressed = false;
     }
 
     protected virtual void GetDash()

@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDropObjDespawnByPickUp : Despawner, IItemDropObjPickedUpObserver
+public class ItemDropObjDespawnByAmount : Despawner
 {
-    //==========================================Variable==========================================
-    [Header("Item Drop Despawn By Time")]
+    [Header("ItemDropObj Despawn By Amount")]
     [SerializeField] protected ItemDropObjDespawn despawner;
-    public ItemDropObjDespawn Despawner => despawner;
+    public ItemDropObjDespawn Despawnwer => despawner;
 
     //===========================================Unity============================================
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadDespawner();
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        this.CheckIfZeroAmount();
     }
 
     //=======================================Load Component=======================================
@@ -29,15 +28,15 @@ public class ItemDropObjDespawnByPickUp : Despawner, IItemDropObjPickedUpObserve
         Debug.LogWarning(transform.name + ": Load Despawner", transform.gameObject);
     }
 
-    //==========================================Despawn===========================================
+    //=========================================Despawner==========================================
     public override void DespawnObj()
     {
         ItemDropSpawner.Instance.Despawn(this.despawner.Manager.transform);
     }
 
-    //==========================================Observer==========================================
-    public void OnItemPickedUp()
+    protected virtual void CheckIfZeroAmount()
     {
+        if (this.despawner.Manager.Stat.Amount > 0) return;
         this.DespawnObj();
     }
 }

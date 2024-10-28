@@ -9,8 +9,8 @@ public class PlayerManager : HuyMonoBehaviour
     public static PlayerManager Instance => instance;
 
     [Header("Player Manager")]
-    [SerializeField] protected PlayerPickUpItem pickUpItem;
-    public PlayerPickUpItem PickUpItem => pickUpItem;
+    [SerializeField] protected PlayerInventory inventory;
+    public PlayerInventory Inventory => inventory;
 
     //===========================================Unity============================================
     protected override void Awake()
@@ -28,14 +28,14 @@ public class PlayerManager : HuyMonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadPickUpItem();
+        this.LoadInventory();
     }
 
     //=======================================Load Component=======================================
-    protected virtual void LoadPickUpItem()
+    protected virtual void LoadInventory()
     {
-        if (this.pickUpItem != null) return;
-        this.pickUpItem = transform.Find("PickUpItem").GetComponent<PlayerPickUpItem>();
-        Debug.LogWarning(transform.name + ": Load PickUpItem", transform.gameObject);
+        if (this.inventory != null) return;
+        this.inventory = transform.Find("Inventory").GetComponent<PlayerInventory>();
+        Debug.LogWarning(transform.name + ": Load Invnetory", transform.gameObject);
     }
 }

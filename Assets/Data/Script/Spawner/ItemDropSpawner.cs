@@ -63,6 +63,14 @@ public class ItemDropSpawner : Spawner
                 continue;
             }
 
+            ItemDropObjStat stat = newItemObj.GetComponent<ItemDropObjStat>();
+            if (stat == null)
+            {
+                Debug.LogError(transform.name + ": Stat is null", transform.gameObject);
+                continue;
+            }
+
+            stat.Amount = 1;
             itemDropObjs.Add(newItemObj);
         }
 

@@ -19,4 +19,4 @@ MonoBehaviour:
   - ItemDropSO: {fileID: 11400000, guid: ce4616d7abf42df4b9f036ab188bbb24, type: 2}
     ItemDropRates:
     - Amount: 1
-      DropRate: 50
+      DropRate: 100
